@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<link rel="shortcut icon" type="image/png" href="../static/pickup_icon.png" />
+<link rel="stylesheet" type="text/css"  href="../static/css/pickup_main.css"  />
+<title>追TA后台管理系统</title>
+</head>
+
+<body>
+	<div class="inner_main_wrap user_search">
+    	<div class="search_box">
+        	<label for="search_input">用户昵称：</label>
+            <input type="text" id="search_input" name="search_input" val="" autocomplete="off"/>
+            <a href="javascript:;" class="btn search_btn btn_disable" id="J_user_search">根据昵称搜索用户</a>
+        </div>
+		<div class="search_box last_search">
+        	<label for="search_input">用户zid：</label>
+            <input type="text" id="search_id_input" name="search_id_input" val="" autocomplete="off"/>
+            <a href="javascript:;" class="btn search_btn btn_disable" id="J_user_id_search">根据zid搜索用户</a>
+        </div>
+        <div class="search_result">
+        	<p class="title" id="search_count">搜索到 0 个结果：</p>
+            <ul id="result_box">
+            	<li class="title">
+                	<div class="result_no">No</div>
+                    <div class="result_name">昵称</div>
+                    <div class="result_gender">性别</div>
+                    <div class="result_age">年龄</div>
+                    <div class="result_city">地区</div>
+                    <div class="result_like">喜欢</div>
+                </li>
+            </ul>
+        </div>
+	</div>
+<script type="text/javascript" src="../static/js/jquery-1.7.2.min.js"></script>	
+<script type="text/javascript" src="../static/js/core.js"></script>	
+<script type="text/javascript" src="../static/js/user_info2.js"></script>	
+<script type="text/javascript" src="../static/js/user_search.js"></script>
+</body>
+</html>

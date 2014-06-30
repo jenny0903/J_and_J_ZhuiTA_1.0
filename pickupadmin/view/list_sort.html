@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<link rel="shortcut icon" type="image/png" href="../static/pickup_icon.png" />
+<link rel="stylesheet" type="text/css"  href="../static/css/pickup_main.css"  />
+<title>追TA后台管理系统</title>
+</head>
+
+<body>
+	<div class="inner_main_wrap list_sort">
+    	<form>
+        	<div class="sort_num_wrap">
+                <label for="sort_num">查看榜单：</label>
+                <select name="sort_num" class="sort_num" id="J_sort_num" onchange="sort_num_change()">
+                </select>
+				<a class="btn list_sort_id_btn" href="javascript:;" id="J_sort_list_id">获取当前榜单前100名id</a>
+            </div>
+            <ul class="sort_type" id="J_sort_type">
+            	<li><a value="1" class="a_cur" href="javascript:;">倾城榜</a></li>
+                <li><a value="2" href="javascript:;">才俊榜</a></li>
+                <li><a value="3" href="javascript:;">财富榜</a></li>
+            </ul>
+        </form>
+        <div class="sort_list_wrap">
+            <ul id="J_sort_content">
+			</ul>
+        </div>
+        <div class="pageControlWrap hide">
+        	<ul>
+                <li><a href="javascript:;" id="page_prev" value="">&lt;&lt;上一页</a></li>
+                <div id="page_show_wrap">
+                    <li><a href="javascript:;" id="page_prev2" value="">1</a></li>
+                    <li><a href="javascript:;" id="page_prev1" value="">2</a></li>
+                    <li><a href="javascript:;" class="page_cur" id="page_now" value="">3</a></li>
+                    <li><a href="javascript:;" id="page_next1" value="">4</a></li>
+                    <li><a href="javascript:;" id="page_next2" value="">5</a></li>
+                </div>
+                <li><a href="javascript:;" id="page_next" value="">下一页&gt;&gt;</a></li>
+				<li>共 <span id="pageNum"></span> 页</li>
+                <li class="page_skip_wrap">跳转到第<input type="text" name="page_skip" id="page_skip" class="page_in_box"/>页</li>
+            </ul>
+        </div>
+	</div>
+<script type="text/javascript" src="../static/js/jquery-1.7.2.min.js"></script>	
+<script type="text/javascript" src="../static/js/core.js"></script>	
+<script type="text/javascript" src="../static/js/user_info2.js"></script>	
+<script type="text/javascript" src="../static/js/list_sort.js"></script>
+</body>
+</html>
