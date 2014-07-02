@@ -6,7 +6,7 @@ $pickup = new pickupApi();
 //-H "Content-Type: application/json" 支持批量删除
 $user_id = $_POST['id'];
 
-$url = URL_PICKUP_API"/report"; 
+$url = URL_PICKUP_API."/report"; 
 
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL, $url);
