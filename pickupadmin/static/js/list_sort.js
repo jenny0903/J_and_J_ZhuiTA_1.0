@@ -145,8 +145,8 @@ $('#J_rank_money_user').die().live('click',function(){
 	window.parent.$('#J_manual_money_user').die().live('click',function(){
 		money_rank_flag.check_btn();
 		if( money_rank_flag.btn ){
-			var manual_uid = $('#manual_money_uid').val();
-			var manual_score = $('#manual_money_score').val();
+			var manual_uid = window.parent.$('#manual_money_uid').val();
+			var manual_score = window.parent.$('#manual_money_score').val();
 			
 			new_rank(manual_uid, type_cur, manual_score, num_cur , 1);
 		}
