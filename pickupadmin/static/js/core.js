@@ -1,10 +1,31 @@
 var ajax_main_path = '/pickupadmin/';
 var tpl = {
-		loading_box: '<div class="blockUIblack textCenter" id="J_loading_wrap"><p class="loading_content">{loading}</p></div>',
+		loading_box: '<div class="blockUIblack textCenter blockUIloading" id="J_loading_wrap"><p class="loading_content">{loading}</p></div>',
 		alert_box: '<div class="blockUIwhite textCenter" id="J_alert_wrap"><p class="alert_content">{alert}</p></div>',
 		confirm_box: '<div class="blockUIwhite" id="J_confirm_wrap"><div class="confirm_inner"><p class="confirm_content">{confirm}</p><a class="btn" id="J_cancel_btn" href="javascript:;">取消</a><a class="btn" id="J_confirm_btn" href="javascript:;">确认</a></div></div>',
 		message_callback: '<div class="blockUIwhite" id="J_message_wrap"><div class="message_inner"><p class="success_content">成功，共{success_num}个：<br>{success_id}</p><p class="success_content">失败，共{fail_num}个：<br>{fail_id}</p><a class="btn message_btn" id="J_message_btn" href="javascript:;">确认</a></div></div>',
-		list_id_box: '<div class="blockUIwhite" id="J_list_id_wrap"><div class="message_inner"><p class="success_content">当前榜单前100的用户id：<br>{user_id}</p><a class="btn message_btn" id="J_id_close_btn" href="javascript:;">确认</a></div></div>'
+		list_id_box: '<div class="blockUIwhite" id="J_list_id_wrap"><div class="message_inner"><p class="success_content">当前榜单前100的用户id：<br>{user_id}</p><a class="btn message_btn" id="J_id_close_btn" href="javascript:;">确认</a></div></div>',
+		new_rank_money_user : [
+			'<div class="blockUIwhite blockUIrankmoney" id="J_manual_money_user_wrap">',
+				'<div class="manual_money_user_box">',
+					'<h1>送用户上榜</h1>',
+					'<ul>',
+						'<li>',
+							'<label for="manual_money_uid">uid</label>',
+							'<input type="text" value="" id="manual_money_uid" name="manual_money_uid" />',
+						'</li>',
+						'<li>',
+							'<label for="manual_money_score">积分</label>',
+							'<input type="text" value="" id="manual_money_score" name="manual_money_score" />',
+						'</li>',
+					'</ul>',
+					'<div class="btn_box">',
+						'<a class="btn btn_disable" href="javascript:;" id="J_manual_money_user">确定</a>',
+						'<a class="btn" href="javascript:;" id="J_manual_money_user_cancel">取消</a>',
+					'</div>',
+				'</div>',
+			'</div>'
+		].join('')
 	};
 var tpl_present = [
 		'<li class="content">',

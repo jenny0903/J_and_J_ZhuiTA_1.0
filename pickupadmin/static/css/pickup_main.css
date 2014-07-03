@@ -159,7 +159,13 @@ label{
 	position:fixed;
 	top:0;
 	left:0;
+	z-index:9000;
+}
+.blockUIloading{
 	z-index:9999;
+}
+.blockUIrankmoney{
+	z-index:8500;
 }
 .blockUIblack{
 	background-color:rgba(0,0,0,0.3);
@@ -459,6 +465,8 @@ label{
 	margin-top:30px;
 	margin-bottom:30px;
 	height:42px;
+	width:380px;
+	float:left;
 }
 .list_sort .sort_type li a{
 	display:block;
@@ -490,6 +498,14 @@ label{
 	margin-left:20px;
 	height:30px;
 	line-height:30px;
+}
+.list_sort .rank_money_user_btn{
+	width:150px;
+	float:left;
+	margin:30px 0;
+}
+.sort_list_wrap{
+	margin-top:105px;
 }
 .sort_list_wrap ul li{
 	text-align:center;
@@ -1066,4 +1082,44 @@ label{
 	color:#FFFFFF;
 	border:1px solid #C53157;
 	background-color:#FF5581;
+}
+
+.manual_money_user_box{
+	background-color:#fff;
+	box-shadow:0 1px 2px rgba(0,0,0,0.4);
+	color:#000;
+	width:320px;
+	padding:30px 0;
+	margin:-121px 0 0 -160px;
+	top:50%;
+	left:50%;
+	position:absolute;
+}
+.manual_money_user_box h1{
+	text-align:center;
+	height:30px;
+	line-height:30px;
+	font-size:20px;
+}
+.manual_money_user_box ul{
+	margin:20px 0;
+	text-align:center;
+}
+.manual_money_user_box ul li{
+	line-height:40px;
+	height:40px;
+}
+.manual_money_user_box ul li label{
+	display:inline-block;
+	width:40px;
+}
+.manual_money_user_box .btn_box{
+	text-align:center;
+}
+.manual_money_user_box .btn_box a{
+	height:30px;
+	line-height:30px;
+	width:60px;
+	display:inline-block;
+	margin:0 20px;
 }

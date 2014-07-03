@@ -4,6 +4,38 @@ var page_total;
 var page_prev1, page_prev2, page_next1, page_next2;
 var num_cur;
 var rank_ids_arr;
+var money_rank_flag = {
+	uid : false,
+	score : false,
+	btn : false,
+	check_uid : function(){
+		var uid_content = window.parent.$('#manual_money_uid').val();
+		if(uid_content.length > 0){
+			money_rank_flag.uid = true;
+		}else{
+			money_rank_flag.uid = false;
+		}
+	},
+	check_score : function(){
+		var score_content = window.parent.$('#manual_money_score').val();
+		if(score_content.length > 0){
+			money_rank_flag.score = true;
+		}else{
+			money_rank_flag.score = false;
+		}
+	},
+	check_btn : function(){
+		money_rank_flag.check_uid();
+		money_rank_flag.check_score();
+		if( money_rank_flag.uid && money_rank_flag.score ){
+			money_rank_flag.btn = true;
+			window.parent.$('#J_manual_money_user').removeClass('btn_disable');
+		}else{
+			money_rank_flag.btn = false;
+			window.parent.$('#J_manual_money_user').addClass('btn_disable');
+		}
+	}
+}
 $(document).ready(function() {
 	if(window.parent.$("#J_loading_wrap").length==0){
 		window.parent.$('body').append(tpl.loading_box);
@@ -89,7 +121,38 @@ var sort_list_title=[
 			'<div class="sort_point">积分</div>',
 		'</li>'
 	].join('');
-
+$('#J_rank_money_user').die().live('click',function(){
+	window.parent.$('body').append(tpl.new_rank_money_user);
+	window.parent.$('#J_manual_money_user_cancel').die().live('click',function(){
+		window.parent.$('#J_manual_money_user_wrap').remove();
+	});
+	window.parent.$('#manual_money_uid').bind({
+		'keyup' : function(){
+			money_rank_flag.check_btn();
+		},
+		'blur' : function(){
+			money_rank_flag.check_btn();
+		}
+	});
+	window.parent.$('#manual_money_score').bind({
+		'keyup' : function(){
+			money_rank_flag.check_btn();
+		},
+		'blur' : function(){
+			money_rank_flag.check_btn();
+		}
+	});
+	window.parent.$('#J_manual_money_user').die().live('click',function(){
+		money_rank_flag.check_btn();
+		if( money_rank_flag.btn ){
+			var manual_uid = $('#manual_money_uid').val();
+			var manual_score = $('#manual_money_score').val();
+			
+			new_rank(manual_uid, type_cur, manual_score, num_cur , 1);
+		}
+	});
+	
+});
 function rank_list_show(){
 	$('#J_sort_content li').remove();
 	$('#J_sort_content').append(sort_list_title);
@@ -106,7 +169,7 @@ function rank_list_show(){
 		}
 	});
 }
-function new_rank(id, type, score, num){
+function new_rank(id, type, score, num , is_manual_money){
 	$.ajax({
 		type: "POST",
 		url: ajax_main_path+'libs/controller/update_billboard_rank.php',
@@ -141,6 +204,9 @@ function new_rank(id, type, score, num){
 					success: function(data){
 						window.parent.$("#J_loading_wrap").hide();
 						if(data=='1'||data==1){
+							if(is_manual_money == 1){
+								window.parent.$('#J_manual_money_user_wrap').remove();
+							}
 							rank_list_show();
 						}else{
 							if(window.parent.$("#J_alert_wrap").length==0){
@@ -203,7 +269,7 @@ $('.sort_update').live('blur',function(){
 			window.parent.$("#J_loading_wrap .loading_content").text('正在处理，请稍等……');
 			window.parent.$("#J_loading_wrap").show();
 		}
-		new_rank(_this_id, type_cur, _this_score, num_cur);
+		new_rank(_this_id, type_cur, _this_score, num_cur , 0);
 	});
 	window.parent.$('#J_cancel_btn').die().live('click',function(){
 		window.parent.$("#J_confirm_wrap").hide();
@@ -235,7 +301,7 @@ $('.sort_update').live('keydown',function(e){
 				window.parent.$("#J_loading_wrap .loading_content").text('正在处理，请稍等……');
 				window.parent.$("#J_loading_wrap").show();
 			}
-			new_rank(_this_id, type_cur, _this_score, num_cur);
+			new_rank(_this_id, type_cur, _this_score, num_cur , 0);
 		});
 		window.parent.$('#J_cancel_btn').die().live('click',function(){
 			window.parent.$("#J_confirm_wrap").hide();
@@ -296,6 +362,11 @@ $('#J_sort_type a').click(function(){
 		$(this).addClass('a_cur');
 		type_cur = $(this).attr('value'); 
 		rank_list_show();
+	}
+	if( $(this).attr('value') == 3 ){
+		$('#J_rank_money_user').css('display','block');
+	}else{
+		$('#J_rank_money_user').css('display','none');
 	}
 });
 
