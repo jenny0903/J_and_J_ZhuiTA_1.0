@@ -1,10 +1,10 @@
-var exchange_items : {
+var exchange_items = {
 	page_items : 10,
 	page : 1,
 	max_page : 1,
 	tpl : [
 		'<li>',
-			'<span class="id">{id}</span>',
+			//'<span class="id">{id}</span>',
 			'<span class="name">{name}</span>',
 			'<span class="coupon">{coupon}</span>',
 			'<span class="amount">{amount}</span>',
@@ -26,14 +26,14 @@ var exchange_items : {
 		
 		$.ajax({
 			type: "POST",
-			url: ajax_main_path+'libs/controller/add_key2.php',
+			url: ajax_main_path+'libs/controller/list_exchange_items.php',
 			data : 'page='+exchange_items.page+'&num='+exchange_items.page_items,
 			dataType:"JSON",
 			success: function(data){
 				window.parent.$("#J_loading_wrap").hide();
 				var exchange_item_list = data.items;
 				var exchange_item_id, exchange_item_name, exchange_item_coupon, exchange_item_amount, exchange_item_type;
-				var exchange_items.max_page = Math.ceil(data.total/exchange_items.page_items);
+				exchange_items.max_page = Math.ceil(data.total/exchange_items.page_items);
 				for(exchange_item_i in exchange_item_list){
 					exchange_item_id = exchange_item_list[exchange_item_i].id;
 					exchange_item_name = exchange_item_list[exchange_item_i].name;
@@ -42,7 +42,7 @@ var exchange_items : {
 					if(exchange_item_amount == -1){
 						exchange_item_amount = '无限量';
 					}
-					exchange_item_type = exchange_item_list[exchange_item_i].id;
+					exchange_item_type = exchange_item_list[exchange_item_i].Type;
 					switch(exchange_item_type){
 						case 1:
 							exchange_item_type = '实物';
@@ -54,7 +54,7 @@ var exchange_items : {
 							exchange_item_type = '抽奖机会';
 							break;
 					}
-					$('#J_exchange_items').append(exchange_items.replace('{id}',exchange_item_id).replace('{name}',exchange_item_name).replace('{coupon}',exchange_item_coupon).replace('{amount}',exchange_item_amount).replace('{type}',exchange_item_type));
+					$('#J_exchange_items').append(exchange_items.tpl.replace('{id}',exchange_item_id).replace('{name}',exchange_item_name).replace('{coupon}',exchange_item_coupon).replace('{amount}',exchange_item_amount).replace('{type}',exchange_item_type));
 				}
 				
 				for(var i_page=1;i_page<=exchange_items.max_page;i_page++){
@@ -64,6 +64,8 @@ var exchange_items : {
 						$('.complain_page_wrap').append('<a value="'+i_page+'" href="javascript:;">'+i_page+'</a>');
 					}
 				}
+
+				window.parent.$("#J_iframe").height($(".inner_main_wrap").height()+6);
 			}
 		});
 	}

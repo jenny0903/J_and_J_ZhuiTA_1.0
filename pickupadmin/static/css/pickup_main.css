@@ -1133,12 +1133,12 @@ label{
 	border-style: solid;
 	border-color: #FFFFFF #FAFAFA #E9EAEA;	
 	text-align:center;
+	overflow:hidden;
 }
 .exchange_orders ul li *,
 .exchange_items ul li *{
 	display:block;
 	float:left;
-	overflow:hidden;
 }
 .exchange_orders ul .title,
 .exchange_items ul .title{
@@ -1156,7 +1156,7 @@ label{
 	width:210px;
 }
 .exchange_items ul li .name{
-	width:170px;
+	width:350px;
 }
 .exchange_items ul li .coupon{
 	width:80px;
@@ -1172,7 +1172,7 @@ label{
 	width:110px;
 }
 .exchange_orders ul li .product{
-	width:110px;
+	width:250px;
 }
 .exchange_orders ul li .address{
 	width:220px;
