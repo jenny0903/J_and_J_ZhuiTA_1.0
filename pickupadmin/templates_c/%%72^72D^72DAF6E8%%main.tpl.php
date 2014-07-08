@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2014-07-02 17:37:36
+<?php /* Smarty version 2.6.28, created on 2014-07-08 15:56:30
          compiled from main.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.tpl", 'smarty_include_vars' => array()));
@@ -56,6 +56,15 @@ unset($_smarty_tpl_vars);
 			case 'manage_gift':
 				$('#J_gift_menu').click();
 				break;	
+			case 'exchange_items':
+				$('#J_exchange_items').click();
+				break;
+			case 'exchange_orders':
+				$('#J_exchange_orders').click();
+				break;
+			case 'user_feedback':
+				$('#J_user_feedback').click();
+				break;
 		}
 	});
 </script>
