@@ -48,6 +48,15 @@
 			case 'manage_gift':
 				$('#J_gift_menu').click();
 				break;	
+			case 'exchange_items':
+				$('#J_exchange_items').click();
+				break;
+			case 'exchange_orders':
+				$('#J_exchange_orders').click();
+				break;
+			case 'user_feedback':
+				$('#J_user_feedback').click();
+				break;
 		}
 	});
 </script>

@@ -1123,3 +1123,66 @@ label{
 	display:inline-block;
 	margin:0 20px;
 }
+
+/* 礼券兑换物品列表 */
+.exchange_orders ul li,
+.exchange_items ul li{
+	line-height:40px;
+	height:40px;
+	border-width:1px;
+	border-style: solid;
+	border-color: #FFFFFF #FAFAFA #E9EAEA;	
+	text-align:center;
+}
+.exchange_orders ul li *,
+.exchange_items ul li *{
+	display:block;
+	float:left;
+	overflow:hidden;
+}
+.exchange_orders ul .title,
+.exchange_items ul .title{
+	font-weight:bold;
+	background-color:rgba(245, 245, 245, 0.85);
+	border-color: #DFE0E1 #EEEEEE #D9D9D9;
+}
+
+.exchange_items .complain_page_wrap,
+.exchange_orders .complain_page_wrap{
+	margin:20px 0;
+}
+
+.exchange_items ul li .id{
+	width:210px;
+}
+.exchange_items ul li .name{
+	width:170px;
+}
+.exchange_items ul li .coupon{
+	width:80px;
+}
+.exchange_items ul li .amount{
+	width:90px;
+}
+.exchange_items ul li .type{
+	width:80px;
+}
+
+.exchange_orders ul li .name{
+	width:110px;
+}
+.exchange_orders ul li .product{
+	width:110px;
+}
+.exchange_orders ul li .address{
+	width:220px;
+}
+.exchange_orders ul li .phone{
+	width:80px;
+}
+.exchange_orders ul li .amount{
+	width:60px;
+}
+.exchange_orders ul li .status{
+	width:60px;
+}
