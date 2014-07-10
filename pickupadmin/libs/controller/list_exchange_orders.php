@@ -41,8 +41,8 @@ $order_array = json_decode($order_result,true);
 
 foreach($order_array['orders'] as $key1 => $val1){
 	$uid = $val1['uid'];
-	$eiid = $val1['eiid'];
-	$addrid = $val1['addrid'];
+	$eiid = $val1['item_id'];
+	// $addrid = $val1['addrid'];
 	
 	$url_user_info = $pickup->getApiUrl()."/user/info?u=$uid";
 	$user_info_result = $pickup->pickupLinkApi($url_user_info,"get",null,0,0);
@@ -56,11 +56,11 @@ foreach($order_array['orders'] as $key1 => $val1){
 		}
 	}
 	
-	$url_address = $pickup->getApiUrl()."/exchange/address?id=$addrid";
-	$address_result = $pickup->pickupLinkApi($url_address,"get",null,0,0);
-	$address_array = json_decode($address_result,true);
+	// $url_address = $pickup->getApiUrl()."/exchange/address?id=$addrid";
+	// $address_result = $pickup->pickupLinkApi($url_address,"get",null,0,0);
+	// $address_array = json_decode($address_result,true);
 	// var_dump($address_result);
-	$order_array['orders'][$key1]['address'] = $address_array['address'];
+	// $order_array['orders'][$key1]['address'] = $address_array['address'];
 }
 
 echo JSON($order_array);

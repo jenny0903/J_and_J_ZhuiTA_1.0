@@ -46,14 +46,14 @@ var exchange_orders = {
 					if(exchange_address == ''){
 						exchange_address == 'null';
 					}
-					exchange_status = exchange_orders_list[exchange_orders_i].result;
+					exchange_status = exchange_orders_list[exchange_orders_i].status;
 					
 					switch(exchange_status){
-						case -1:
-							exchange_status = '失败';
+						case 0:
+							exchange_status = '未处理';
 							break;
 						case 1:
-							exchange_status = '成功';
+							exchange_status = '已处理';
 							break;
 						default:
 							exchange_status = 'error';
