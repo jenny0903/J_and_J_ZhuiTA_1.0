@@ -85,8 +85,8 @@ var exchange_orders = {
 		var order_id = order_li.attr('data');
 		$.ajax({
 			type: "POST",
-			url: ajax_main_path+'libs/controller/list_exchange_orders.php',
-			data : 'page='+exchange_orders.page+'&num='+exchange_orders.page_items,
+			url: ajax_main_path+'libs/controller/exchnage_order.php',
+			data : 'id='+order_id,
 			dataType:"JSON",
 			success: function(data){
 				window.parent.$("#J_loading_wrap").hide();
@@ -144,5 +144,9 @@ $('.manage_order').die().live('click',function(){
 		}
 		exchange_orders.manage_orders( _this_li );
 	});
+	window.parent.$('#J_cancel_btn').die().live('click',function(){
+		window.parent.$("#J_confirm_wrap").hide();
+	});
+	
 });
 exchange_orders.list_orders();
