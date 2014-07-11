@@ -1125,6 +1125,10 @@ label{
 }
 
 /* 礼券兑换物品列表 */
+.exchange_items .new_exchange_item{
+	width:180px;
+	margin-bottom:40px;
+}
 
 .exchange_items ul li{
 	line-height:40px;
@@ -1147,7 +1151,7 @@ label{
 }
 .user_feedback ul li *,
 .exchange_orders ul li span,
-.exchange_items ul li *{
+.exchange_items ul li span{
 	display:block;
 	float:left;
 }
@@ -1231,4 +1235,45 @@ label{
 }
 .user_feedback ul li .time{
 	width:140px;
+}
+
+.edit_exchange_wrap{
+	position:absolute;
+	top:0;
+	left:0;
+	background-color:#fff;
+	width:100%;
+	display:none;
+}
+.edit_exchange_wrap ul li{
+	margin-bottom: 20px;
+}
+.edit_exchange_wrap ul .title,
+.edit_exchange_wrap ul label{
+	width:100px;
+	display:inline-block;
+}
+.exchange_num_box input,
+.exchange_onshelf_box input{
+	width:20px;
+	height:0;
+}
+.edit_exchange_wrap .long_input{
+	width:400px;
+}
+.edit_exchange_wrap .short_input{
+	width:60px;
+	text-align:center;
+}
+.edit_exchange_wrap ul .last_exchange_num_box label{
+	width:auto;
+}
+.exchange_btn_box{
+	margin:30px 0;
+	text-align:center;
+}
+.exchange_btn_box a{
+	width:60px;
+	margin:0 30px;
+	display:inline-block;
 }

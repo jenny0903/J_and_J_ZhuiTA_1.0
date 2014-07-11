@@ -5,7 +5,7 @@ var exchange_items = {
 	tpl : [
 		'<li>',
 			//'<span class="id">{id}</span>',
-			'<span class="name">{name}</span>',
+			'<span class="name"><a href="javascript:;">{name}</a></span>',
 			'<span class="coupon">{coupon}</span>',
 			'<span class="amount">{amount}</span>',
 			'<span class="type">{type}</span>',
@@ -37,12 +37,12 @@ var exchange_items = {
 				for(exchange_item_i in exchange_item_list){
 					exchange_item_id = exchange_item_list[exchange_item_i].id;
 					exchange_item_name = exchange_item_list[exchange_item_i].name;
-					exchange_item_coupon = exchange_item_list[exchange_item_i].Coupon;
-					exchange_item_amount = exchange_item_list[exchange_item_i].Amount;
+					exchange_item_coupon = exchange_item_list[exchange_item_i].coupon;
+					exchange_item_amount = exchange_item_list[exchange_item_i].amount;
 					if(exchange_item_amount == -1){
 						exchange_item_amount = '无限量';
 					}
-					exchange_item_type = exchange_item_list[exchange_item_i].Type;
+					exchange_item_type = exchange_item_list[exchange_item_i].type;
 					switch(exchange_item_type){
 						case 1:
 							exchange_item_type = '实物';
