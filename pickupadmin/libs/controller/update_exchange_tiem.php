@@ -3,6 +3,7 @@ include("../../model/php_curl.php");
 
 $pickup = new pickupApi();
 
+$id = $_POST['id'];
 $name = $_POST['name'];
 $Coupon = (int)$_POST['Coupon'];
 $price = (int)$_POST['price'];
@@ -14,7 +15,7 @@ $Amount = (int)$_POST['Type'];
 $Type = (int)$_POST['id'];
 $Status = (int)$_POST['Status'];
 
-$data_add_item = array(
+$data_update_item = array(
 	"name" => $name,
 	"Coupon" => $Coupon,
 	"price" => $price,
@@ -27,6 +28,6 @@ $data_add_item = array(
 	"Status" => $Status
 );
 
-$url_add_item = $pickup->getApiUrl()."/exchnage/item";
-echo $pickup->pickupLinkApi($url_add_item,"put",$data_add_item,1,0);
+$url_update_item = $pickup->getApiUrl()."/exchnage/item?id=".$id;
+echo $pickup->pickupLinkApi($url_update_item,"post",$data_update_item,1,0);
 ?>
