@@ -66,7 +66,7 @@ var exchange_orders = {
 							break;
 					}
 					
-					$('#J_exchange_orders').append(exchange_orders.tpl.replace('{id}',exchange_user_id).replace('{name}',exchange_user_name).replace('{product}',exchange_product_name).replace('{address}',exchange_address).replace('{name2}',exchange_user_name).replace('{product2}',exchange_product_name).replace('{address2}',exchange_address).replace('{status}',exchange_status).replace('{phone}',exchange_phone));
+					$('#J_exchange_orders').append(exchange_orders.tpl.replace('{id}',exchange_user_id).replace('{name}',exchange_user_name).replace('{product}',exchange_product_name).replace('{address}',exchange_address).replace('{name2}',exchange_user_name).replace('{product2}',exchange_product_name).replace('{address2}',exchange_address).replace('{state}',exchange_state).replace('{status}',exchange_status).replace('{phone}',exchange_phone));
 				}
 				
 				for(var i_page=1;i_page<=exchange_orders.max_page;i_page++){
@@ -83,10 +83,12 @@ var exchange_orders = {
 	},
 	manage_orders : function(order_li){
 		var order_id = order_li.attr('data');
-		var type = order_li.find('.manage_order')attr('data');
+		var type = order_li.find('.manage_order').attr('data');
 		var new_status;
 		if( type == 1 || type == '1' ){
 			new_status = 0;
+		}else{
+			new_status = 1;
 		}
 		$.ajax({
 			type: "POST",
@@ -97,9 +99,9 @@ var exchange_orders = {
 				window.parent.$("#J_loading_wrap").hide();
 				if(data == 1 || data == '1'){
 					if( new_status == 1 ){
-						order_li.find('.manage_order').text('已处理');
+						order_li.find('.manage_order').attr('data',1).text('已处理');
 					}else{
-						order_li.find('.manage_order').text('未处理');
+						order_li.find('.manage_order').attr('data',0).text('未处理');
 					}
 					if(window.parent.$("#J_alert_wrap").length==0){
 						window.parent.$('body').append(tpl.alert_box);
