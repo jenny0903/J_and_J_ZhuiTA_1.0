@@ -3,7 +3,7 @@ var exchange_orders = {
 	page : 1,
 	max_page : 1,
 	tpl : [
-		'<li>',
+		'<li data={id}>',
 			'<span class="name">{name}</span>',
 			'<span class="product">{product}</span>',
 			'<span class="address">{address}</span>',
@@ -35,6 +35,7 @@ var exchange_orders = {
 				var exchange_user_name, exchange_product_name, exchange_address, exchange_status,exchange_phone;
 				exchange_orders.max_page = Math.ceil(data.total/exchange_orders.page_items);
 				for(exchange_orders_i in exchange_orders_list){
+					exchange_user_id = exchange_orders_list[exchange_orders_i].id;
 					exchange_user_name = exchange_orders_list[exchange_orders_i].user_name;
 					if(exchange_user_name == ''){
 						exchange_user_name == 'null';
@@ -65,7 +66,7 @@ var exchange_orders = {
 							break;
 					}
 					
-					$('#J_exchange_orders').append(exchange_orders.tpl.replace('{name}',exchange_user_name).replace('{product}',exchange_product_name).replace('{address}',exchange_address).replace('{status}',exchange_status).replace('{phone}',exchange_phone));
+					$('#J_exchange_orders').append(exchange_orders.tpl.replace('{id}',exchange_user_id).replace('{name}',exchange_user_name).replace('{product}',exchange_product_name).replace('{address}',exchange_address).replace('{status}',exchange_status).replace('{phone}',exchange_phone));
 				}
 				
 				for(var i_page=1;i_page<=exchange_orders.max_page;i_page++){
@@ -79,6 +80,38 @@ var exchange_orders = {
 				window.parent.$("#J_iframe").height($(".inner_main_wrap").height()+6);
 			}
 		});
+	},
+	manage_orders : function(order_li){
+		var order_id = order_li.attr('data');
+		$.ajax({
+			type: "POST",
+			url: ajax_main_path+'libs/controller/list_exchange_orders.php',
+			data : 'page='+exchange_orders.page+'&num='+exchange_orders.page_items,
+			dataType:"JSON",
+			success: function(data){
+				window.parent.$("#J_loading_wrap").hide();
+				if(data == 1 || data == '1'){
+					order_li.find('.status').text('已处理');
+					if(window.parent.$("#J_alert_wrap").length==0){
+						window.parent.$('body').append(tpl.alert_box);
+						window.parent.$("#J_alert_wrap .alert_content").text('处理该订单成功！');
+					}else{
+						window.parent.$("#J_alert_wrap .alert_content").text('处理该订单成功！');
+						window.parent.$("#J_alert_wrap").show();							
+					}
+					setTimeout(hideAlert, 1000);
+				}else{
+					if(window.parent.$("#J_alert_wrap").length==0){
+						window.parent.$('body').append(tpl.alert_box);
+						window.parent.$("#J_alert_wrap .alert_content").text('处理该订单失败，请重试！');
+					}else{
+						window.parent.$("#J_alert_wrap .alert_content").text('处理该订单失败，请重试！');
+						window.parent.$("#J_alert_wrap").show();							
+					}
+					setTimeout(hideAlert, 1000);
+				}
+			}
+		});
 	}
 }
 $('.complain_page_wrap a').die().live('click',function(){
@@ -88,5 +121,28 @@ $('.complain_page_wrap a').die().live('click',function(){
 		exchange_orders.page = _this_page;
 		exchange_orders.list_orders();
 	}
+});
+$('.manage_order').die().live('click',function(){
+	var _this_li = $(this).parents('li');
+	if(window.parent.$("#J_confirm_wrap").length==0){
+		window.parent.$('body').append(tpl.confirm_box);
+		window.parent.$("#J_confirm_wrap .confirm_content").text('确定处理该订单吗？');
+		window.parent.$("#J_confirm_wrap").show();
+	}else{
+		window.parent.$("#J_confirm_wrap .confirm_content").text('确定处理该订单吗？');
+		window.parent.$("#J_confirm_wrap").show();
+	}
+	window.parent.$('#J_confirm_btn').die().live('click',function(){
+		window.parent.$("#J_confirm_wrap").hide();
+		if(window.parent.$("#J_loading_wrap").length==0){
+			window.parent.$('body').append(tpl.loading_box);
+			window.parent.$("#J_loading_wrap .loading_content").text('正在处理，请稍等……');
+			window.parent.$("#J_loading_wrap").show();
+		}else{
+			window.parent.$("#J_loading_wrap .loading_content").text('正在处理，请稍等……');
+			window.parent.$("#J_loading_wrap").show();
+		}
+		exchange_orders.manage_orders( _this_li );
+	});
 });
 exchange_orders.list_orders();

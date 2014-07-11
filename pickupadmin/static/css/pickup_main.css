@@ -1146,7 +1146,7 @@ label{
 	overflow:hidden;
 }
 .user_feedback ul li *,
-.exchange_orders ul li *,
+.exchange_orders ul li span,
 .exchange_items ul li *{
 	display:block;
 	float:left;
@@ -1205,7 +1205,7 @@ label{
 	width:60px;
 }
 .exchange_orders .manage_order{
-	display:inline;
+	padding:0;
 }
 
 .user_feedback ul li .name{
