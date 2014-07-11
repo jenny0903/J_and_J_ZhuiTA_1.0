@@ -4,27 +4,27 @@ include("../../model/php_curl.php");
 $pickup = new pickupApi();
 
 $name = $_POST['name'];
-$Coupon = (int)$_POST['Coupon'];
+$coupon = (int)$_POST['coupon'];
 $price = (int)$_POST['price'];
 $position = (int)$_POST['position'];
-$Image = $_POST['Image'];
+$image = $_POST['image'];
 $icon = $_POST['icon'];
-$Introduction = $_POST['Introduction'];
-$Amount = (int)$_POST['Type'];
-$Type = (int)$_POST['id'];
-$Status = (int)$_POST['Status'];
+$introduction = $_POST['introduction'];
+$amount = (int)$_POST['amount'];
+$type = (int)$_POST['type'];
+$status = (int)$_POST['status'];
 
 $data_add_item = array(
 	"name" => $name,
-	"Coupon" => $Coupon,
+	"coupon" => $coupon,
 	"price" => $price,
 	"position" => $position,
-	"Image" => $Image,
+	"image" => $image,
 	"icon" => $icon,
-	"Introduction" => $Introduction,
-	"Amount" => $Amount,
-	"Type" => $Type,
-	"Status" => $Status
+	"introduction" => $introduction,
+	"amount" => $amount,
+	"type" => $type,
+	"Status" => $status
 );
 
 $url_add_item = $pickup->getApiUrl()."/exchnage/item";
