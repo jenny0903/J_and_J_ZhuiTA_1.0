@@ -1125,7 +1125,7 @@ label{
 }
 
 /* 礼券兑换物品列表 */
-.exchange_orders ul li,
+
 .exchange_items ul li{
 	line-height:40px;
 	height:40px;
@@ -1135,11 +1135,23 @@ label{
 	text-align:center;
 	overflow:hidden;
 }
+.exchange_orders ul li,
+.user_feedback ul li{
+	line-height:40px;
+	max-height:80px;
+	border-width:1px;
+	border-style: solid;
+	border-color: #FFFFFF #FAFAFA #E9EAEA;	
+	text-align:center;
+	overflow:hidden;
+}
+.user_feedback ul li *,
 .exchange_orders ul li *,
 .exchange_items ul li *{
 	display:block;
 	float:left;
 }
+.user_feedback ul .title,
 .exchange_orders ul .title,
 .exchange_items ul .title{
 	font-weight:bold;
@@ -1168,21 +1180,55 @@ label{
 	width:80px;
 }
 
+.exchange_orders ul li *{
+	line-height:20px;
+	padding:10px 0;
+	word-wrap:break-word;
+}
+
 .exchange_orders ul li .name{
 	width:110px;
 }
 .exchange_orders ul li .product{
-	width:250px;
+	width:150px;
 }
 .exchange_orders ul li .address{
 	width:220px;
 }
 .exchange_orders ul li .phone{
-	width:80px;
+	width:100px;
 }
 .exchange_orders ul li .amount{
 	width:60px;
 }
 .exchange_orders ul li .status{
 	width:60px;
+}
+.exchange_orders .manage_order{
+	display:inline;
+}
+
+.user_feedback ul li .name{
+	width:80px;
+	line-height:20px;
+	padding:10px 0;
+	word-wrap:break-word;
+}
+.user_feedback ul li .app{
+	width:60px;
+}
+.user_feedback ul li .client{
+	width:90px;
+}
+.user_feedback ul li .server{
+	width:90px;
+}
+.user_feedback ul li .content{
+	width:180px;
+	line-height:20px;
+	padding:10px 0;
+	word-wrap:break-word;
+}
+.user_feedback ul li .time{
+	width:140px;
 }

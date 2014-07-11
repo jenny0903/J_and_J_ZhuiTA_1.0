@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2014-07-08 15:56:30
+<?php /* Smarty version 2.6.28, created on 2014-07-11 12:13:04
          compiled from menu.tpl */ ?>
 	<div class="menu_wrap">
     	<ul class="menu1" id="J_menu1">
@@ -31,9 +31,9 @@
 			<li>
 				<a class="menu1_title" href="javascript:;" id="J_exchange_orders">礼券商城兑换订单</a>
             </li>
-<!--			<li>
+			<li>
 				<a class="menu1_title" href="javascript:;" id="J_user_feedback">用户反馈</a>
-            </li>-->
+            </li>
             <li>
             	<a href="/pickupadmin/libs/controller/logout.php">登出</a>
             </li>

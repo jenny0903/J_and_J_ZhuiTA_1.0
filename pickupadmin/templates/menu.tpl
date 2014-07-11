@@ -29,9 +29,9 @@
 			<li>
 				<a class="menu1_title" href="javascript:;" id="J_exchange_orders">礼券商城兑换订单</a>
             </li>
-<!--			<li>
+			<li>
 				<a class="menu1_title" href="javascript:;" id="J_user_feedback">用户反馈</a>
-            </li>-->
+            </li>
             <li>
             	<a href="/pickupadmin/libs/controller/logout.php">登出</a>
             </li>
