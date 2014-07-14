@@ -1168,20 +1168,32 @@ label{
 	margin:20px 0;
 }
 
+.exchange_items ul li *{
+	line-height:20px;
+	padding:10px 0;
+	word-wrap:break-word;
+}
+
 .exchange_items ul li .id{
 	width:210px;
 }
 .exchange_items ul li .name{
-	width:350px;
+	width:280px;
 }
 .exchange_items ul li .coupon{
 	width:80px;
 }
 .exchange_items ul li .amount{
-	width:90px;
+	width:70px;
 }
 .exchange_items ul li .type{
 	width:80px;
+}
+.exchange_items ul li .pos{
+	width:70px;
+}
+.exchange_items ul li .status{
+	width:50px;
 }
 
 .exchange_orders ul li *{
@@ -1247,6 +1259,7 @@ label{
 }
 .edit_exchange_wrap ul li{
 	margin-bottom: 20px;
+	line-height:26px;
 }
 .edit_exchange_wrap ul .title,
 .edit_exchange_wrap ul label{
@@ -1267,6 +1280,9 @@ label{
 }
 .edit_exchange_wrap ul .last_exchange_num_box label{
 	width:auto;
+}
+.new_edit_exchange_wrap .new_hide{
+	display:none;
 }
 .exchange_btn_box{
 	margin:30px 0;

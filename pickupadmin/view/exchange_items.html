@@ -8,7 +8,7 @@
 
 <body>
 	<div class="inner_main_wrap exchange_items">
-		<a class="btn new_exchange_item" href="javascript:;">新增礼券兑换物品</a>
+		<a class="btn new_exchange_item" href="javascript:;" id="J_new_exchange_item">新增礼券兑换物品</a>
 		<ul id="J_exchange_items">
 			<li class="title">
 <!--				<span class="id">id</span>-->
@@ -16,6 +16,8 @@
 				<span class="coupon">需要礼券</span>
 				<span class="amount">数量</span>
 				<span class="type">类型</span>
+				<span class="pos">位置</span>
+				<span class="status">状态</span>
 			</li>
 <!--			<li>
 				<span class="id">53917b0cde7ddd2f59911b47</span>
@@ -52,81 +54,6 @@
 			<a value="3" href="javascript:;">3</a>
 			<a value="4" href="javascript:;">4</a>
 			<a value="5" href="javascript:;">5</a>-->
-		</div>
-	</div>
-	<div class="edit_exchange_wrap" data="">
-		<ul>
-			<li>
-				<span class="title">id</span>
-				<span id="J_edit_exchange_id">53b12c596aeb5603439c4d85</span>
-			</li>
-			<li>
-				<span class="title">创建时间</span>
-				<span id="J_edit_exchange_create">2014-06-30T17:22:33.862+08:00</span>
-			</li>
-			<li>
-				<label for="J_edit_exchange_name">名称</label>
-				<input id="J_edit_exchange_name" name="J_edit_exchange_name" type="text" value="1号店200元购物礼品卡" />
-			</li>
-			<li>
-				<label for="J_edit_exchange_pos">位置</label>
-				<input id="J_edit_exchange_pos" name="J_edit_exchange_pos" type="text" value="10" />
-			</li>
-			<li>
-				<label for="J_edit_exchange_coupon">需要礼券</label>
-				<input id="J_edit_exchange_coupon" name="J_edit_exchange_coupon" type="text" value="10000" />
-			</li>
-			<li>
-				<label for="J_edit_exchange_price">市场价格</label>
-				<input id="J_edit_exchange_price" name="J_edit_exchange_price" type="text" value="10000" />
-			</li>
-			<li>
-				<label for="J_edit_exchange_image">图片</label>
-				<input id="J_edit_exchange_image" name="J_edit_exchange_image" type="text" value="http://www.baidu.com" class="long_input"/>
-			</li>
-			<li>
-				<label for="J_edit_exchange_icon">图标</label>
-				<input id="J_edit_exchange_icon" name="J_edit_exchange_icon" type="text" value="http://www.baidu.com" class="long_input" />
-			</li>
-			<li>
-				<span class="title">数量</span>
-				<span class="exchange_num_box">          
-					<input type="radio" name="exchange_num" id="J_exchange_num1" value="-1" checked="checked" />
-					<label for="J_exchange_num1">无限量</label>
-				</span>    
-				<span class="exchange_num_box last_exchange_num_box">
-					<input type="radio" name="exchange_num" id="J_exchange_num2" value="0" /> 
-					<label for="J_exchange_num2">限量</label>
-				</span>
-				<input id="J_edit_exchange_number" name="J_edit_exchange_number" type="text" value="1" class="short_input" />
-			</li>
-			<li>
-				<span class="title">类型</span>
-				<select name="J_exchange_type" class="exchange_type" id="J_exchange_type">
-					<option value="1">实物</option>
-					<option value="2">虚拟物品</option>
-					<option value="3">抽奖机会</option>
-				</select>
-			</li>
-			<li>
-				<span class="title">状态</span>
-				<span class="exchange_onshelf_box">          
-					<input type="radio" name="exchange_onshelf" id="J_exchange_onshelf1" value="1" checked="checked" />
-					<label for="J_exchange_onshelf1">上架</label>
-				</span>    
-				<span class="exchange_onshelf_box">
-					<input type="radio" name="exchange_onshelf" id="J_exchange_onshelf2" value="0" /> 
-					<label for="J_exchange_onshelf2">下架</label>
-				</span>
-			</li>
-			<li>
-				<p>介绍</p>
-				<textarea cols="60" rows="4" id="J_exchange_intro" value="" autocomplete="off" name="J_exchange_intro"></textarea>
-			</li>
-		</ul>
-		<div class="exchange_btn_box">
-			<a id="J_save_edit_exchange" class="btn" href="javascript:;">保存</a>
-			<a id="J_cancel_edit_exchange" class="btn" href="javascript:;">取消</a>
 		</div>
 	</div>
 <script type="text/javascript" src="../static/js/jquery-1.7.2.min.js"></script>	
