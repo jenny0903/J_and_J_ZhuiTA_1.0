@@ -189,7 +189,7 @@ $('#result_box .result_name a').live('click',function(){
 		$("#J_user_info_wrap").css('height','3120px').show();
 	}
 	
-	window.parent.$("#J_iframe").height(3120);//2200//2420+40*6+230*2
+	window.parent.$("#J_iframe").height(3160);//2200//2420+40*6+230*2+40
 	
 	getUserInfo(user_info_id);
 });

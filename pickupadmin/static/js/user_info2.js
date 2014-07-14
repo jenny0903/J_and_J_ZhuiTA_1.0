@@ -10,6 +10,7 @@ var education = 0;
 var job = 0;
 var money = 0;
 var uid = "";
+var coupon_num = 0;
 var flag_key = {
 	ios : false,
 	android : false,
@@ -34,7 +35,79 @@ var flag_key = {
 		}
 	}
 };
-
+$('#J_save_coupon').die().live('click',function(){
+	var coupon_new_num = $('#coupon').val();
+	
+	if(!/^(-|\+)?\d+$/.test(coupon_new_num) || coupon_new_num<0){
+		if(window.parent.$("#J_alert_wrap").length==0){
+			window.parent.$('body').append(tpl.alert_box);
+			window.parent.$("#J_alert_wrap .alert_content").text('礼券数目格式不正确，请填写大于等于0的整数！');
+			window.parent.$("#J_alert_wrap").show();
+		}else{
+			window.parent.$("#J_alert_wrap .alert_content").text('礼券数目格式不正确，请填写大于等于0的整数！');
+			window.parent.$("#J_alert_wrap").show();							
+		}
+		setTimeout(hideAlert, 1000);
+		return false;
+	}else{
+		var coupon_add_num = coupon_new_num - coupon_num;
+		
+		if(coupon_add_num==0){
+			if(window.parent.$("#J_alert_wrap").length==0){
+				window.parent.$('body').append(tpl.alert_box);
+				window.parent.$("#J_alert_wrap .alert_content").text('请修改礼券数目！');
+				window.parent.$("#J_alert_wrap").show();
+			}else{
+				window.parent.$("#J_alert_wrap .alert_content").text('请修改礼券数目！');
+				window.parent.$("#J_alert_wrap").show();							
+			}
+			setTimeout(hideAlert, 1000);
+			return false;
+		}
+		
+		if(window.parent.$("#J_loading_wrap").length==0){
+			window.parent.$('body').append(tpl.loading_box);
+			window.parent.$("#J_loading_wrap .loading_content").text('正在保存，请稍等……');
+			window.parent.$("#J_loading_wrap").show();
+		}else{
+			window.parent.$("#J_loading_wrap .loading_content").text('正在保存，请稍等……');
+			window.parent.$("#J_loading_wrap").show();
+		}
+		
+		$.ajax({
+			type: "POST",
+			url: ajax_main_path+'libs/controller/add_coupon.php',
+			data:"id="+$('#user_info_uid').text()+"&coupon="+coupon_add_num,
+			dataType:"JSON",
+			success: function(data){
+				window.parent.$("#J_loading_wrap").hide();
+				if(data=='1'||data==1){
+					coupon_num = coupon_new_num;
+					if(window.parent.$("#J_alert_wrap").length==0){
+						window.parent.$('body').append(tpl.alert_box);
+						window.parent.$("#J_alert_wrap .alert_content").text('保存成功！');
+						window.parent.$("#J_alert_wrap").show();
+					}else{
+						window.parent.$("#J_alert_wrap .alert_content").text('保存成功！');
+						window.parent.$("#J_alert_wrap").show();							
+					}
+					// $('#J_user_info_wrap').hide();
+					// window.parent.$("#J_iframe").height($(".inner_main_wrap").height()+6);
+				}else{
+					if(window.parent.$("#J_alert_wrap").length==0){
+						window.parent.$('body').append(tpl.alert_box);
+						window.parent.$("#J_alert_wrap .alert_content").text('保存失败，请重试！');
+						window.parent.$("#J_alert_wrap").show();
+					}else{
+						window.parent.$("#J_alert_wrap .alert_content").text('保存失败，请重试！');
+						window.parent.$("#J_alert_wrap").show();							
+					}
+				}
+				setTimeout(hideAlert, 1000);
+			}
+		});		
+	}
+});
 $('#key1').die().live({
 	keyup: function(){
 		flag_key.check_ios();
@@ -604,6 +677,7 @@ function loadUserInfo(data){
 	var new_time = data.last_updated;
 	var like_num = data.score.like;
 	var dislike_num = data.score.dislike;
+	coupon_num = data.quantity_coupons;
 	
 	var user_height = data.height;
 	var user_school = data.school;
@@ -634,6 +708,8 @@ function loadUserInfo(data){
 	$('#user_info_uid').text(user_uid);
 	$('#user_info_zid').text(user_zid);
 	$('#user_info_name').text(user_name);
+	
+	$('#coupon').val(coupon_num);
 	
 	switch(user_gender){
 		case 'male':
