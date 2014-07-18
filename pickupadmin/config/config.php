@@ -1,9 +1,9 @@
 <?php
 header("Content-type: text/html; charset=utf-8");
 
-ini_set("session.gc_maxlifetime", 86400);
-session_cache_expire(2*60*60);
-session_set_cookie_params(3600*24*7,'/','.ppickup.com');
+ini_set("session.gc_maxlifetime", 3600*24);
+session_cache_expire(3600*24);
+session_set_cookie_params(3600*24,'/','.ppickup.com');
 
 session_start();
 
