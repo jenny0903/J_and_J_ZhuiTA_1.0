@@ -514,6 +514,7 @@ label{
 	border-width:1px;
 	border-style: solid;
 	border-color: #FFFFFF #FAFAFA #E9EAEA;	
+	overflow: hidden;
 }
 .sort_list_wrap ul .sort_title{
 	font-weight:bold;
@@ -689,7 +690,8 @@ label{
 	height:40px;
 	border-width:1px;
 	border-style: solid;
-	border-color: #FFFFFF #FAFAFA #E9EAEA;	
+	border-color: #FFFFFF #FAFAFA #E9EAEA;
+	overflow: hidden;
 }
 .user_info4 ul li div,
 .present_list ul  li div{
@@ -772,7 +774,8 @@ label{
 	height:40px;
 	border-width:1px;
 	border-style: solid;
-	border-color: #FFFFFF #FAFAFA #E9EAEA;	
+	border-color: #FFFFFF #FAFAFA #E9EAEA;
+	overflow: hidden;
 }
 .user_search ul li div{
 	float:left;
@@ -1137,7 +1140,6 @@ label{
 	border-style: solid;
 	border-color: #FFFFFF #FAFAFA #E9EAEA;	
 	text-align:center;
-	overflow:hidden;
 }
 .exchange_orders ul li,
 .user_feedback ul li{
