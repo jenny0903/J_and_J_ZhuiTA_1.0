@@ -534,6 +534,7 @@ label{
 	width:120px;
 	height:40px;
 	overflow:hidden;
+	word-wrap:break-word;
 }
 /*
 .sort_list_wrap ul li .sort_point{
