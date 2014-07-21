@@ -260,29 +260,59 @@ function loadUserBill(data){
 		for(apple_i in bill_info1_info){
 			code = bill_info1_info[apple_i].transaction_id;
 			switch(bill_info1_info[apple_i].product_id){
-				case "pickup_product_1":
+				// case "pickup_product_1":
+					// key = 6;
+					// value = "6.00";
+					// break;
+				// case "pickup_product_2":
+					// key = 20;
+					// value = "18.00";
+					// break;
+				// case "pickup_product_3":
+					// key = 40;
+					// value = "30.00";
+					// break;
+				// case "pickup_product_4":
+					// key = 100;
+					// value = "68.00";
+					// break;
+				// case "pickup_product_6":
+					// key = 500;
+					// value = "308.00";
+					// break;
+				// case "pickup_product_7":
+					// key = 1200;
+					// value = "698.00";
+					// break;
+				case "pickup_keyprice_1":
+				case "1":
 					key = 6;
 					value = "6.00";
 					break;
-				case "pickup_product_2":
+				case "pickup_keyprice_2":
+				case "2":
 					key = 20;
 					value = "18.00";
 					break;
-				case "pickup_product_3":
+				case "pickup_keyprice_3":
+				case "3":
 					key = 40;
 					value = "30.00";
 					break;
-				case "pickup_product_4":
+				case "pickup_keyprice_4":
+				case "4":
 					key = 100;
 					value = "68.00";
 					break;
-				case "pickup_product_6":
+				case "pickup_keyprice_5":
+				case "5":
 					key = 500;
-					value = "308.00";
+					value = "258.00";
 					break;
-				case "pickup_product_7":
+				case "pickup_keyprice_6":
+				case "6":
 					key = 1200;
-					value = "698.00";
+					value = "588.00";
 					break;
 				default:
 					key = "error";

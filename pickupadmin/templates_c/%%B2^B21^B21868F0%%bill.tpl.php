@@ -1,5 +1,10 @@
-<{include file="header.tpl"}><{*页面头*}>
-	<div class="menu_wrap">
+<?php /* Smarty version 2.6.28, created on 2014-07-21 12:24:12
+         compiled from bill.tpl */ ?>
+<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "header.tpl", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>	<div class="menu_wrap">
     	<ul class="menu1">
 			<li>
             	<a class="menu1_title a_cur" href="javascript:;">充值历史</a>
@@ -217,4 +222,8 @@
 			$("#J_loading_wrap").hide();
 		};
 	</script>
-<{include file="footer.tpl"}><{*页面尾*}>
+<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "footer.tpl", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>

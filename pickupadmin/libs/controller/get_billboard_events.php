@@ -4,7 +4,7 @@ include("../main_helper.php");
 
 $pickup = new pickupApi();
 
-$url_events = $pickup->getApiUrl()."/billboard/events";
+$url_events = $pickup->getApiUrl()."/billboard/events?num=9999";
 
 $arr = $pickup->pickupLinkApi($url_events,"get",null,0,0);
 $arr = json_decode($arr,true);
