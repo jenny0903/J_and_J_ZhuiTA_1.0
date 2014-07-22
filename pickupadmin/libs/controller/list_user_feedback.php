@@ -32,10 +32,21 @@ $url_list_feedback= $pickup->getApiUrl()."/feedback?num=$num&page=$page";
 // echo $order_result = $pickup->pickupLinkApi($url_list_exchange_items,"get",null,0,0);
 // exit;
 $feedback_result = $pickup->pickupLinkApi($url_list_feedback,"get",null,0,0);
+
+$search = array (
+	"'\n'i"//转换回车键
+);
+$replace = array (
+	""
+);
+
 $feedback_array = json_decode($feedback_result,true);
 
 foreach($feedback_array['items'] as $key1 => $val1){
 	$uid = $val1['uid'];
+	
+	$content = $val1['content'];
+	$feedback_array['items'][$key1]['content'] =  preg_replace($search, $replace, $content );
 	
 	$url_user_info = $pickup->getApiUrl()."/user/info?u=$uid";
 	$user_info_result = $pickup->pickupLinkApi($url_user_info,"get",null,0,0);
@@ -43,5 +54,5 @@ foreach($feedback_array['items'] as $key1 => $val1){
 	$feedback_array['items'][$key1]['user_name'] = $user_info_array['nick'];
 }
 
-echo JSON($feedback_array);
+echo json_encode($feedback_array);
 ?>

@@ -1233,6 +1233,14 @@ label{
 	padding:10px 0;
 	word-wrap:break-word;
 }
+.user_feedback ul li .name a{
+	width:80px;
+	word-wrap:break-word;
+}
+.user_feedback ul li .content a{
+	width:180px;
+	word-wrap:break-word;
+}
 .user_feedback ul li .app{
 	width:60px;
 }

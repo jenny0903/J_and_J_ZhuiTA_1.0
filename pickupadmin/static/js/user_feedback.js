@@ -4,11 +4,11 @@ var user_feedback = {
 	max_page : 1,
 	tpl : [
 		'<li>',
-			'<span class="name">{name}</span>',
+			'<span class="name"><a title="{name1}">{name}</a></span>',
 			'<span class="app">{app}</span>',
 			'<span class="client">{client}</span>',
 			'<span class="server">{server}</span>',
-			'<span class="content">{content}</span>',
+			'<span class="content"><a title="{content1}">{content}</a></span>',
 			'<span class="time">{time}</span>',
 		'</li>'
 	].join(''),
@@ -62,7 +62,7 @@ var user_feedback = {
 					feedback_content = feedback_list[feedback_i].content;
 					feedback_time = user_feedback.time_php_to_js( feedback_list[feedback_i].created_date );
 					
-					$('#J_user_feedback').append(user_feedback.tpl.replace('{name}',feedback_name).replace('{app}',feedback_app).replace('{client}',feedback_client).replace('{server}',feedback_server).replace('{content}',feedback_content).replace('{time}',feedback_time));
+					$('#J_user_feedback').append(user_feedback.tpl.replace('{name}',feedback_name).replace('{name1}',feedback_name).replace('{content1}',feedback_content).replace('{app}',feedback_app).replace('{client}',feedback_client).replace('{server}',feedback_server).replace('{content}',feedback_content).replace('{time}',feedback_time));
 				}
 				
 				for(var i_page=1;i_page<=user_feedback.max_page;i_page++){
@@ -74,6 +74,11 @@ var user_feedback = {
 				}
 				
 				window.parent.$("#J_iframe").height($(".inner_main_wrap").height()+6);
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+				alert(XMLHttpRequest.status);
+				alert(XMLHttpRequest.readyState);
+				alert(textStatus);
 			}
 		});
 	}
