@@ -10,6 +10,7 @@ $unit = $_POST['unit'];
 $image = $_POST['image'];
 $icon = $_POST['icon'];
 $position = (int)$_POST['position'];
+$coupon = (int)$_POST['coupon'];
 $status = (int)$_POST['status'];
 
 $data_add_gift = array (
@@ -20,6 +21,7 @@ $data_add_gift = array (
 	"image" => $image,
 	"icon" => $icon,
 	"position" => $position,
+	"coupon" => $coupon,
 	"status" => $status,
 );
 

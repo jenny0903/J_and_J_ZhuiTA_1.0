@@ -990,16 +990,20 @@ label{
 	width:60px;
 }
 .gift_box .gift_pic1{
-	width:165px;
+	width:140px;
 }
 .gift_box .gift_pic2{
-	width:165px;
+	width:140px;
 }
 .gift_box .gift_price{
 	text-align:center;
 	width:40px;
 }
 .gift_box .gift_unit{
+	text-align:center;
+	width:40px;
+}
+.gift_box .gift_coupon{
 	text-align:center;
 	width:40px;
 }
