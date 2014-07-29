@@ -184,12 +184,12 @@ $('#result_box .result_name a').live('click',function(){
 	
 	if($("#J_user_info_wrap").length==0){
 		$('body').append(tpl_user_info);
-		$("#J_user_info_wrap").css('height','3120px').show();
+		$("#J_user_info_wrap").css('height','3260px').show();
 	}else{
-		$("#J_user_info_wrap").css('height','3120px').show();
+		$("#J_user_info_wrap").css('height','3260px').show();
 	}
 	
-	window.parent.$("#J_iframe").height(3160);//2200//2420+40*6+230*2+40
+	window.parent.$("#J_iframe").height(3260);//2200//2420+40*6+230*2+40+100
 	
 	getUserInfo(user_info_id);
 });

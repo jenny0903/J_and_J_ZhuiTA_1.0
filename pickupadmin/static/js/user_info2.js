@@ -35,6 +35,46 @@ var flag_key = {
 		}
 	}
 };
+$('#J_save_sign').die().live('click',function(){
+	if(window.parent.$("#J_loading_wrap").length==0){
+		window.parent.$('body').append(tpl.loading_box);
+		window.parent.$("#J_loading_wrap .loading_content").text('正在保存，请稍等……');
+		window.parent.$("#J_loading_wrap").show();
+	}else{
+		window.parent.$("#J_loading_wrap .loading_content").text('正在保存，请稍等……');
+		window.parent.$("#J_loading_wrap").show();
+	}
+		
+	$.ajax({
+			type: "POST",
+			url: ajax_main_path+'libs/controller/edit_sign.php',
+			data:"uid="+$('#user_info_uid').text()+"&sign="+encodeURIComponent( $('#user_info_sign').val() ),
+			dataType:"JSON",
+			success: function(data){
+				window.parent.$("#J_loading_wrap").hide();
+				if(data=='1'||data==1){
+					if(window.parent.$("#J_alert_wrap").length==0){
+						window.parent.$('body').append(tpl.alert_box);
+						window.parent.$("#J_alert_wrap .alert_content").text('保存成功！');
+						window.parent.$("#J_alert_wrap").show();
+					}else{
+						window.parent.$("#J_alert_wrap .alert_content").text('保存成功！');
+						window.parent.$("#J_alert_wrap").show();							
+					}
+				}else{
+					if(window.parent.$("#J_alert_wrap").length==0){
+						window.parent.$('body').append(tpl.alert_box);
+						window.parent.$("#J_alert_wrap .alert_content").text('保存失败，请重试！');
+						window.parent.$("#J_alert_wrap").show();
+					}else{
+						window.parent.$("#J_alert_wrap .alert_content").text('保存失败，请重试！');
+						window.parent.$("#J_alert_wrap").show();							
+					}
+				}
+				setTimeout(hideAlert, 1000);
+			}
+		});			
+});
 $('#J_save_coupon').die().live('click',function(){
 	var coupon_new_num = $('#coupon').val();
 	
@@ -328,29 +368,59 @@ function loadUserBill(data){
 		for(android_i in bill_info2_info){
 			code = bill_info2_info[android_i].transaction_id;
 			switch(bill_info2_info[android_i].product_id){
-				case "pickup_product_1":
+				// case "pickup_product_1":
+					// key = 6;
+					// value = "6.00";
+					// break;
+				// case "pickup_product_2":
+					// key = 20;
+					// value = "18.00";
+					// break;
+				// case "pickup_product_3":
+					// key = 40;
+					// value = "30.00";
+					// break;
+				// case "pickup_product_4":
+					// key = 100;
+					// value = "68.00";
+					// break;
+				// case "pickup_product_6":
+					// key = 500;
+					// value = "308.00";
+					// break;
+				// case "pickup_product_7":
+					// key = 1200;
+					// value = "698.00";
+					// break;
+				case "pickup_keyprice_1":
+				case "1":
 					key = 6;
 					value = "6.00";
 					break;
-				case "pickup_product_2":
+				case "pickup_keyprice_2":
+				case "2":
 					key = 20;
 					value = "18.00";
 					break;
-				case "pickup_product_3":
+				case "pickup_keyprice_3":
+				case "3":
 					key = 40;
 					value = "30.00";
 					break;
-				case "pickup_product_4":
+				case "pickup_keyprice_4":
+				case "4":
 					key = 100;
 					value = "68.00";
 					break;
-				case "pickup_product_6":
+				case "pickup_keyprice_5":
+				case "5":
 					key = 500;
-					value = "308.00";
+					value = "258.00";
 					break;
-				case "pickup_product_7":
+				case "pickup_keyprice_6":
+				case "6":
 					key = 1200;
-					value = "698.00";
+					value = "588.00";
 					break;
 				default:
 					key = "error";
@@ -830,7 +900,8 @@ function loadUserInfo(data){
 	$('#user_info_degree').text(degree_option[user_degree]);
 	$('#user_info_trade').text(trade_option[user_trade]);
 	
-	$('#user_info_sign').text(user_sign);
+	// $('#user_info_sign').text(user_sign);
+	$('#user_info_sign').val(user_sign);
 	$('#user_info_birth').text(user_birth);
 	
 	$('#user_info_marriage').text(marriage_option[user_marriage]);

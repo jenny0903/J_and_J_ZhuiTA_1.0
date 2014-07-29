@@ -748,6 +748,9 @@ label{
 	height:auto;
 	line-height:30px;
 }
+.user_info1 .sign_title{
+	display:inline-block;
+}
 /* 用户搜索 */
 .user_search .search_box{
 	height:50px;
@@ -1303,4 +1306,12 @@ label{
 	width:60px;
 	margin:0 30px;
 	display:inline-block;
+}
+.save_sign_btn,
+.save_coupon_btn{
+	display:inline-block;
+	margin-left:10px;
+	width:60px;
+	height:30px;
+	line-height:30px;
 }
