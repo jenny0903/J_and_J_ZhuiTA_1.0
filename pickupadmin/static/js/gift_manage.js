@@ -14,6 +14,7 @@ var gift_hide_tpl=[
 		'<input type="text" class="gift_price" value="{price}" />',
 		'<input type="text" class="gift_unit" value="{unit}" />',
 		'<input type="text" class="gift_coupon" value="{coupon}" />',
+		'<input type="text" class="gift_credit" value="{credit}" />',
 		'<a class="hide_gift" href="javascript:;">下架</a>',
 		'<a class="update_gift" href="javascript:;">修改</a>',
 	'</li>'
@@ -27,6 +28,7 @@ var gift_show_tpl=[
 		'<input type="text" class="gift_price" value="{price}" />',
 		'<input type="text" class="gift_unit" value="{unit}" />',
 		'<input type="text" class="gift_coupon" value="{coupon}" />',
+		'<input type="text" class="gift_credit" value="{credit}" />',
 		'<a class="show_gift" href="javascript:;">上架</a>',
 		'<a class="update_gift" href="javascript:;">修改</a>',
 	'</li>'
@@ -40,6 +42,7 @@ var gift_tpl_add=[
 		'<input type="text" class="gift_price" value="{price}" />',
 		'<input type="text" class="gift_unit" value="{unit}" />',
 		'<input type="text" class="gift_coupon" value="{coupon}" />',
+		'<input type="text" class="gift_credit" value="{credit}" />',
 		'<a class="add_gift" href="javascript:;">保存</a>',
 		'<a class="cancel_add" href="javascript:;">取消</a>',
 	'</li>'
@@ -100,7 +103,7 @@ function display_gift(data){
 		// }
 	// }
 	
-	var id, name, price, discount, unit, image, icon, position, status ,created_date,coupon;
+	var id, name, price, discount, unit, image, icon, position, status ,created_date,coupon,credit;
 	
 	for(i_gift in data.gift_items){
 		id = data.gift_items[i_gift].id;
@@ -114,10 +117,11 @@ function display_gift(data){
 		status = data.gift_items[i_gift].status;
 		created_date = data.gift_items[i_gift].created_date;
 		coupon = data.gift_items[i_gift].coupon;
+		credit = data.gift_items[i_gift].credit;
 		if(status == 0){
-			$('.management_wrap ul').append(gift_show_tpl.replace('{id}',id).replace('{position}',position).replace('{name}',name).replace('{price}',price).replace('{icon}',icon).replace('{image}',image).replace('{unit}',unit).replace('{coupon}',coupon));
+			$('.management_wrap ul').append(gift_show_tpl.replace('{id}',id).replace('{position}',position).replace('{name}',name).replace('{price}',price).replace('{icon}',icon).replace('{image}',image).replace('{unit}',unit).replace('{coupon}',coupon).replace('{credit}',credit));
 		}else{
-			$('.management_wrap ul').append(gift_hide_tpl.replace('{id}',id).replace('{position}',position).replace('{name}',name).replace('{price}',price).replace('{icon}',icon).replace('{image}',image).replace('{unit}',unit).replace('{coupon}',coupon));
+			$('.management_wrap ul').append(gift_hide_tpl.replace('{id}',id).replace('{position}',position).replace('{name}',name).replace('{price}',price).replace('{icon}',icon).replace('{image}',image).replace('{unit}',unit).replace('{coupon}',coupon).replace('{credit}',credit));
 		}
 		
 	}
@@ -135,7 +139,7 @@ $('.manage_btn_new').click(function(){
 		window.parent.$("#J_iframe").height($(".inner_main_wrap").height()+46);
 		$('.management_wrap ul li.content:eq(0)').css('margin-top','35px');
 		$('.manage_btn_new').addClass('btn_disable');
-		$('.management_wrap ul li.title').append(gift_tpl_add.replace('{id}',"").replace('{position}',"").replace('{name}',"").replace('{price}',"").replace('{icon}',"").replace('{image}',"").replace('{unit}',"").replace('{coupon}',""));
+		$('.management_wrap ul li.title').append(gift_tpl_add.replace('{id}',"").replace('{position}',"").replace('{name}',"").replace('{price}',"").replace('{icon}',"").replace('{image}',"").replace('{unit}',"").replace('{coupon}',"").replace('{credit}',''));
 	}	
 });
 
@@ -147,10 +151,11 @@ $('.add_gift').die().live('click',function(){
 	var icon = $(this).parent().find(':input').eq(2).val();
 	var position = $(this).parent().find(':input').eq(0).val();
 	var coupon = $(this).parent().find(':input').eq(6).val();
+	var credit = $(this).parent().find(':input').eq(7).val();
 	$.ajax({
 		type: "POST",
 		url: ajax_main_path+'libs/controller/add_gift.php',
-		data:'name='+name+'&icon='+icon+'&image='+image+'&price='+price+'&unit='+unit+'&position='+position+'&coupon='+coupon+'&discount=0&status=1',
+		data:'name='+name+'&icon='+icon+'&image='+image+'&price='+price+'&unit='+unit+'&position='+position+'&coupon='+coupon+'&credit='+credit+'&discount=0&status=1',
 		dataType:"JSON",
 		async: false,
 		success: function(data){
@@ -215,6 +220,7 @@ $('.update_gift').die().live('click',function(){
 	var icon = $(this).parent().find(':input').eq(2).val();
 	var position = $(this).parent().find(':input').eq(0).val();
 	var coupon = $(this).parent().find(':input').eq(6).val();
+	var credit = $(this).parent().find(':input').eq(7).val();
 	var f_status = $(this).parent().find('a').eq(0).text();
 	if( f_status == '上架' ){
 		status = 0;//页面上显示“上架”，表示该礼物处在“下架”状态，所以status为0
@@ -225,7 +231,7 @@ $('.update_gift').die().live('click',function(){
 	$.ajax({
 		type: "POST",
 		url: ajax_main_path+'libs/controller/update_gift.php',
-		data:'id='+giftid+'&name='+name+'&icon='+icon+'&image='+image+'&price='+price+'&unit='+unit+'&position='+position+'&coupon='+coupon+'&discount=0&status='+status,
+		data:'id='+giftid+'&name='+name+'&icon='+icon+'&image='+image+'&price='+price+'&unit='+unit+'&position='+position+'&coupon='+coupon+'&credit='+credit+'&discount=0&status='+status,
 		dataType:"JSON",
 		async: false,
 		success: function(data){
@@ -313,6 +319,7 @@ $('.show_gift').die().live('click',function(){
 	var icon = this_p.find(':input').eq(2).val();
 	var position = this_p.find(':input').eq(0).val();
 	var coupon = this_p.find(':input').eq(6).val();
+	var credit = this_p.find(':input').eq(7).val();
 	window.parent.$('#J_confirm_btn').die().live('click',function(){
 		if(window.parent.$("#J_loading_wrap").length==0){
 			window.parent.$('body').append(tpl.loading_box);
@@ -326,7 +333,7 @@ $('.show_gift').die().live('click',function(){
 		$.ajax({
 			type: "POST",
 			url: ajax_main_path+'libs/controller/update_gift.php',
-			data:'id='+giftid+'&name='+name+'&icon='+icon+'&image='+image+'&price='+price+'&unit='+unit+'&position='+position+'&coupon='+coupon+'&discount=0&status=1',
+			data:'id='+giftid+'&name='+name+'&icon='+icon+'&image='+image+'&price='+price+'&unit='+unit+'&position='+position+'&coupon='+coupon+'&credit='+credit+'&discount=0&status=1',
 			dataType:"JSON",
 			async: false,
 			success: function(data){

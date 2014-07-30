@@ -990,10 +990,10 @@ label{
 	width:60px;
 }
 .gift_box .gift_pic1{
-	width:140px;
+	width:120px;
 }
 .gift_box .gift_pic2{
-	width:140px;
+	width:120px;
 }
 .gift_box .gift_price{
 	text-align:center;
@@ -1004,6 +1004,10 @@ label{
 	width:40px;
 }
 .gift_box .gift_coupon{
+	text-align:center;
+	width:40px;
+}
+.gift_box .gift_credit{
 	text-align:center;
 	width:40px;
 }
