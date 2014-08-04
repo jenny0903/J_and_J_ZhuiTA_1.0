@@ -1217,22 +1217,25 @@ label{
 }
 
 .exchange_orders ul li .name{
-	width:110px;
+	width:100px;
 }
 .exchange_orders ul li .product{
-	width:150px;
+	width:120px;
 }
 .exchange_orders ul li .address{
-	width:220px;
+	width:180px;
 }
 .exchange_orders ul li .phone{
-	width:100px;
+	width:90px;
 }
 .exchange_orders ul li .amount{
 	width:60px;
 }
+.exchange_orders ul li .order_date{
+	width:100px;
+}
 .exchange_orders ul li .status{
-	width:60px;
+	width:50px;
 }
 .exchange_orders .manage_order{
 	padding:0;

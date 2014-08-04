@@ -8,6 +8,7 @@ var exchange_orders = {
 			'<span class="product"><a title="{product2}">{product}</a></span>',
 			'<span class="address"><a title="{address2}">{address}</a></span>',
 			'<span class="phone">{phone}</span>',
+			'<span class="order_date">{order_date}</span>',
 			'<span class="status"><a class="manage_order" data={state} href="javascript:;">{status}</a></span>',
 		'</li>'
 	].join(''),
@@ -32,7 +33,7 @@ var exchange_orders = {
 			success: function(data){
 				window.parent.$("#J_loading_wrap").hide();
 				var exchange_orders_list = data.orders;
-				var exchange_user_name, exchange_product_name, exchange_address,exchange_state ,exchange_status,exchange_phone;
+				var exchange_user_name, exchange_product_name, exchange_address,exchange_state ,exchange_status,exchange_phone,exchange_order_date;
 				exchange_orders.max_page = Math.ceil(data.total/exchange_orders.page_items);
 				for(exchange_orders_i in exchange_orders_list){
 					exchange_user_id = exchange_orders_list[exchange_orders_i].id;
@@ -52,6 +53,10 @@ var exchange_orders = {
 					if(exchange_address == ''){
 						exchange_address == 'null';
 					}
+					exchange_order_date =  exchange_orders_list[exchange_orders_i].created_date.substr(0,10);
+					if(exchange_order_date == ''){
+						exchange_order_date == 'null';
+					}
 					exchange_state = exchange_orders_list[exchange_orders_i].status;
 					
 					switch(exchange_state){
@@ -66,7 +71,7 @@ var exchange_orders = {
 							break;
 					}
 					
-					$('#J_exchange_orders').append(exchange_orders.tpl.replace('{id}',exchange_user_id).replace('{name}',exchange_user_name).replace('{product}',exchange_product_name).replace('{address}',exchange_address).replace('{name2}',exchange_user_name).replace('{product2}',exchange_product_name).replace('{address2}',exchange_address).replace('{state}',exchange_state).replace('{status}',exchange_status).replace('{phone}',exchange_phone));
+					$('#J_exchange_orders').append(exchange_orders.tpl.replace('{id}',exchange_user_id).replace('{name}',exchange_user_name).replace('{product}',exchange_product_name).replace('{address}',exchange_address).replace('{name2}',exchange_user_name).replace('{product2}',exchange_product_name).replace('{address2}',exchange_address).replace('{state}',exchange_state).replace('{status}',exchange_status).replace('{phone}',exchange_phone).replace('{order_date}',exchange_order_date));
 				}
 				
 				for(var i_page=1;i_page<=exchange_orders.max_page;i_page++){
