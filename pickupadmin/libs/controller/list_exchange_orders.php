@@ -63,5 +63,5 @@ foreach($order_array['orders'] as $key1 => $val1){
 	// $order_array['orders'][$key1]['address'] = $address_array['address'];
 }
 
-echo JSON($order_array);
+echo json_encode($order_array);
 ?>
