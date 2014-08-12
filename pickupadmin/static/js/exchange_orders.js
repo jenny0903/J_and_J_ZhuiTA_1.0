@@ -4,7 +4,7 @@ var exchange_orders = {
 	max_page : 1,
 	tpl : [
 		'<li data={id}>',
-			'<span class="name"><a title="{name2}">{name}</a></span>',
+			'<span class="name"><a title="{name2}" href="javascript:;" data="{user_url}">{name}</a></span>',
 			'<span class="product"><a title="{product2}">{product}</a></span>',
 			'<span class="address"><a title="{address2}">{address}</a></span>',
 			'<span class="phone">{phone}</span>',
@@ -34,10 +34,13 @@ var exchange_orders = {
 				window.parent.$("#J_loading_wrap").hide();
 				var exchange_orders_list = data.orders;
 				var exchange_user_name, exchange_product_name, exchange_address,exchange_state ,exchange_status,exchange_phone,exchange_order_date;
+				var user_url,exchange_user_name, user_id;
 				exchange_orders.max_page = Math.ceil(data.total/exchange_orders.page_items);
 				for(exchange_orders_i in exchange_orders_list){
-					exchange_user_id = exchange_orders_list[exchange_orders_i].id;
+					exchange_id = exchange_orders_list[exchange_orders_i].id;
 					exchange_user_name = exchange_orders_list[exchange_orders_i].user_name;
+					user_id = exchange_orders_list[exchange_orders_i].uid;
+					user_url = 'user_info.html?'+user_id;
 					if(exchange_user_name == ''){
 						exchange_user_name == 'null';
 					}
@@ -71,7 +74,7 @@ var exchange_orders = {
 							break;
 					}
 					
-					$('#J_exchange_orders').append(exchange_orders.tpl.replace('{id}',exchange_user_id).replace('{name}',exchange_user_name).replace('{product}',exchange_product_name).replace('{address}',exchange_address).replace('{name2}',exchange_user_name).replace('{product2}',exchange_product_name).replace('{address2}',exchange_address).replace('{state}',exchange_state).replace('{status}',exchange_status).replace('{phone}',exchange_phone).replace('{order_date}',exchange_order_date));
+					$('#J_exchange_orders').append(exchange_orders.tpl.replace('{id}',exchange_id).replace('{user_url}',user_url).replace('{name}',exchange_user_name).replace('{product}',exchange_product_name).replace('{address}',exchange_address).replace('{name2}',exchange_user_name).replace('{product2}',exchange_product_name).replace('{address2}',exchange_address).replace('{state}',exchange_state).replace('{status}',exchange_status).replace('{phone}',exchange_phone).replace('{order_date}',exchange_order_date));
 				}
 				
 				for(var i_page=1;i_page<=exchange_orders.max_page;i_page++){
@@ -164,5 +167,28 @@ $('.manage_order').die().live('click',function(){
 		window.parent.$("#J_confirm_wrap").hide();
 	});
 	
+});
+$('#J_exchange_orders .name a').live('click',function(){
+	if(window.parent.$("#J_loading_wrap").length==0){
+		window.parent.$('body').append(tpl.loading_box);
+		window.parent.$("#J_loading_wrap .loading_content").text('正在加载，请稍等……');
+		window.parent.$("#J_loading_wrap").show();
+	}else{
+		window.parent.$("#J_loading_wrap .loading_content").text('正在加载，请稍等……');
+		window.parent.$("#J_loading_wrap").show();
+	}
+
+	var user_info_id=$(this).attr('data');
+	
+	if($("#J_user_info_wrap").length==0){
+		$('body').append(tpl_user_info);
+		$("#J_user_info_wrap").css('height','3260px').show();
+	}else{
+		$("#J_user_info_wrap").css('height','3260px').show();
+	}
+	
+	window.parent.$("#J_iframe").height(3260);//2200//2420+40*6+230*2+40+100
+	
+	getUserInfo(user_info_id);
 });
 exchange_orders.list_orders();
