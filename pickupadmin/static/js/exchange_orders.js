@@ -40,7 +40,6 @@ var exchange_orders = {
 					exchange_id = exchange_orders_list[exchange_orders_i].id;
 					exchange_user_name = exchange_orders_list[exchange_orders_i].user_name;
 					user_id = exchange_orders_list[exchange_orders_i].uid;
-					user_url = 'user_info.html?'+user_id;
 					if(exchange_user_name == ''){
 						exchange_user_name == 'null';
 					}
@@ -74,7 +73,7 @@ var exchange_orders = {
 							break;
 					}
 					
-					$('#J_exchange_orders').append(exchange_orders.tpl.replace('{id}',exchange_id).replace('{user_url}',user_url).replace('{name}',exchange_user_name).replace('{product}',exchange_product_name).replace('{address}',exchange_address).replace('{name2}',exchange_user_name).replace('{product2}',exchange_product_name).replace('{address2}',exchange_address).replace('{state}',exchange_state).replace('{status}',exchange_status).replace('{phone}',exchange_phone).replace('{order_date}',exchange_order_date));
+					$('#J_exchange_orders').append(exchange_orders.tpl.replace('{id}',exchange_id).replace('{user_url}',user_id).replace('{name}',exchange_user_name).replace('{product}',exchange_product_name).replace('{address}',exchange_address).replace('{name2}',exchange_user_name).replace('{product2}',exchange_product_name).replace('{address2}',exchange_address).replace('{state}',exchange_state).replace('{status}',exchange_status).replace('{phone}',exchange_phone).replace('{order_date}',exchange_order_date));
 				}
 				
 				for(var i_page=1;i_page<=exchange_orders.max_page;i_page++){
