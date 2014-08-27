@@ -353,8 +353,48 @@ var exchange_items = {
 				}
 			}
 		});
+	},
+	new_html : function(){
+		if(window.parent.$("#J_loading_wrap").length==0){
+			window.parent.$('body').append(tpl.loading_box);
+			window.parent.$("#J_loading_wrap .loading_content").text('正在处理，请稍等……');
+			window.parent.$("#J_loading_wrap").show();
+		}else{
+			window.parent.$("#J_loading_wrap .loading_content").text('正在处理，请稍等……');
+			window.parent.$("#J_loading_wrap").show();
+		}
+		
+		$.ajax({
+			type: "POST",
+			url: ajax_main_path+'libs/controller/new_exchange_html.php',
+			dataType:"JSON",
+			success: function(data){
+				window.parent.$("#J_loading_wrap").hide();
+				if(data == 1 || data == '1'){
+					if(window.parent.$("#J_alert_wrap").length==0){
+						window.parent.$('body').append(tpl.alert_box);
+						window.parent.$("#J_alert_wrap .alert_content").text('生成礼券兑换网页成功');
+					}else{
+						window.parent.$("#J_alert_wrap .alert_content").text('生成礼券兑换网页成功');
+						window.parent.$("#J_alert_wrap").show();							
+					}
+				}else{
+					if(window.parent.$("#J_alert_wrap").length==0){
+						window.parent.$('body').append(tpl.alert_box);
+						window.parent.$("#J_alert_wrap .alert_content").text('生成礼券兑换网页失败，请重试！');
+					}else{
+						window.parent.$("#J_alert_wrap .alert_content").text('生成礼券兑换网页失败，请重试！');
+						window.parent.$("#J_alert_wrap").show();					
+					}
+					setTimeout(hideAlert, 1000);
+				}
+			}
+		});
 	}
 }
+$('#J_new_exchange_html').click(function(){
+	exchange_items.new_html();
+});
 $('#J_new_exchange_item').click(function(){
 	exchange_items.show_new_item();
 });
