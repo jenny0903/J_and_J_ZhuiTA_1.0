@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<link rel="shortcut icon" type="image/png" href="../static/pickup_icon.png" />
+<link rel="stylesheet" type="text/css"  href="../static/css/pickup_main.css"  />
+<title>追TA后台管理系统</title>
+</head>
+
+<body>
+	<div class="inner_main_wrap pk_search">
+    	<div class="search_box last_search">
+        	<label for="search_zid_input">用户zid：</label>
+            <input type="text" id="search_zid_input" name="search_id_input" val="" autocomplete="off"/>
+            <a href="javascript:;" class="btn search_btn btn_disable" id="J_user_zid_search">根据zid搜索用户</a>
+        </div>
+		 <div class="search_result">
+        	<p class="title" id="search_count">搜索到 0 个结果：</p>
+            <ul id="result_box">
+            	<li class="title">
+                	<div class="pk_no">No</div>
+                    <div class="initiator">发起者</div>
+                    <div class="acceptor">接受者</div>
+                    <div class="start">开始时间</div>
+                    <div class="end">结束时间</div>
+                    <div class="total_vote">总票数</div>
+                </li>
+            </ul>
+        </div>
+		<div class="complain_page_wrap">
+		</div>
+	</div>
+<script type="text/javascript" src="../static/js/jquery-1.7.2.min.js"></script>	
+<script type="text/javascript" src="../static/js/core.js"></script>	
+<script type="text/javascript" src="../static/js/pk_manage.js"></script>	
+</body>
+</html>

@@ -44,7 +44,7 @@
 				break;
 			case 'manage_notice':
 				$('#J_notice_menu').click();
-				break;	
+				break;
 			case 'manage_gift':
 				$('#J_gift_menu').click();
 				break;	
@@ -57,6 +57,9 @@
 			case 'user_feedback':
 				$('#J_user_feedback').click();
 				break;
+			case 'manage_pk':
+				$('#J_pk_menu').click();
+				break;	
 		}
 	});
 </script>

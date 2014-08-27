@@ -272,7 +272,7 @@ var tpl_user_info = [
 				'</div>',
 			'</div>',
 		'</div>'
-	].join('');
+	].join('');	
 function hideAlert(){
 	window.parent.$("#J_alert_wrap").hide();
 };
