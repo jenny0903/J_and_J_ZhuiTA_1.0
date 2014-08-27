@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2014-08-25 11:48:07
+<?php /* Smarty version 2.6.28, created on 2014-08-27 14:56:49
          compiled from menu.tpl */ ?>
 	<div class="menu_wrap">
     	<ul class="menu1" id="J_menu1">
@@ -35,7 +35,10 @@
 				<a class="menu1_title" href="javascript:;" id="J_user_feedback">用户反馈</a>
             </li>
 			<li>
-				<a class="menu1_title" href="javascript:;" id="J_pk_menu">PK管理</a>
+				<a class="menu1_title" href="javascript:;" id="J_pk_menu" style="display:none;">PK管理</a>
+            </li>
+			<li>
+				<a class="menu1_title" href="javascript:;" id="J_recommend_users">优质用户</a>
             </li>
             <li>
             	<a href="/pickupadmin/libs/controller/logout.php">登出</a>
@@ -73,6 +76,7 @@
 				case 8:
 				case 9:
 				case 10:
+				case 11:
 					$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 					$(this).next().stop().slideDown('fast');
 					$(this).addClass('a_cur');
@@ -104,6 +108,7 @@
 				case 8:
 				case 9:
 				case 10:
+				case 11:
 					$(this).addClass('a_cur');
 					break;
 			}
@@ -133,7 +138,7 @@
 		});
 		$('#J_search_user').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#user_search';
-			if(menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10){
+			if(menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			menu_flag = 2;
@@ -141,7 +146,7 @@
 		});
 		$('#J_complain').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#photo_check';
-			if(menu_flag==2||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10){
+			if(menu_flag==2||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 3){
@@ -151,7 +156,7 @@
 		});
 		$('#J_send_message').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#send_message';
-			if(menu_flag==2||menu_flag==3||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10){
+			if(menu_flag==2||menu_flag==3||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 4){
@@ -161,7 +166,7 @@
 		});
 		$('#J_notice_menu').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#manage_notice';
-			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10){
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 5){
@@ -171,7 +176,7 @@
 		});
 		$('#J_gift_menu').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#manage_gift';
-			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10){
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 6){
@@ -181,7 +186,7 @@
 		});
 		$('#J_exchange_items').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#exchange_items';
-			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==8||menu_flag==9||menu_flag==10){
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 7){
@@ -191,7 +196,7 @@
 		});
 		$('#J_exchange_orders').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#exchange_orders';
-			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==9||menu_flag==10){
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==9||menu_flag==10||menu_flag==11){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 8){
@@ -201,7 +206,7 @@
 		});
 		$('#J_user_feedback').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#user_feedback';
-			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==10){
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==10||menu_flag==11){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 9){
@@ -210,7 +215,8 @@
 			menu_flag = 9;
 		});
 		$('#J_pk_menu').click(function(){
-			window.location.href=window.location.href.split('#')[0]+'#manage_pk';	if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9){
+			window.location.href=window.location.href.split('#')[0]+'#manage_pk';
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==11){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 10){
@@ -218,6 +224,17 @@
 			}
 			menu_flag = 10;
 		});
+		$('#J_recommend_users').click(function(){
+			window.location.href=window.location.href.split('#')[0]+'#recommend_users';
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10){
+				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
+			}
+			if(menu_flag != 11){
+				$('#J_iframe').attr('src','view/recommend_users.html');
+			}
+			menu_flag = 11;
+		});
+		
 		/*var menu_old, menu_cur;
 		var sub_menu_old, sub_menu_cur;
 		$('#J_menu1 .menu1_title').click(function(){

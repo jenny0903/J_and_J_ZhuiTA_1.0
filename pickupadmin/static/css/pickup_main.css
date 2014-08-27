@@ -1437,3 +1437,65 @@ label{
 	line-height:30px;
 }
 
+/* 优质用户 */
+.new_recommend_btn{
+	margin-left:20px;
+	width:140px;
+	height:30px;
+	line-height:30px;
+	display:inline-block;
+}
+.recommend_gender_btn{
+	color:#FF5581;
+	border:1px solid #FF5581;
+	background-color:#FFF;
+	border-radius:3px;
+	text-decoration:none;
+	display:inline-block;
+	margin-right:20px;
+	padding:5px 10px;
+}
+.recommend_gender_btn_cur{
+	background-color:#FF5581;
+	color:#FFF;
+}
+.recommend_users_wrap h1{
+	font-size:20px;
+	margin-bottom:20px;
+}
+.recommend_users_wrap ul{
+	margin-top:20px;
+}
+.recommend_users_wrap ul li{
+	line-height:20px;
+	max-height:80px;
+	border-width:1px;
+	border-style: solid;
+	border-color: #FFFFFF #FAFAFA #E9EAEA;	
+	text-align:center;
+	overflow:hidden;
+}
+.recommend_users_wrap ul .title{
+	font-weight:bold;
+	background-color:rgba(245, 245, 245, 0.85);
+	border-color: #DFE0E1 #EEEEEE #D9D9D9;
+}
+.recommend_users_wrap ul li span{
+	display:block;
+	float:left;
+	padding:10px 0;
+}
+.recommend_users_wrap .delete{
+	color:#00f;
+	text-decoration:underline;
+}
+.recommend_users_wrap .delete:hover{
+	text-decoration:none;
+}
+.recommend_users_wrap .name{
+	width:540px;
+	word-wrap:break-word;
+}
+.recommend_users_wrap .operation{
+	width:100px;
+}

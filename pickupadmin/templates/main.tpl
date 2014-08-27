@@ -60,6 +60,9 @@
 			case 'manage_pk':
 				$('#J_pk_menu').click();
 				break;	
+			case 'recommend_users':
+				$('#J_recommend_users').click();
+				break;	
 		}
 	});
 </script>

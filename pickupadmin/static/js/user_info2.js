@@ -757,6 +757,44 @@ function loadUserHobby(data){
 	$('#J_music').text(music_show);
 	$('#J_movie').text(movie_show);
 }
+$('#J_new_recommend').die().live('click',function(){
+	if(window.parent.$("#J_loading_wrap").length==0){
+		window.parent.$('body').append(tpl.loading_box);
+		window.parent.$("#J_loading_wrap .loading_content").text('正在处理，请稍等……');
+		window.parent.$("#J_loading_wrap").show();
+	}else{
+		window.parent.$("#J_loading_wrap .loading_content").text('正在处理，请稍等……');
+		window.parent.$("#J_loading_wrap").show();
+	}
+	
+	$.ajax({
+		type: "POST",
+		url: ajax_main_path+'libs/controller/new_recommend_users.php',
+		data : 'uid='+$('#user_info_uid').text()+'&gender='+$('#user_info_gender').attr('data'),
+		dataType:"JSON",
+		success: function(data){
+			window.parent.$("#J_loading_wrap").hide();
+			if(data == 1){
+				if(window.parent.$("#J_alert_wrap").length==0){
+					window.parent.$('body').append(tpl.alert_box);
+					window.parent.$("#J_alert_wrap .alert_content").text('设置优质用户成功！');
+				}else{
+					window.parent.$("#J_alert_wrap .alert_content").text('设置优质用户成功！');
+					window.parent.$("#J_alert_wrap").show();							
+				}
+			}else{
+				if(window.parent.$("#J_alert_wrap").length==0){
+					window.parent.$('body').append(tpl.alert_box);
+					window.parent.$("#J_alert_wrap .alert_content").text('设置优质用户失败，请重试！');
+				}else{
+					window.parent.$("#J_alert_wrap .alert_content").text('设置优质用户失败，请重试！');
+					window.parent.$("#J_alert_wrap").show();							
+				}
+			}
+			setTimeout(hideAlert, 1000);
+		}
+	});
+});
 function loadUserInfo(data){
 	var gender_option = new Array("男","女");
 	var marriage_option = new Array("保密","单身","寻找对象中","恋爱中","已婚");
@@ -810,6 +848,8 @@ function loadUserInfo(data){
 	$('#user_info_name').text(user_name);
 	
 	$('#coupon').val(coupon_num);
+	
+	$('#user_info_gender').attr('data',user_gender);
 	
 	switch(user_gender){
 		case 'male':
