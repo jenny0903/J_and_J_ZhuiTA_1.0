@@ -33,7 +33,7 @@
 				<a class="menu1_title" href="javascript:;" id="J_user_feedback">用户反馈</a>
             </li>
 			<li>
-				<a class="menu1_title" href="javascript:;" id="J_pk_menu" style="display:none;">PK管理</a>
+				<a class="menu1_title" href="javascript:;" id="J_pk_menu">PK管理</a>
             </li>
 			<li>
 				<a class="menu1_title" href="javascript:;" id="J_recommend_users">优质用户</a>

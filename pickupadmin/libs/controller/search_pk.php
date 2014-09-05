@@ -8,18 +8,19 @@ if( isset($_POST['zid']) && $_POST['zid']){
 }else{
 	$user_zid = '';
 }
-if( isset($_POST['num ']) && $_POST['num ']){
-	$num = $_POST['num '];
+if( isset($_POST['num']) && $_POST['num']){
+	$num = $_POST['num'];
 }else{
 	$num = '';
 }
-if( isset($_POST['page ']) && $_POST['page ']){
-	$page = $_POST['page '];
+if( isset($_POST['page']) && $_POST['page']){
+	$page = $_POST['page'];
 }else{
 	$page = '';
 }
 
 $url_search_pk = $pickup->getApiUrl()."/pk?zid=$user_zid&num=$num&page=$page";
+
 $result = $pickup->pickupLinkApi($url_search_pk,"get",null,0,0);
 
 // $pk1 = array(
@@ -60,8 +61,13 @@ $result = $pickup->pickupLinkApi($url_search_pk,"get",null,0,0);
 
 $result = json_decode($result,true);
 
-if(in_array("pks",$result)){
+// var_dump($result);
+
+// if(in_array("pks",$result)){
+if(isset($result['total']) && $result['total']>0){
 	$pks = $result['pks']; 
+// var_dump($pks);
+
 	foreach( $pks as $key => $value){
 		$initiator_uid = $value['initiator'];
 		$url_initiator_info = $pickup->getApiUrl()."/user/info?u=$initiator_uid";

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2014-08-27 14:56:49
+<?php /* Smarty version 2.6.28, created on 2014-09-02 14:26:01
          compiled from menu.tpl */ ?>
 	<div class="menu_wrap">
     	<ul class="menu1" id="J_menu1">
@@ -35,7 +35,7 @@
 				<a class="menu1_title" href="javascript:;" id="J_user_feedback">用户反馈</a>
             </li>
 			<li>
-				<a class="menu1_title" href="javascript:;" id="J_pk_menu" style="display:none;">PK管理</a>
+				<a class="menu1_title" href="javascript:;" id="J_pk_menu">PK管理</a>
             </li>
 			<li>
 				<a class="menu1_title" href="javascript:;" id="J_recommend_users">优质用户</a>
