@@ -18,7 +18,7 @@ if( isset($_POST['acceptor']) && $_POST['acceptor']){
 }else{
 	$acceptor = '';
 }
-if( isset($_POST['acceptor_num']) && $_POST['acceptor_num']){
+if( isset($_POST['acceptor_num'])){
 	$acceptor_num = $_POST['acceptor_num'];
 }else{
 	$acceptor_num = '';
@@ -33,7 +33,7 @@ if( isset($_POST['initiator']) && $_POST['initiator']){
 }else{
 	$initiator  = '';
 }
-if( isset($_POST['initiator_num']) && $_POST['initiator_num']){
+if( isset($_POST['initiator_num'])){
 	$initiator_num  = $_POST['initiator_num'];
 }else{
 	$initiator_num  = '';
@@ -46,9 +46,11 @@ if( isset($_POST['initiator_canvass']) && $_POST['initiator_canvass']){
 
 if( $tp == 'vote'){
 	$url_search_pk = $pickup->getApiUrl()."/pk?pkid=$pkid&tp=$tp&acceptor=$acceptor&acceptor_num=$acceptor_num&initiator=$initiator&initiator_num=$initiator_num";
+// echo $url_search_pk;
 	echo $pickup->pickupLinkApi($url_search_pk,"post",null,1,0);
 }else if( $tp == 'canvass'){
 	$url_search_pk = $pickup->getApiUrl()."/pk?pkid=$pkid&tp=$tp&acceptor=$acceptor&acceptor_canvass=$acceptor_canvass&initiator=$initiator&initiator_canvass=$initiator_canvass";
+// echo $url_search_pk;
 	echo $pickup->pickupLinkApi($url_search_pk,"post",null,1,0);
 }else{
 	$data = array(

@@ -334,6 +334,12 @@ $('#J_save_edit_pk').die().live('click',function(){
 	}else{
 		canvass_falg = false;
 	}
+// console.log(i_vote);
+// console.log(initiator_vote);
+// console.log(a_vote);
+// console.log(acceptor_vote);
+// console.log(vote_flag);
+// console.log(canvass_falg);
 	
 //ajax请求等待完成 发起者和接受者分开请求 
 // console.log(initiator_flag);
@@ -351,7 +357,7 @@ $('#J_save_edit_pk').die().live('click',function(){
 		$.ajax({
 			type: "POST",
 			url: ajax_main_path+'libs/controller/update_pk.php',
-			data:"pkid="+pk_id+"&tp=vote&initiator="+initiator+"&initiator_num="+initiator_vote+"&acceptor ="+acceptor+"&acceptor_num="+acceptor_vote,
+			data:"pkid="+pk_id+"&tp=vote&initiator="+initiator+"&initiator_num="+initiator_vote+"&acceptor="+acceptor+"&acceptor_num="+acceptor_vote,
 			dataType:"JSON",
 			success: function(data){
 				window.parent.$("#J_loading_wrap").hide();
