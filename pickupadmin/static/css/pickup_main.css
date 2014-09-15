@@ -1499,3 +1499,92 @@ label{
 .recommend_users_wrap .operation{
 	width:100px;
 }
+/*追吧*/
+.forum ul li{
+	line-height:40px;
+	max-height:80px;
+	border-width:1px;
+	border-style: solid;
+	border-color: #FFFFFF #FAFAFA #E9EAEA;	
+	text-align:center;
+	overflow:hidden;
+}
+
+.forum ul li span{
+	display:block;
+	float:left;
+}
+.forum ul .title{
+	font-weight:bold;
+	background-color:rgba(245, 245, 245, 0.85);
+	border-color: #DFE0E1 #EEEEEE #D9D9D9;
+}
+
+.forum .complain_page_wrap{
+	margin:20px 0;
+}
+.forum ul li *{
+	line-height:40px;
+	padding:10px 0;
+	word-wrap:break-word;
+}
+
+.forum ul li .num{
+	width:40px;
+	height:40px;
+	text-align:center;
+	display:inline-block;
+}
+.forum ul li .report_user{
+	width:120px;
+	display:inline-block;
+}
+.forum ul li .report_content{
+	width:80px;
+	text-decoration:underline;
+	display:inline-block;
+}
+.forum ul li .memo{
+	width:80px;
+	display:inline-block;
+}
+.forum ul li .created_date{
+	width:100px;
+	display:inline-block;
+}
+.forum ul li .operation{
+	width:340px;
+	height:40px;
+	text-align:center;
+	display:inline-block;
+}
+.forum ul li .operation span{
+	width:40px;
+	float:left;
+	margin-left:10px;
+	display:inline-block;
+}
+.forum ul li .operation span.delete_gag{
+	width:64px;
+}
+.forum ul li .operation span.set_essence{
+	width:64px;
+	margin-left:13px;
+}
+.forum ul li .operation span.delete_essence{
+	width:64px;
+	margin-left:13px;
+}
+.forum ul li span.operation{
+	height:40px;
+	line-height:40px;
+	text-align:center;
+}
+.forum_reply a{
+	width:70px;
+	margin:20px 0;
+	display:inline-block;
+}
+.reply_info ul li{
+	height:45px;
+}

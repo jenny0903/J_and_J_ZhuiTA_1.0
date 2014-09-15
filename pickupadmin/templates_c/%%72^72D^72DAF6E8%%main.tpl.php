@@ -1,6 +1,14 @@
-<{include file="header.tpl"}><{*页面头*}>
-<{include file="menu.tpl"}><{*页面头*}>
-	<div class="main_wrap">
+<?php /* Smarty version 2.6.28, created on 2014-09-15 12:27:59
+         compiled from main.tpl */ ?>
+<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "header.tpl", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?><?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "menu.tpl", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>	<div class="main_wrap">
     	<iframe id="J_iframe" scrolling="no" frameborder="0" src="view/welcome.html">
 		</iframe>
     </div>
@@ -68,8 +76,15 @@
 				break;	
 			case 'recommend_users':
 				$('#J_recommend_users').click();
-				break;	
+				break;
+			case 'forum':
+				$('#J_forum').click();
+				break;
 		}
 	});
 </script>
-<{include file="footer.tpl"}><{*页面尾*}>
+<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "footer.tpl", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
