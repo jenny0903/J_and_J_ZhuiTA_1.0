@@ -60,6 +60,12 @@
 			case 'manage_pk':
 				$('#J_pk_menu').click();
 				break;	
+			case 'manage_pk_list':
+				$('#J_pk_list').click();
+				break;	
+			case 'manage_pk_rank':
+				$('#J_pk_rank').click();
+				break;	
 			case 'recommend_users':
 				$('#J_recommend_users').click();
 				break;	

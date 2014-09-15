@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2014-08-27 11:06:28
+<?php /* Smarty version 2.6.28, created on 2014-09-12 16:39:29
          compiled from main.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.tpl", 'smarty_include_vars' => array()));
@@ -67,6 +67,12 @@ unset($_smarty_tpl_vars);
 				break;
 			case 'manage_pk':
 				$('#J_pk_menu').click();
+				break;	
+			case 'manage_pk_list':
+				$('#J_pk_list').click();
+				break;	
+			case 'manage_pk_rank':
+				$('#J_pk_rank').click();
 				break;	
 			case 'recommend_users':
 				$('#J_recommend_users').click();

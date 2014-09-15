@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2014-09-02 14:26:01
+<?php /* Smarty version 2.6.28, created on 2014-09-12 16:37:02
          compiled from menu.tpl */ ?>
 	<div class="menu_wrap">
     	<ul class="menu1" id="J_menu1">
@@ -36,6 +36,12 @@
             </li>
 			<li>
 				<a class="menu1_title" href="javascript:;" id="J_pk_menu">PK管理</a>
+            </li>
+			<li>
+				<a class="menu1_title" href="javascript:;" id="J_pk_list">PK市场</a>
+            </li>
+			<li>
+				<a class="menu1_title" href="javascript:;" id="J_pk_rank">PK排行榜</a>
             </li>
 			<li>
 				<a class="menu1_title" href="javascript:;" id="J_recommend_users">优质用户</a>
@@ -77,6 +83,8 @@
 				case 9:
 				case 10:
 				case 11:
+				case 12:
+				case 13:
 					$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 					$(this).next().stop().slideDown('fast');
 					$(this).addClass('a_cur');
@@ -109,6 +117,8 @@
 				case 9:
 				case 10:
 				case 11:
+				case 12:
+				case 13:
 					$(this).addClass('a_cur');
 					break;
 			}
@@ -216,7 +226,7 @@
 		});
 		$('#J_pk_menu').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#manage_pk';
-			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==11){
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==11||menu_flag==12||menu_flag==13){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 10){
@@ -224,15 +234,35 @@
 			}
 			menu_flag = 10;
 		});
-		$('#J_recommend_users').click(function(){
-			window.location.href=window.location.href.split('#')[0]+'#recommend_users';
-			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10){
+		$('#J_pk_list').click(function(){
+			window.location.href=window.location.href.split('#')[0]+'#manage_pk';
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==12||menu_flag==13){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 11){
-				$('#J_iframe').attr('src','view/recommend_users.html');
+				$('#J_iframe').attr('src','view/pk_management.html');
 			}
 			menu_flag = 11;
+		});
+		$('#J_pk_rank').click(function(){
+			window.location.href=window.location.href.split('#')[0]+'#manage_pk';
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==13){
+				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
+			}
+			if(menu_flag != 12){
+				$('#J_iframe').attr('src','view/pk_management.html');
+			}
+			menu_flag = 12;
+		});
+		$('#J_recommend_users').click(function(){
+			window.location.href=window.location.href.split('#')[0]+'#recommend_users';
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==12){
+				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
+			}
+			if(menu_flag != 13){
+				$('#J_iframe').attr('src','view/recommend_users.html');
+			}
+			menu_flag = 13;
 		});
 		
 		/*var menu_old, menu_cur;
