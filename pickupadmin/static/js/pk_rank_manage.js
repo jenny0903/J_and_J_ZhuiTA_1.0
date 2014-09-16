@@ -31,7 +31,6 @@ function get_pk_rank(){
 		window.parent.$("#J_loading_wrap .loading_content").text('正在查找，请稍等……');
 		window.parent.$("#J_loading_wrap").show();
 	}
-	
 	$.ajax({
 		type: "POST",
 		url: ajax_main_path+'libs/controller/get_pk_rank.php',
@@ -77,8 +76,6 @@ function loadResultInfo(data){
 		}else{
 			$('.pk_rank_page_wrap').append('<a value="'+i_page+'" href="javascript:;">'+i_page+'</a>');
 		}
-console.log(page);
-console.log(i_page);
 	}
 	
 	window.parent.$("#J_iframe").height($(".inner_main_wrap").height()+6);
