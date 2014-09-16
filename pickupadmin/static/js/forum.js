@@ -3,11 +3,13 @@ var forum = {
 	page : 1,
 	max_page : 1,
 	tpl : [
-		'<li data={id} data-uid={uid} data-thread={thread_id} data-kind={kind}>',
+		'<li data={id} data-uid={uid} data-thread={thread_id} data-kind={kind} data-is-gag={gag_is} data-is-essence}={essence_is}>',
 			'<span class="num">{num}</span>',
 			'<span class="report_content"><a href="javascript:;">{report_content}</a></span>',
 			'<span class="memo">{memo}</span>',
 			'<span class="created_date">{created_date}</span>',
+			'<span class="is_gag">{is_gag}</span>',
+			'<span class="is_essence">{is_essence}</span>',
 			'<span class="operation">',
 				'<span class="delete_report"><a href="javascript:;">删除</a></span>',
 				'<span class="gag"><a href="javascript:;">禁言</a></span>',
@@ -38,6 +40,7 @@ var forum = {
 			success: function(data){
 				window.parent.$("#J_loading_wrap").hide();
 				var forum_report_list = data.items;
+				console.log(forum_report_list);
 				var forum_report_num,forum_report_user,forum_report_content,forum_report_memo,forum_report_created_date;
 				//var user_url,exchange_user_name, user_id;
 				forum.max_page = Math.ceil(data.total/forum.page_items);
@@ -49,6 +52,8 @@ var forum = {
 					forum_report_content = forum_report_list[forum_report_i].kind;
 					forum_report_kind = forum_report_list[forum_report_i].kind;
 					forum_thread_id = forum_report_list[forum_report_i].thread_id;
+					forum_is_gag = forum_report_list[forum_report_i].is_gag;
+					forum_is_essence = forum_report_list[forum_report_i].is_essence;
 					switch(forum_report_content){
 						case 0:
 							forum_report_content = '帖子';
@@ -58,6 +63,28 @@ var forum = {
 							break;
 						default:
 							forum_report_content = '';
+							break;
+					}
+					switch(forum_is_gag){
+						case 404:
+							forum_is_gag = '未禁言';
+							break;
+						case 1:
+							forum_is_gag = '已禁言';
+							break;
+						default:
+							forum_is_gag = '';
+							break;
+					}
+					switch(forum_is_essence){
+						case 0:
+							forum_is_essence = '未设精华';
+							break;
+						case 1:
+							forum_is_essence = '已设精华';
+							break;
+						default:
+							forum_is_essence = '';
 							break;
 					}
 					if(forum_report_user == ''){
@@ -72,8 +99,8 @@ var forum = {
 						forum_report_created_date == 'null';
 					}
 					
+					$('#J_forum').append(forum.tpl.replace('{num}',forum_report_num).replace('{report_user}',forum_reported_user).replace('{report_content}',forum_report_content).replace('{memo}',forum_report_memo).replace('{created_date}',forum_report_created_date).replace('{id}',forum_report_id).replace('{uid}',forum_reported_user).replace('{thread_id}',forum_thread_id).replace('{pid}',forum_thread_id).replace('{kind}',forum_report_kind).replace('{is_gag}',forum_is_gag).replace('{is_essence}',forum_is_essence));
 					
-					$('#J_forum').append(forum.tpl.replace('{num}',forum_report_num).replace('{report_user}',forum_reported_user).replace('{report_content}',forum_report_content).replace('{memo}',forum_report_memo).replace('{created_date}',forum_report_created_date).replace('{id}',forum_report_id).replace('{uid}',forum_reported_user).replace('{thread_id}',forum_thread_id).replace('{pid}',forum_thread_id).replace('{kind}',forum_report_kind));
 				}
 				
 				for(var i_page=1;i_page<=forum.max_page;i_page++){
@@ -85,6 +112,7 @@ var forum = {
 				}
 				
 				window.parent.$("#J_iframe").height($(".inner_main_wrap").height()+6);
+			
 			}
 		});
 	},
@@ -133,7 +161,6 @@ var forum = {
 		}
 		
 		var uid = _this_li.attr('data-uid');
-		
 		$.ajax({
 			type: "POST",
 			url: ajax_main_path+'libs/controller/set_gag.php',
@@ -142,13 +169,14 @@ var forum = {
 			success: function(data){
 				window.parent.$("#J_loading_wrap").hide();
 				if(data == 1){
+					_this_li.children('.is_gag').text('已禁言');
 				}else{
 					if(window.parent.$("#J_alert_wrap").length==0){
 						window.parent.$('body').append(tpl.alert_box);
 						window.parent.$("#J_alert_wrap .alert_content").text('禁言失败，请重试！');
 					}else{
 						window.parent.$("#J_alert_wrap .alert_content").text('禁言失败，请重试！');
-						window.parent.$("#J_alert_wrap").show();							
+						window.parent.$("#J_alert_wrap").show();	
 					}
 					setTimeout(hideAlert, 1000);
 				}
@@ -175,20 +203,22 @@ var forum = {
 			success: function(data){
 				window.parent.$("#J_loading_wrap").hide();
 				if(data == 1){
-					
+					_this_li.children('.is_gag').text('未禁言');
 				}else{
 					if(window.parent.$("#J_alert_wrap").length==0){
 						window.parent.$('body').append(tpl.alert_box);
-						window.parent.$("#J_alert_wrap .alert_content").text('禁言失败，请重试！');
+						window.parent.$("#J_alert_wrap .alert_content").text('删除禁言失败，请重试！');
 					}else{
-						window.parent.$("#J_alert_wrap .alert_content").text('禁言失败，请重试！');
+						window.parent.$("#J_alert_wrap .alert_content").text('删除禁言失败，请重试！');
 						window.parent.$("#J_alert_wrap").show();							
 					}
+					forum.is_gag = 1;
 					setTimeout(hideAlert, 1000);
 				}
 			}
 		});
 	},
+	
 	set_essence : function(_this_li){
 		if(window.parent.$("#J_loading_wrap").length==0){
 			window.parent.$('body').append(tpl.loading_box);
@@ -209,6 +239,7 @@ var forum = {
 			success: function(data){
 				window.parent.$("#J_loading_wrap").hide();
 				if(data == 1){
+					_this_li.children('.is_essence').text('已设精华');
 				}else{
 					if(window.parent.$("#J_alert_wrap").length==0){
 						window.parent.$('body').append(tpl.alert_box);
@@ -217,6 +248,7 @@ var forum = {
 						window.parent.$("#J_alert_wrap .alert_content").text('设置失败，请重试！');
 						window.parent.$("#J_alert_wrap").show();							
 					}
+					forum.is_essence = 0;
 					setTimeout(hideAlert, 1000);
 				}
 			}
@@ -242,6 +274,7 @@ var forum = {
 			success: function(data){
 				window.parent.$("#J_loading_wrap").hide();
 				if(data == 1){
+					_this_li.children('.is_essence').text('未设精华');
 				}else{
 					if(window.parent.$("#J_alert_wrap").length==0){
 						window.parent.$('body').append(tpl.alert_box);
@@ -250,6 +283,7 @@ var forum = {
 						window.parent.$("#J_alert_wrap .alert_content").text('设置失败，请重试！');
 						window.parent.$("#J_alert_wrap").show();							
 					}
+					forum.is_essence = 1;
 					setTimeout(hideAlert, 1000);
 				}
 			}
@@ -321,7 +355,6 @@ var forum = {
 			}
 		});
 	}
-
 }
 $('#J_forum .report_content').die().live('click',function(){
 	if(window.parent.$("#J_loading_wrap").length==0){

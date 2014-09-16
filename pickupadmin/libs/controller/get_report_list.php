@@ -30,5 +30,33 @@ $url_list_reports = $pickup->getApiUrl()."/forum/reports?num=$num&page=$page";
 $items_result = $pickup->pickupLinkApi($url_list_reports,"get",null,0,0);
 //var_dump($items_result);
 $items_array = json_decode($items_result,true);
+$detail_array = $items_array['items'];
+//var_dump($detail_array);
+foreach($detail_array as $key=>$value){
+    $uid = $value['user_id'];
+	$kind = $value['kind'];
+	$id = $value['thread_id'];
+    $pickup = new pickupApi();
+	$url_set_gag = $pickup->getApiUrl()."/forum/blacklist?uid=$uid";
+	$result1 = $pickup->pickupLinkApi($url_set_gag,"get",null,1,0);
+	$detail_array[$key]['is_gag'] = $result1;
+	
+	if(!$kind){
+		$pickup = new pickupApi();
+		$url_get_post = $pickup->getApiUrl()."/forum/posts?id=$id";
+		$result2 = $pickup->pickupLinkApi($url_get_post,"get",null,0,0);
+		$post = json_decode($result2,true);
+		//var_dump($post);
+		if($post['flags']){
+			$detail_array[$key]['is_essence'] = 1;
+		}else{
+			$detail_array[$key]['is_essence'] = 0;
+		}
+	}
+}
+	
+//var_dump($detail_array);
+$items_array['items'] = $detail_array;
+//var_dump($items_array);
 echo json_encode($items_array);
 ?>

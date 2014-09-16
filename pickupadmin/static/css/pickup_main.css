@@ -1499,7 +1499,7 @@ label{
 .recommend_users_wrap .operation{
 	width:100px;
 }
-/*追吧*/
+
 /*追吧*/
 .forum ul li{
 	line-height:40px;
@@ -1510,14 +1510,11 @@ label{
 	text-align:center;
 	overflow:hidden;
 }
-
-
 .forum ul .title{
 	font-weight:bold;
 	background-color:rgba(245, 245, 245, 0.85);
 	border-color: #DFE0E1 #EEEEEE #D9D9D9;
 }
-
 .forum .complain_page_wrap{
 	margin:20px 0;
 }
@@ -1562,7 +1559,6 @@ label{
 	width:70px;
 	float:left;
 }
-
 .forum ul li .operation{
 	display:inline-block;
 	height:40px;
@@ -1606,7 +1602,6 @@ label{
 	float:left;
 	margin-left:3px;
 }
-
 .forum_reply a{
 	width:70px;
 	margin-left:2px;
