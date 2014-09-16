@@ -57,9 +57,11 @@
 			case 'user_feedback':
 				$('#J_user_feedback').click();
 				break;
+			/*
 			case 'manage_pk':
 				$('#J_pk_menu').click();
-				break;	
+				break;
+			*/
 			case 'manage_pk_list':
 				$('#J_pk_list').click();
 				break;	

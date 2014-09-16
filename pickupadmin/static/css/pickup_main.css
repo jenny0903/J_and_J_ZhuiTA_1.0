@@ -1177,8 +1177,8 @@ label{
 	border-color: #DFE0E1 #EEEEEE #D9D9D9;
 }
 
-.exchange_items .complain_page_wrap,
-.exchange_orders .complain_page_wrap{
+.exchange_items .pk_list_page_wrap,
+.exchange_orders .pk_list_page_wrap{
 	margin:20px 0;
 }
 
@@ -1520,7 +1520,7 @@ label{
 	border-color: #DFE0E1 #EEEEEE #D9D9D9;
 }
 
-.forum .complain_page_wrap{
+.forum .pk_list_page_wrap{
 	margin:20px 0;
 }
 .forum ul li *{
@@ -1587,4 +1587,152 @@ label{
 }
 .reply_info ul li{
 	height:45px;
+}
+
+/* PK市场 */
+.pk_list .list_result{
+	margin:40px 0 20px;
+}
+.pk_list ul .title{
+	font-weight:bold;
+	background-color:rgba(245, 245, 245, 0.85);
+	border-color: #DFE0E1 #EEEEEE #D9D9D9;
+}
+.pk_list ul li{
+	line-height:40px;
+	height:40px;
+	border-width:1px;
+	border-style: solid;
+	border-color: #FFFFFF #FAFAFA #E9EAEA;
+	overflow: hidden;
+}
+.pk_list ul li div{
+	float:left;
+	text-align:center;
+}
+.pk_list .pk_no{
+	width:80px;
+}
+.pk_list .initiator{
+	width:150px;
+	word-wrap: break-word;
+	padding : 0 5px; 
+}
+.pk_list .vs{
+	width:80px;
+}
+.pk_list .acceptor{
+	width:150px;
+	word-wrap: break-word;
+	padding : 0 5px; 
+}
+.pk_list .delete_pk{
+	width:80px;
+	margin: 0 20px;
+	padding : 0 10px; 
+}
+.pk_list .update_pk{
+	width:80px;
+	padding : 0 10px; 
+}
+.pk_list_page_wrap{
+	text-align:center;
+}
+.pk_list_page_wrap a{
+	width:20px;
+	height:20px;
+	display:inline-block;
+	text-decoration:none;
+	color:#FF5581;
+	text-align:center;
+	line-height:20px;
+	margin:5px;
+	border:1px solid #FF5581;
+	background-color:#FCB8C9;
+	border-radius:3px;
+	
+}
+.pk_list_page_wrap a:hover{
+	color:#FF5581;
+	border:1px solid #FF5581;
+	background-color:#FFFFFF;
+}
+.pk_list_page_wrap a:active,
+.pk_list_page_wrap .page_cur{
+	color:#FFFFFF;
+	border:1px solid #C53157;
+	background-color:#FF5581;
+}
+
+/* PK排行榜 */
+.pk_rank .rank_result{
+	margin:40px 0 20px;
+}
+.pk_rank .rank_type .sex_type_box{
+	width: 300px;
+}
+.pk_rank .rank_type .date_type_box{
+	width: 300px;
+	margin-left:80px;
+}
+.pk_rank ul .title{
+	font-weight:bold;
+	background-color:rgba(245, 245, 245, 0.85);
+	border-color: #DFE0E1 #EEEEEE #D9D9D9;
+}
+.pk_rank ul li{
+	line-height:40px;
+	height:40px;
+	border-width:1px;
+	border-style: solid;
+	border-color: #FFFFFF #FAFAFA #E9EAEA;
+	overflow: hidden;
+}
+.pk_rank ul li div{
+	float:left;
+	text-align:center;
+}
+.pk_rank .rank_no{
+	width:80px;
+}
+.pk_rank .rank_user{
+	width:300px;
+	word-wrap: break-word;
+	padding : 0 5px; 
+}
+.pk_rank .rank_win_count input{
+	width:50px;
+	text-align:center;
+}
+.pk_rank .update_rank{
+	width:80px;
+	margin-left :100px; 
+}
+.pk_rank_page_wrap{
+	text-align:center;
+}
+.pk_rank_page_wrap a{
+	width:20px;
+	height:20px;
+	display:inline-block;
+	text-decoration:none;
+	color:#FF5581;
+	text-align:center;
+	line-height:20px;
+	margin:5px;
+	border:1px solid #FF5581;
+	background-color:#FCB8C9;
+	border-radius:3px;
+	
+}
+.pk_rank_page_wrap a:hover{
+	color:#FF5581;
+	border:1px solid #FF5581;
+	background-color:#FFFFFF;
+}
+.pk_rank_page_wrap a:active,
+.pk_rank_page_wrap .page_cur{
+	color:#FFFFFF;
+	border:1px solid #C53157;
+	background-color:#FF5581;
 }

@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<link rel="shortcut icon" type="image/png" href="../static/pickup_icon.png" />
+<link rel="stylesheet" type="text/css"  href="../static/css/pickup_main.css"  />
+<title>追TA后台管理系统</title>
+</head>
+
+<body>
+	<div class="inner_main_wrap pk_rank">
+    	<div class="rank_type">
+			<span class="sex_type_box">
+				<label for="sex_type_num">榜单性别选择：</label>
+				<select onchange="type_num_change()" id="J_sex_type_num" class="sex_type_num" name="sex_type_num">
+					<option state="0" value="female">女</option>
+					<option state="0" value="male">男</option>
+				</select>
+			</span>
+			<span class="date_type_box">
+				<label for="date_type_num">榜单类型选择：</label>
+				<select onchange="type_num_change()" id="J_date_type_num" class="date_type_num" name="date_type_num">
+					<option state="0" value="day">日榜单</option>
+					<option state="0" value="week">周榜单</option>
+					<option state="0" value="month">月榜单</option>
+				</select>
+			</span>
+        </div>
+		 <div class="rank_result">
+            <ul id="result_box">
+            	<li class="title">
+                	<div class="rank_no">No</div>
+                    <div class="rank_user">用户名</div>
+					<!--
+                    <a href="javascript:;" class="delete_pk">删除</a>
+                    <a href="javascript:;" class="update_pk">修改</a>
+					-->
+                </li>
+            </ul>
+        </div>
+		<div class="pk_rank_page_wrap">
+		</div>
+	</div>
+<script type="text/javascript" src="../static/js/jquery-1.7.2.min.js"></script>	
+<script type="text/javascript" src="../static/js/core.js"></script>	
+<script type="text/javascript" src="../static/js/pk_rank_manage.js"></script>	
+</body>
+</html>
