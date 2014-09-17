@@ -40,7 +40,6 @@ var forum = {
 			success: function(data){
 				window.parent.$("#J_loading_wrap").hide();
 				var forum_report_list = data.items;
-				console.log(forum_report_list);
 				var forum_report_num,forum_report_user,forum_report_content,forum_report_memo,forum_report_created_date;
 				//var user_url,exchange_user_name, user_id;
 				forum.max_page = Math.ceil(data.total/forum.page_items);
@@ -367,8 +366,7 @@ $('#J_forum .report_content').die().live('click',function(){
 	}
 
 	var thread_id =$(this).parents('li').attr('data-thread');
-	var kind=$(this).parents('li').attr('data-kind')
-	console.log(kind);
+	var kind=$(this).parents('li').attr('data-kind');
 	if (kind = 0){
 		
 		if($("#J_post_info_wrap").length==0){
@@ -390,7 +388,6 @@ $('#J_forum .report_content').die().live('click',function(){
 		}
 		
 		window.parent.$("#J_iframe").height(3260);//2200//2420+40*6+230*2+40+100
-		console.log(thread_id);
 		forum.get_reply_info(thread_id);
 	}
 });
