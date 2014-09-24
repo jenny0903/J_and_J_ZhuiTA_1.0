@@ -11,11 +11,13 @@ var forum = {
 			'<span class="is_gag">{is_gag}</span>',
 			'<span class="is_essence">{is_essence}</span>',
 			'<span class="operation">',
-				'<span class="delete_report"><a href="javascript:;">删除</a></span>',
+				'<span class="delete_report"><a href="javascript:;">清除</a></span>',
+				'<span class="delete_post"><a href="javascript:;">删帖</a></span>',
+				'<span class="delete_reply"><a href="javascript:;">删除回复</a></span>',
 				'<span class="gag"><a href="javascript:;">禁言</a></span>',
-				'<span class="delete_gag"><a href="javascript:;">删除禁言</a></span>',
-				'<span class="set_essence"><a href="javascript:;">设为精华</a></span>',
-				'<span class="delete_essence"><a href="javascript:;">取消精华</a></span>',
+				'<span class="delete_gag"><a href="javascript:;">X</a></span>',
+				'<span class="set_essence"><a href="javascript:;">精华</a></span>',
+				'<span class="delete_essence"><a href="javascript:;">X</a></span>',
 			'</span>',
 		'</li>'
 	].join(''),
@@ -288,6 +290,74 @@ var forum = {
 			}
 		});
 	},
+	delete_post : function(_this_li){
+		if(window.parent.$("#J_loading_wrap").length==0){
+			window.parent.$('body').append(tpl.loading_box);
+			window.parent.$("#J_loading_wrap .loading_content").text('正在处理，请稍等……');
+			window.parent.$("#J_loading_wrap").show();
+		}else{
+			window.parent.$("#J_loading_wrap .loading_content").text('正在处理，请稍等……');
+			window.parent.$("#J_loading_wrap").show();
+		}
+		
+		var id = _this_li.attr('data-thread');
+		
+		$.ajax({
+			type: "POST",
+			url: ajax_main_path+'libs/controller/delete_post.php',
+			data : 'id='+id,
+			dataType:"JSON",
+			success: function(data){
+				window.parent.$("#J_loading_wrap").hide();
+				if(data == 1){
+					
+				}else{
+					if(window.parent.$("#J_alert_wrap").length==0){
+						window.parent.$('body').append(tpl.alert_box);
+						window.parent.$("#J_alert_wrap .alert_content").text('删除帖子失败，请重试！');
+					}else{
+						window.parent.$("#J_alert_wrap .alert_content").text('删除帖子失败，请重试！');
+						window.parent.$("#J_alert_wrap").show();							
+					}
+					setTimeout(hideAlert, 1000);
+				}
+			}
+		});
+	},
+	delete_reply : function(_this_li){
+		if(window.parent.$("#J_loading_wrap").length==0){
+			window.parent.$('body').append(tpl.loading_box);
+			window.parent.$("#J_loading_wrap .loading_content").text('正在处理，请稍等……');
+			window.parent.$("#J_loading_wrap").show();
+		}else{
+			window.parent.$("#J_loading_wrap .loading_content").text('正在处理，请稍等……');
+			window.parent.$("#J_loading_wrap").show();
+		}
+		
+		var id = _this_li.attr('data-thread');
+		
+		$.ajax({
+			type: "POST",
+			url: ajax_main_path+'libs/controller/delete_reply.php',
+			data : 'id='+id,
+			dataType:"JSON",
+			success: function(data){
+				window.parent.$("#J_loading_wrap").hide();
+				if(data == 1){
+					
+				}else{
+					if(window.parent.$("#J_alert_wrap").length==0){
+						window.parent.$('body').append(tpl.alert_box);
+						window.parent.$("#J_alert_wrap .alert_content").text('删除帖子失败，请重试！');
+					}else{
+						window.parent.$("#J_alert_wrap .alert_content").text('删除帖子失败，请重试！');
+						window.parent.$("#J_alert_wrap").show();							
+					}
+					setTimeout(hideAlert, 1000);
+				}
+			}
+		});
+	},
 	get_post_info: function(thread_id){
 		$.ajax({
 			type: "POST",
@@ -367,8 +437,8 @@ $('#J_forum .report_content').die().live('click',function(){
 
 	var thread_id =$(this).parents('li').attr('data-thread');
 	var kind=$(this).parents('li').attr('data-kind');
-	if (kind = 0){
-		
+	
+	if(kind == 0){
 		if($("#J_post_info_wrap").length==0){
 			$('body').append(tpl_post_info);
 			$("#J_post_info_wrap").css('height','3260px').show();
@@ -379,7 +449,7 @@ $('#J_forum .report_content').die().live('click',function(){
 		window.parent.$("#J_iframe").height(3260);//2200//2420+40*6+230*2+40+100
 	
 		forum.get_post_info(thread_id);
-	}else if(kind = 1){
+	}else if(kind == 1){
 		if($("#J_reply_info_wrap").length==0){
 			$('body').append(tpl_reply_info);
 			$("#J_reply_info_wrap").css('height','3260px').show();
@@ -410,6 +480,20 @@ $('.delete_gag').die().live('click',function(){
 	var _this_li = _this.parents('li');
 	
 	forum.delete_gag(_this_li);
+	
+});
+$('.delete_post').die().live('click',function(){
+	var _this = $(this);
+	var _this_li = _this.parents('li');
+	
+	forum.delete_post(_this_li);
+	
+});
+$('.delete_reply').die().live('click',function(){
+	var _this = $(this);
+	var _this_li = _this.parents('li');
+	
+	forum.delete_reply(_this_li);
 	
 });
 $('.set_essence').die().live('click',function(){

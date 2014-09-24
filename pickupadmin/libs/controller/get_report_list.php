@@ -46,13 +46,19 @@ foreach($detail_array as $key=>$value){
 		$url_get_post = $pickup->getApiUrl()."/forum/posts?id=$id";
 		$result2 = $pickup->pickupLinkApi($url_get_post,"get",null,0,0);
 		$post = json_decode($result2,true);
-		//var_dump($post);
-		if($post['flags']){
-			$detail_array[$key]['is_essence'] = 1;
+		if(isset($post['code']) && $post['code'] == 21902){//error
+			array();
 		}else{
-			$detail_array[$key]['is_essence'] = 0;
+			if(isset($post['flags'])){
+				if($post['flags']){
+					$detail_array[$key]['is_essence'] = 1;
+				}else{
+					$detail_array[$key]['is_essence'] = 0;
+				}
+			}
 		}
 	}
+	
 }
 	
 //var_dump($detail_array);

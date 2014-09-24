@@ -801,10 +801,13 @@ label{
 	width:60px;
 }
 .user_search .result_city{
-	width:130px;
+	width:100px;
 }
 .user_search .result_like{
-	width:140px;
+	width:80px;
+}
+.user_search .result_modify{
+	width:90px;
 }
 /* 欢迎页面 */
 .welcome h1{
@@ -1567,6 +1570,7 @@ label{
 	line-height:40px;
 	text-align:center;
 	margin-left:3px;
+	padding:0px;
 }
 .forum ul li span.delete_report {
 	display:inline-block;
@@ -1579,28 +1583,42 @@ label{
 	height:40px;
 	width:33px;
 	float:left;
-	margin-left:3px;
+	margin-left:10px;
 }
 .forum ul li span.delete_gag {
 	display:inline-block;
 	height:40px;
-	width:66px;
+	width:20px;
 	float:left;
 	margin-left:3px;
 }
 .forum ul li span.set_essence {
 	display:inline-block;
 	height:40px;
-	width:66px;
+	width:33px;
 	float:left;
 	margin-left:3px;
 }
 .forum ul li span.delete_essence {
 	display:inline-block;
 	height:40px;
-	width:66px;
+	width:20px;
 	float:left;
 	margin-left:3px;
+}
+.forum ul li span.delete_post {
+	display:inline-block;
+	height:40px;
+	width:33px;
+	float:left;
+	margin-left:10px;
+}
+.forum ul li span.delete_reply {
+	display:inline-block;
+	height:40px;
+	width:66px;
+	float:left;
+	margin-left:10px;
 }
 .forum_reply a{
 	width:70px;
@@ -1609,9 +1627,15 @@ label{
 .reply_info ul li{
 	height:45px;
 }
+.post_info ul li{
+	height:45px;
+}
 .forum ul li span.report_content{
 	width:35px;
 	text-decoration:none;
+}
+.forum ul li.title  span.operation{
+	margin-top:10px;
 }
 
 /* PK市场 */
