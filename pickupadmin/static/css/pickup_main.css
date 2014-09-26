@@ -1506,7 +1506,7 @@ label{
 /*追吧*/
 .forum ul li{
 	line-height:40px;
-	max-height:80px;
+	max-height:100px;
 	border-width:1px;
 	border-style: solid;
 	border-color: #FFFFFF #FAFAFA #E9EAEA;	
@@ -1620,10 +1620,12 @@ label{
 	float:left;
 	margin-left:10px;
 }
+.forum_post a,
 .forum_reply a{
 	width:70px;
 	margin-left:2px;
 }
+
 .reply_info ul li{
 	height:45px;
 }
@@ -1637,7 +1639,13 @@ label{
 .forum ul li.title  span.operation{
 	margin-top:10px;
 }
-
+.post_title{
+	height:20px;
+	text-align:left;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 /* PK市场 */
 .pk_list .list_result{
 	margin:40px 0 20px;
@@ -1713,6 +1721,7 @@ label{
 	background-color:#FF5581;
 }
 
+
 /* PK排行榜 */
 .pk_rank .rank_result{
 	margin:40px 0 20px;
@@ -1784,4 +1793,11 @@ label{
 	color:#FFFFFF;
 	border:1px solid #C53157;
 	background-color:#FF5581;
+}
+/*userinfo修改*/
+#J_gag{
+	width:70px;
+}
+#J_do_gag{
+	width:60px;
 }

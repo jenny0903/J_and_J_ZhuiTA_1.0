@@ -35,6 +35,93 @@ var flag_key = {
 		}
 	}
 };
+$('#J_gag').die().live('click',function(){
+	var id = uid;
+	if(window.parent.$("#J_loading_wrap").length==0){
+		window.parent.$('body').append(tpl.loading_box);
+		window.parent.$("#J_loading_wrap .loading_content").text('正在取消，请稍等……');
+		window.parent.$("#J_loading_wrap").show();
+	}else{
+		window.parent.$("#J_loading_wrap .loading_content").text('正在取消，请稍等……');
+		window.parent.$("#J_loading_wrap").show();
+	}
+		
+	$.ajax({
+			type: "POST",
+			url: ajax_main_path+'libs/controller/delete_gag.php',
+			data:"uid="+id,
+			dataType:"JSON",
+			success: function(data){
+				window.parent.$("#J_loading_wrap").hide();
+				if(data=='1'||data==1){
+					if(window.parent.$("#J_alert_wrap").length==0){
+						window.parent.$('body').append(tpl.alert_box);
+						window.parent.$("#J_alert_wrap .alert_content").text('取消禁言成功！');
+						window.parent.$("#J_alert_wrap").show();
+					}else{
+						window.parent.$("#J_alert_wrap .alert_content").text('取消禁言成功！');
+						window.parent.$("#J_alert_wrap").show();							
+					}
+					$('#user_info_gag').text('该用户未禁言');
+				}else{
+					if(window.parent.$("#J_alert_wrap").length==0){
+						window.parent.$('body').append(tpl.alert_box);
+						window.parent.$("#J_alert_wrap .alert_content").text('取消禁言失败，请重试！');
+						window.parent.$("#J_alert_wrap").show();
+					}else{
+						window.parent.$("#J_alert_wrap .alert_content").text('取消禁言失败，请重试！');
+						window.parent.$("#J_alert_wrap").show();							
+					}
+				}
+				setTimeout(hideAlert, 1000);
+			}
+		});			
+});
+
+$('#J_do_gag').die().live('click',function(){
+	var id = uid;
+	if(window.parent.$("#J_loading_wrap").length==0){
+		window.parent.$('body').append(tpl.loading_box);
+		window.parent.$("#J_loading_wrap .loading_content").text('正在取消，请稍等……');
+		window.parent.$("#J_loading_wrap").show();
+	}else{
+		window.parent.$("#J_loading_wrap .loading_content").text('正在取消，请稍等……');
+		window.parent.$("#J_loading_wrap").show();
+	}
+		
+	$.ajax({
+			type: "POST",
+			url: ajax_main_path+'libs/controller/set_gag.php',
+			data:"uid="+id,
+			dataType:"JSON",
+			success: function(data){
+				window.parent.$("#J_loading_wrap").hide();
+				if(data=='1'||data==1){
+					if(window.parent.$("#J_alert_wrap").length==0){
+						window.parent.$('body').append(tpl.alert_box);
+						window.parent.$("#J_alert_wrap .alert_content").text('禁言成功！');
+						window.parent.$("#J_alert_wrap").show();
+					}else{
+						window.parent.$("#J_alert_wrap .alert_content").text('禁言成功！');
+						window.parent.$("#J_alert_wrap").show();							
+					}
+					$('#user_info_gag').text('该用户已禁言');
+				}else{
+					if(window.parent.$("#J_alert_wrap").length==0){
+						window.parent.$('body').append(tpl.alert_box);
+						window.parent.$("#J_alert_wrap .alert_content").text('取消禁言失败，请重试！');
+						window.parent.$("#J_alert_wrap").show();
+					}else{
+						window.parent.$("#J_alert_wrap .alert_content").text('取消禁言失败，请重试！');
+						window.parent.$("#J_alert_wrap").show();							
+					}
+				}
+				setTimeout(hideAlert, 1000);
+			}
+		});			
+});
+
+
 $('#J_save_sign').die().live('click',function(){
 	if(window.parent.$("#J_loading_wrap").length==0){
 		window.parent.$('body').append(tpl.loading_box);
@@ -246,12 +333,36 @@ function getUserInfo(ParamId){
 		}
 	});
 	
+	$.ajax({
+		type: "POST",
+		url: ajax_main_path+'libs/controller/get_gag_info.php',
+		data:"uid="+ParamId,
+		dataType:"JSON",
+		async: false,
+		success: function(data){
+			// window.parent.$("#J_loading_wrap").hide();
+			isGag(data,ParamId);
+		},
+		error: OnError,
+		failure: function () {
+			alert(response);
+		}
+	});
+	
 	function OnError(request, status, error) {
 		alert(request.statusText);
 		return false;
 	}
 }
 
+function isGag(data,ParamId){
+	gag_id = ParamId;
+	if(data){
+		$('#user_info_gag').text('该用户已禁言');
+	}else{
+		$('#user_info_gag').text('该用户未禁言');
+	}
+}
 function isInBlacklist(data,ParamId){
 	black_id = ParamId;
 	if(data){
