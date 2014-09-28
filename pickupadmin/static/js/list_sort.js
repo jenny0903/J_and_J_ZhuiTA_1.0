@@ -427,7 +427,7 @@ $('.sort_name a').live('click',function(){
 		$("#J_user_info_wrap").css('height','3260px').show();
 	}
 	
-	window.parent.$("#J_iframe").height(3260);//2200//2420+40*6+230*2+40+100
+	window.parent.$("#J_iframe").height(3300);//2200//2420+40*6+230*2+40+100
 	
 	getUserInfo(user_info_id);
 

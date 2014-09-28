@@ -46,8 +46,11 @@ foreach($detail_array as $key=>$value){
 		$url_get_post = $pickup->getApiUrl()."/forum/posts?id=$id";
 		$result2 = $pickup->pickupLinkApi($url_get_post,"get",null,0,0);
 		$post = json_decode($result2,true);
+		// echo $key;
+		// var_dump($post);
 		if(isset($post['code']) && $post['code'] == 21902){//error
 			array();
+			$detail_array[$key]['title'] = '（帖子已被删）';
 		}else{
 			if(isset($post['flags'])){
 				if($post['flags']){
@@ -56,6 +59,20 @@ foreach($detail_array as $key=>$value){
 					$detail_array[$key]['is_essence'] = 0;
 				}
 			}
+			$detail_array[$key]['title'] = $post['title'];
+		}
+		
+	}else{
+		$url_get_reply = $pickup->getApiUrl()."/forum/replies?id=$id";
+		$result = $pickup->pickupLinkApi($url_get_reply,"get",null,0,0);
+		$reply = json_decode($result,true);
+		// echo $key;
+		// var_dump($reply);
+		if(isset($reply['code']) && $reply['code'] == 21904){//error
+			array();
+			$detail_array[$key]['title'] = '（帖子已被删）';
+		}else{
+			$detail_array[$key]['title'] = $reply['content'];
 		}
 	}
 	

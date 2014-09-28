@@ -132,6 +132,7 @@ var tpl_search_content=[
 				'<div class="result_age">{user_age}</div>',
 				'<div class="result_city">{user_city}</div>',
 				'<div class="result_like">{like_num}人喜欢</div>',
+				'<div class="result_modify"><a value="{user_modify}" href="javascript:;">修改</a></div>',
 			'</li>'
 		].join('');
 function loadResultInfo(data){
@@ -161,7 +162,7 @@ function loadResultInfo(data){
 		
 		result_num++;
 		
-		$('#result_box').append(tpl_search_content.replace('{result_num}',result_num).replace('{user_url}',user_id).replace('{user_name}',user_name).replace('{user_gender}',user_gender).replace('{user_age}',user_age).replace('{user_city}',user_city).replace('{like_num}',like_num));
+		$('#result_box').append(tpl_search_content.replace('{result_num}',result_num).replace('{user_url}',user_id).replace('{user_name}',user_name).replace('{user_gender}',user_gender).replace('{user_age}',user_age).replace('{user_city}',user_city).replace('{like_num}',like_num).replace('{user_modify}',user_id));
 		
 	}
 	
@@ -189,7 +190,30 @@ $('#result_box .result_name a').live('click',function(){
 		$("#J_user_info_wrap").css('height','3260px').show();
 	}
 	
-	window.parent.$("#J_iframe").height(3260);//2200//2420+40*6+230*2+40+100
+	window.parent.$("#J_iframe").height(3300);//2200//2420+40*6+230*2+40+100
+	
+	getUserInfo(user_info_id);
+});
+$('#result_box .result_modify a').live('click',function(){
+	if(window.parent.$("#J_loading_wrap").length==0){
+		window.parent.$('body').append(tpl.loading_box);
+		window.parent.$("#J_loading_wrap .loading_content").text('正在加载，请稍等……');
+		window.parent.$("#J_loading_wrap").show();
+	}else{
+		window.parent.$("#J_loading_wrap .loading_content").text('正在加载，请稍等……');
+		window.parent.$("#J_loading_wrap").show();
+	}
+
+	var user_info_id=$(this).attr('value');
+	
+	if($("#J_user_info_wrap").length==0){
+		$('body').append(tpl_user_info);
+		$("#J_user_info_wrap").css('height','3260px').show();
+	}else{
+		$("#J_user_info_wrap").css('height','3260px').show();
+	}
+	
+	window.parent.$("#J_iframe").height(3300);//2200//2420+40*6+230*2+40+100
 	
 	getUserInfo(user_info_id);
 });

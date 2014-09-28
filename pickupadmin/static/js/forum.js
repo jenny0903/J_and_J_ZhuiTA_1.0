@@ -3,7 +3,8 @@ var forum = {
 	page : 1,
 	max_page : 1,
 	tpl : [
-		'<li data={id} data-uid={uid} data-thread={thread_id} data-kind={kind} data-is-gag={gag_is} data-is-essence}={essence_is}>',
+		'<li data={id} data-uid={uid} data-thread={thread_id} data-kind={kind} data-is-gag={gag_is} data-is-essence={essence_is}>',
+			'<div class="post_title">{post_title}</div>',
 			'<span class="num">{num}</span>',
 			'<span class="report_content"><a href="javascript:;">{report_content}</a></span>',
 			'<span class="memo">{memo}</span>',
@@ -42,7 +43,7 @@ var forum = {
 			success: function(data){
 				window.parent.$("#J_loading_wrap").hide();
 				var forum_report_list = data.items;
-				var forum_report_num,forum_report_user,forum_report_content,forum_report_memo,forum_report_created_date;
+				var forum_report_num,forum_report_user,forum_report_content,forum_report_memo,forum_report_created_date,post_title;
 				//var user_url,exchange_user_name, user_id;
 				forum.max_page = Math.ceil(data.total/forum.page_items);
 				for(forum_report_i in forum_report_list){
@@ -55,6 +56,7 @@ var forum = {
 					forum_thread_id = forum_report_list[forum_report_i].thread_id;
 					forum_is_gag = forum_report_list[forum_report_i].is_gag;
 					forum_is_essence = forum_report_list[forum_report_i].is_essence;
+					post_title = forum_report_list[forum_report_i].title;
 					switch(forum_report_content){
 						case 0:
 							forum_report_content = '帖子';
@@ -100,7 +102,7 @@ var forum = {
 						forum_report_created_date == 'null';
 					}
 					
-					$('#J_forum').append(forum.tpl.replace('{num}',forum_report_num).replace('{report_user}',forum_reported_user).replace('{report_content}',forum_report_content).replace('{memo}',forum_report_memo).replace('{created_date}',forum_report_created_date).replace('{id}',forum_report_id).replace('{uid}',forum_reported_user).replace('{thread_id}',forum_thread_id).replace('{pid}',forum_thread_id).replace('{kind}',forum_report_kind).replace('{is_gag}',forum_is_gag).replace('{is_essence}',forum_is_essence));
+					$('#J_forum').append(forum.tpl.replace('{num}',forum_report_num).replace('{report_user}',forum_reported_user).replace('{report_content}',forum_report_content).replace('{memo}',forum_report_memo).replace('{created_date}',forum_report_created_date).replace('{id}',forum_report_id).replace('{uid}',forum_reported_user).replace('{thread_id}',forum_thread_id).replace('{pid}',forum_thread_id).replace('{kind}',forum_report_kind).replace('{is_gag}',forum_is_gag).replace('{is_essence}',forum_is_essence).replace('{post_title}',post_title));
 					
 				}
 				
@@ -359,6 +361,14 @@ var forum = {
 		});
 	},
 	get_post_info: function(thread_id){
+		$('#post_id').text('');
+		$('#post_user').text('');
+		$('#post_title').text('');
+		$('#post_content').text('');
+		$('#reply_count').text('');
+		$('#post_flag').text('');
+		$('#created_time').text('');
+		$('#reply_last_updated').text('');
 		$.ajax({
 			type: "POST",
 			url: ajax_main_path+'libs/controller/get_post_info.php',
@@ -386,11 +396,26 @@ var forum = {
 				$('#created_time').text(created_time);
 				$('#reply_last_updated').text(reply_last_updated);
 				
-				window.parent.$("#J_iframe").height($(".inner_main_wrap").height()+6);
+				
+				var list_h = $(".forum").height();
+				var info_h = $(".forum_post").height();
+				if(list_h > info_h){
+					window.parent.$("#J_iframe").height(list_h+6);
+					$(".forum_post").css({'height':list_h - - 6 +'px'});
+				}
 			}
 		});
 	},
 	get_reply_info: function(thread_id){
+		$('#id').text('');
+		$('#user_id').text('');
+		$('#post_id').text('');
+		$('#reply_id').text('');
+		$('#reply_user_id').text('');
+		$('#reply_user_name').text('');
+		$('#content').text('');
+		$('#rate_count').text('');
+		$('#created_date').text('');
 		$.ajax({
 			type: "POST",
 			url: ajax_main_path+'libs/controller/get_reply_info.php',
@@ -420,7 +445,12 @@ var forum = {
 				$('#rate_count').text(rate_count);
 				$('#created_date').text(created_date);
 				
-				window.parent.$("#J_iframe").height($(".inner_main_wrap").height()+6);
+				var list_h = $(".forum").height();
+				var info_h = $(".forum_reply").height();
+				if(list_h > info_h){
+					window.parent.$("#J_iframe").height(list_h+6);
+					$(".forum_reply").css({'height':list_h - - 6 +'px'});
+				}
 			}
 		});
 	}
