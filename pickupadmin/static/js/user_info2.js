@@ -11,6 +11,8 @@ var job = 0;
 var money = 0;
 var uid = "";
 var coupon_num = 0;
+var m_gender = '';
+var g_content = '';
 var flag_key = {
 	ios : false,
 	android : false,
@@ -354,6 +356,7 @@ function getUserInfo(ParamId){
 		return false;
 	}
 }
+
 
 function isGag(data,ParamId){
 	gag_id = ParamId;
@@ -868,6 +871,8 @@ function loadUserHobby(data){
 	$('#J_music').text(music_show);
 	$('#J_movie').text(movie_show);
 }
+
+
 $('#J_new_recommend').die().live('click',function(){
 	if(window.parent.$("#J_loading_wrap").length==0){
 		window.parent.$('body').append(tpl.loading_box);
@@ -1437,4 +1442,58 @@ $('#J_save_check').die().live('click',function(){
 			});
 		}
 	});
+});
+
+function modify_gender(){
+	var id = uid;
+	$.ajax({
+		type: "POST",
+		url: ajax_main_path+'libs/controller/get_user_info.php',
+		data:"id="+uid,
+		dataType:"JSON",
+		async: false,
+		success: function(data){
+			m_gender = data.gender;
+			switch(m_gender){
+				case 'male':
+					m_gender = 'female';
+					g_content = '女';
+					break;
+				case 'female':
+					m_gender = 'male';
+					g_content = '男';
+					break;
+			}
+		}
+	});
+	$.ajax({
+		type: "POST",
+		url: ajax_main_path+'libs/controller/modify_gender.php',
+		data : 'uid='+id+'&gender='+m_gender,
+		dataType:"JSON",
+		success: function(data){
+			if(data == 1){
+				if(window.parent.$("#J_alert_wrap").length==0){
+					window.parent.$('body').append(tpl.alert_box);
+					window.parent.$("#J_alert_wrap .alert_content").text('修改性别成功！');
+				}else{
+					window.parent.$("#J_alert_wrap .alert_content").text('修改性别成功！');
+					window.parent.$("#J_alert_wrap").show();							
+				}
+				$('#user_info_gender').text(g_content);
+			}else{
+				if(window.parent.$("#J_alert_wrap").length==0){
+					window.parent.$('body').append(tpl.alert_box);
+					window.parent.$("#J_alert_wrap .alert_content").text('修改性别失败，请重试！');
+				}else{
+					window.parent.$("#J_alert_wrap .alert_content").text('修改性别失败，请重试！');
+					window.parent.$("#J_alert_wrap").show();							
+				}
+			}
+			setTimeout(hideAlert, 1000);
+		}
+	});
+}
+$('#J_modify_gender').die().live('click',function(){
+	modify_gender();
 });

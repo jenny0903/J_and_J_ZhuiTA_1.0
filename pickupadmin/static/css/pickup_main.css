@@ -1801,3 +1801,8 @@ label{
 #J_do_gag{
 	width:60px;
 }
+/*修改性别*/
+#J_modify_gender{
+	width:70px;
+	margin-left:20px;
+}

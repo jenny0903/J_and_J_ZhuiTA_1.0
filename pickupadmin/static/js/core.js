@@ -85,6 +85,7 @@ var tpl_user_info = [
 						'<li>',
 							'<span class="title">性别：</span>',
 							'<span id="user_info_gender" data=""></span>',
+							'<a href="javascript:;" class="btn save_sign_btn" id="J_modify_gender">修改性别</a>',
 						'</li>',
 						'<li>',
 							'<span class="title">身高：</span>',
