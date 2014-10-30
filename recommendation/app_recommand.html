@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<title>应用推荐</title>
+<style type="text/css">
+html,body,ul,li,i,em,h1,p{
+	margin:0;
+	padding:0;
+}
+ul{
+	list-style: none;
+}
+body{
+	background-color:#EFEFF4;
+}
+ul{
+	border-top:1px solid #C8C7CC;
+	border-bottom:1px solid #C8C7CC;
+	padding:0 7px;
+	background-color:#fff;
+}
+ul > li{
+	border-bottom:1px solid #C8C7CC;
+}
+ul > li:last-child{
+	border-bottom:0 none;
+}
+li{
+	height:56px;
+	padding:18px 0 0 70px;
+	position:relative;
+}
+h1{
+	font-size:15px;
+	color:#343434;
+	margin-bottom:4px;
+}
+p{
+	font-size:11px;
+	color:#8F8F92;
+}
+i{
+	position:absolute;
+	top:10px;
+	left:8px;
+}
+i img{
+	width:54px;
+	height:54px;
+}
+em{
+	position:absolute;
+	top:23px;
+	right:5px;
+	width:50px;
+	height:24px;
+	border:2px solid #EF3C6B;
+	color:#EF3C6B;
+	line-height:24px;
+	border-radius:13px;
+	font-size:12px;
+	font-style:normal;
+	text-align:center;
+}
+.ajax_hide{
+	height:0;
+	width:0;
+	position:absolute;
+	top:0;
+	left:0;
+}
+</style>
+</head>
+
+<body>
+<ul id="J_app_list">
+<!--	<li>
+		<i><img src="360.png" /></i>
+		<h1>360手机助手</h1>
+		<p>数十万款Android软件供您下载。</p>
+		<em>免费</em>
+	</li>
+	<li>
+		<i><img src="dxc.png" /></i>
+		<h1>大象册</h1>
+		<p>让我们的照片在一起。</p>
+		<em>免费</em>
+	</li>-->
+</ul>
+<img class="ajax_hide" id="J_ajax_src1" src="" />
+<img class="ajax_hide" id="J_ajax_src2" src="" />
+<script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+var li_tpl = '<li>'+
+		'<i><img src="{img_src}" /></i>'+
+		'<h1>{name}</h1>'+
+		'<p>{intro}</p>'+
+		'<em data-link="{link}" data-id="{id}">免费</em>'+
+	'</li>';
+
+var isiOS = navigator.userAgent.match('iPad') || navigator.userAgent.match('iPhone') || navigator.userAgent.match('iPod');
+var isAndroid = navigator.userAgent.match('Android');
+
+function getToday(){
+	var d = new Date();
+	var year = d.getFullYear();
+	var month = d.getMonth() - - 1;
+	var date = d.getDate();
+
+	if(month < 10){
+		month = '0' + month;
+	}
+
+	if(date < 10){
+		date = '0' + date;
+	}
+
+	var format_date = String(year) + String(month) + String(date);
+	return format_date;
+}
+	
+$(document).ready(function(){
+	var format_today = getToday();
+	if(isiOS){
+		var rand_num = Math.floor(Math.random() * ( 1000 + 1));
+		var app_src = 'http://vd.ppickup.com/incr.php?k=pickup_app_recommand_view_ios_'+format_today+'&v='+rand_num;
+		
+		$('#J_ajax_src1').attr('src',app_src);
+	}
+	if(isAndroid){
+		var rand_num = Math.floor(Math.random() * ( 1000 + 1));
+		var app_src = 'http://vd.ppickup.com/incr.php?k=pickup_app_recommand_view_android_'+format_today+'&v='+rand_num;
+		
+		$('#J_ajax_src1').attr('src',app_src);
+	}
+	$.ajax({
+		type: 'POST',
+		url: 'list_app.php',
+		dataType: "json",
+		success:function(data){
+			if(data.code == 1){
+				var app_id,app_name,app_file_id,app_intro,app_link,app_img_src;
+				var app_list = data.data;
+				for(app_i in app_list){
+					app_id = app_list[app_i].id;
+					app_name = app_list[app_i].app_name;
+					app_file_id = app_list[app_i].file_id;
+					app_intro = app_list[app_i].intro;
+					app_link = app_list[app_i].link;
+					
+					app_img_src = 'get_app_img.php?fileid='+app_file_id;
+					
+					$('#J_app_list').append(li_tpl.replace('{img_src}',app_img_src).replace('{name}',app_name).replace('{intro}',app_intro).replace('{link}',app_link).replace('{id}',app_id));
+				}
+			}else{
+				alert('获取应用推荐列表失败！');
+			}
+		},
+		error:function(){
+			alert('获取应用推荐列表失败！');
+		}
+	});
+	
+	$('em').die().live({
+		'touchstart':function(){
+			var _this_id = $(this).attr('data-id');
+			var _this_link = $(this).attr('data-link');
+			
+			var rand_num = Math.floor(Math.random() * ( 1000 + 1));
+			var app_src1 = 'http://vd.ppickup.com/incr.php?k=pickup_app_recommand_download_total_'+_this_id+'&v='+rand_num;
+			
+			if(isiOS){
+				var app_src2 = 'http://vd.ppickup.com/incr.php?k=pickup_app_recommand_download_ios_'+format_today+'_'+_this_id+'&v='+rand_num;
+			}
+			
+			if(isAndroid){
+				var app_src2 = 'http://vd.ppickup.com/incr.php?k=pickup_app_recommand_download_android_'+format_today+'_'+_this_id+'&v='+rand_num;
+			}
+			
+			if(isiOS || isAndroid){
+				$('#J_ajax_src1').attr('src',app_src1);
+				$('#J_ajax_src2').attr('src',app_src2);
+			}
+			
+			setTimeout(function(){
+				window.location = _this_link;
+			}, 1000);
+		}
+	});
+});
+</script>
+</body>
+</html>
