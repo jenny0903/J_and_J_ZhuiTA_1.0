@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<title>应用推荐</title>
+<style type="text/css">
+html,body,ul,li,i,em,h1,p{
+	margin:0;
+	padding:0;
+}
+ul{
+	list-style: none;
+}
+body{
+	background-color:#EFEFF4;
+}
+ul{
+	border-top:1px solid #C8C7CC;
+	border-bottom:1px solid #C8C7CC;
+	padding:0 7px;
+	background-color:#fff;
+}
+ul > li:first-child{
+	border-bottom:1px solid #C8C7CC;
+}
+li{
+	height:56px;
+	padding:18px 0 0 70px;
+	position:relative;
+}
+h1{
+	font-size:15px;
+	color:#343434;
+	margin-bottom:4px;
+}
+p{
+	font-size:11px;
+	color:#8F8F92;
+}
+i{
+	position:absolute;
+	top:10px;
+	left:8px;
+}
+i img{
+	width:54px;
+	height:54px;
+}
+em{
+	position:absolute;
+	top:23px;
+	right:5px;
+	width:50px;
+	height:24px;
+	border:2px solid #EF3C6B;
+	color:#EF3C6B;
+	line-height:24px;
+	border-radius:13px;
+	font-size:12px;
+	font-style:normal;
+	text-align:center;
+}
+.ajax_hide{
+	height:0;
+	width:0;
+	position:absolute;
+	top:0;
+	left:0;
+}
+</style>
+</head>
+
+<body>
+<ul>
+	<li>
+		<i><img src="360.png" /></i>
+		<h1>360手机助手</h1>
+		<p>数十万款Android软件供您下载。</p>
+		<em>免费</em>
+	</li>
+	<li>
+		<i><img src="dxc.png" /></i>
+		<h1>大象册</h1>
+		<p>让我们的照片在一起。</p>
+		<em>免费</em>
+	</li>
+</ul>
+<img class="ajax_hide" id="J_ajax_src" src="" />
+<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+$('li').bind({
+	'touchstart':function(){
+		var app_i = $(this).index();
+		var rand_num = Math.floor(Math.random() * ( 1000 + 1));
+		var app_src = 'http://vd.ppickup.com/incr.php?k=pickup_downapp_'+app_i+'&v='+rand_num;
+		
+		$('#J_ajax_src').attr('src',app_src);
+		
+		setTimeout(function(){
+			if(app_i == 0){
+				window.location = 'http://openbox.mobilem.360.cn/channel/getUrl?src=cp&app=360box';
+			}else{
+				window.location = 'https://dl.daxiangce123.com/android/daXiangCe.apk';
+			}
+		}, 1000);
+	}
+});
+</script>
+</body>
+</html>
