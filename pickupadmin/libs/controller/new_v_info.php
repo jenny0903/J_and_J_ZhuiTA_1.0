@@ -1,4 +1,7 @@
 <?php
+
+include("../../config/config.php");
+
 if( isset($_POST['v_name']) && $_POST['v_name'] != '' ){
 		$v_name = $_POST['v_name'];
 	}else{
