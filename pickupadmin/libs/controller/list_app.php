@@ -45,10 +45,14 @@ while ($row = mysql_fetch_assoc($result1)){
 }
 //var_dump($list);
 foreach($list as $key=>$value){
-	$id = $value['id']
+	$id = $value['id'];
 	$url = 'k=pickup_app_recommand_download_total_'.$id;
 	$num = file_get_contents('http://vd.ppickup.com/get.php?'.$url);
-	$list[$key]['click_num'] = 10000;
+	if($num == ''){
+		$list[$key]['click_num'] = 0;
+	}else{
+		$list[$key]['click_num'] = $num;
+	}
 }
 
 $data = array(
