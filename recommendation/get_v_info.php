@@ -36,7 +36,7 @@ if($status){
 }else{
 	$sql = "select status from tbl_version where type = $type and v_name ='".$v_name."' and status >=0";
 	$obj_mysql = mysql_query($sql);
-	if(mysql_num_rows($result)>=0){
+	if(mysql_num_rows($obj_mysql)>=0){
 		$result = mysql_fetch_assoc($obj_mysql);
 		$status = $result['status']; //to do 
 		$memcache_obj->set($key, $status, 0, 0);
