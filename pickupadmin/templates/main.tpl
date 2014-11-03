@@ -6,7 +6,12 @@
     </div>
 <script type="text/javascript">
 	$("#J_iframe").load(function(){
-		var mainheight = $(this).contents().find(".inner_main_wrap").height()+6;
+		var location = window.location.href.split('#')[1];
+		if(location == 'app_recommend' || location == 'version_switch'){
+			var mainheight = 1040;
+		}else{
+			var mainheight = $(this).contents().find(".inner_main_wrap").height()+6;
+		}
 		$(this).height(mainheight);
 		if($("#J_alert_wrap").is(':visible')){
 			setTimeout(hideAlert, 1000);
@@ -73,6 +78,12 @@
 				break;
 			case 'forum':
 				$('#J_forum').click();
+				break;
+			case 'app_recommend':
+				$('#J_app_recommend').click();
+				break;
+			case 'version_switch':
+				$('#J_version_switch').click();
 				break;
 		}
 	});

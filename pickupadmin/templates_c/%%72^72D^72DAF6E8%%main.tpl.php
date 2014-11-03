@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2014-09-15 14:38:49
+<?php /* Smarty version 2.6.28, created on 2014-11-03 10:25:56
          compiled from main.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.tpl", 'smarty_include_vars' => array()));
@@ -14,7 +14,12 @@ unset($_smarty_tpl_vars);
     </div>
 <script type="text/javascript">
 	$("#J_iframe").load(function(){
-		var mainheight = $(this).contents().find(".inner_main_wrap").height()+6;
+		var location = window.location.href.split('#')[1];
+		if(location == 'app_recommend' || location == 'version_switch'){
+			var mainheight = 1040;
+		}else{
+			var mainheight = $(this).contents().find(".inner_main_wrap").height()+6;
+		}
 		$(this).height(mainheight);
 		if($("#J_alert_wrap").is(':visible')){
 			setTimeout(hideAlert, 1000);
@@ -81,6 +86,12 @@ unset($_smarty_tpl_vars);
 				break;
 			case 'forum':
 				$('#J_forum').click();
+				break;
+			case 'app_recommend':
+				$('#J_app_recommend').click();
+				break;
+			case 'version_switch':
+				$('#J_version_switch').click();
 				break;
 		}
 	});
