@@ -50,6 +50,7 @@ if (!$connect) {
 	die('Could not connect: ' . mysql_error());
 }
 mysql_select_db($config['mysql_db'],$connect);
+mysql_query("SET NAMES UTF8"); 
 $sql = "update tbl_app set app_name = '$app_name',intro = '$intro',link = '$link' where id=$id";
 $query = mysql_query($sql);
 if(mysql_affected_rows()>=0){
