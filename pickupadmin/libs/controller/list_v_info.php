@@ -1,4 +1,6 @@
 <?php
+include("../../config/config.php");
+
 if(isset($_POST['pos']) && $_POST['pos'] != '' ){
 	$pos = intval($_POST['pos']);
 }else{
