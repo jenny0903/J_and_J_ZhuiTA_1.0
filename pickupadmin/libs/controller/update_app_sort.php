@@ -37,18 +37,18 @@ if (!$connect) {
 mysql_select_db($config['mysql_db'],$connect);
 $sql = "select sort from tbl_app where id = $id";
 $obj_mysql = mysql_query($sql);
-$result = $obj_mysql->result_array();
-$sort = $result[0]['sort'];
+$result = mysql_fetch_assoc($obj_mysql);
+$sort = $result['sort'];
 //echo $sort."...........";
 if($direction == 'up'){
 	$sql = "select sort from tbl_app where sort > $sort order by sort limit 1";
-	$query = $this->db->query($sql);
-	if($query->num_rows() > 0){
-		$result = $query->result_array();
-		$sort = $result[0]['sort'] + 1;
+	$query = mysql_query($sql);
+	if(mysql_num_rows($query) > 0){
+		$result = mysql_fetch_assoc($query);
+		$sort = $result['sort'] + 1;
 		$sql = "update tbl_app set sort=$sort where id=$id";
-		$query = $this->db->query($sql);
-		if($this->db->affected_rows()>0){
+		$query = mysql_query($sql);
+		if(mysql_affected_rows()>0){
 			$data['code'] = 1;
 			$data['data'] = '';
 		}else{  
@@ -61,14 +61,14 @@ if($direction == 'up'){
 	} 
 }else{
 	$sql = "select sort from tbl_app where sort < $sort order by sort desc limit 1";
-	$query = $this->db->query($sql);
-	if($query->num_rows() > 0){
-		$result = $query->result_array();
+	$query = mysql_query($sql);
+	if(mysql_num_rows($query) > 0){
+		$result = mysql_fetch_assoc($query);
 		//var_dump($result);
-		$sort = $result[0]['sort'] - 1;
+		$sort = $result['sort'] - 1;
 		$sql = "update tbl_app set sort=$sort where id=$id";
-		$query = $this->db->query($sql);
-		if($this->db->affected_rows()>0){
+		$query = mysql_query($sql);
+		if(mysql_affected_rows()>0){
 			$data['code'] = 1;
 			$data['data'] = '';
 		}else{  
