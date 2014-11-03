@@ -45,8 +45,9 @@ $id = 1;
 $status = 1;
 $type = 1;
 $v_name =1.11;
-$key = $type."_".$v_name;
 */	
+$key = $type."_".$v_name;
+	
 $link = mysql_connect($config['mysql_host'], $config['mysql_username'], $config['mysql_passwd']);
 if (!$link) {
 	die('Could not connect: ' . mysql_error());
