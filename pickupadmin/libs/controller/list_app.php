@@ -36,24 +36,24 @@ $result1 = mysql_query($sql1);
 $num_rows1 = mysql_num_rows($result1);
 if($num_rows1 >=0){
 	$code = 1;
+	while ($row = mysql_fetch_assoc($result1)){
+		$list[] = $row;
+	}
+	//var_dump($list);
+	foreach($list as $key=>$value){
+		$id = $value['id'];
+		$url = 'k=pickup_app_recommand_download_total_'.$id;
+		$num = file_get_contents('http://vd.ppickup.com/get.php?'.$url);
+		if($num == ''){
+			$list[$key]['click_num'] = 0;
+		}else{
+			$list[$key]['click_num'] = $num;
+		}
+	}
 }else{  
 	$code = 0;
 } 
 
-while ($row = mysql_fetch_assoc($result1)){
-	$list[] = $row;
-}
-//var_dump($list);
-foreach($list as $key=>$value){
-	$id = $value['id'];
-	$url = 'k=pickup_app_recommand_download_total_'.$id;
-	$num = file_get_contents('http://vd.ppickup.com/get.php?'.$url);
-	if($num == ''){
-		$list[$key]['click_num'] = 0;
-	}else{
-		$list[$key]['click_num'] = $num;
-	}
-}
 
 $data = array(
 	'total'		=>	$total,
