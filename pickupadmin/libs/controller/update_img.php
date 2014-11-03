@@ -1,6 +1,5 @@
 <?php
 include("../../config/config.php");
-/*
 if( isset($_POST['id']) && $_POST['id'] != ''){
 	$id = intval($_POST['id']);
 }else{
@@ -10,10 +9,9 @@ if( isset($_POST['id']) && $_POST['id'] != ''){
 	echo json_encode($data);
 	exit;
 }
-*/
-$id = 38;
-//$data_post = file_get_contents($_FILES['FileData']['tmp_name']);
-$data_post = file_get_contents('../../static/images/avatar.jpg');	
+//$id = 5;
+$data_post = file_get_contents($_FILES['FileData']['tmp_name']);
+//$data_post = file_get_contents('../../static/images/avatar.jpg');	
 $status = 1;
 $connect = mysql_connect($config['mysql_host'], $config['mysql_username'], $config['mysql_passwd']);
 if (!$connect) {
@@ -35,7 +33,7 @@ if(mysql_affected_rows()>0){
 		$memcache_obj->set($key, $data_post, 0, 0);
 		$data['code'] = 1;
 		$data['data'] = Array(
-		'fileid' => $this->db->insert_id()
+		'fileid' => $file_id
 		);
 	}else{
 		$data['code'] = 0;
