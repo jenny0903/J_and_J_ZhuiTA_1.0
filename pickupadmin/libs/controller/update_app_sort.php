@@ -41,6 +41,65 @@ $result = mysql_fetch_assoc($obj_mysql);
 $sort = $result['sort'];
 //echo $sort."...........";
 if($direction == 'up'){
+	$sql = "select id,sort from tbl_app where sort > $sort and status = 1 order by sort limit 1";
+	$query = mysql_query($sql);
+	if(mysql_num_rows($query) > 0){
+		$result = mysql_fetch_assoc($query);
+		$sort_up = $result['sort'];
+		$id_up = $result['id'];
+		$sql = "update tbl_app set sort=$sort_up where id=$id";
+		$query = mysql_query($sql);
+		if(mysql_affected_rows()>0){
+			$sql = "update tbl_app set sort=$sort where id=$id_up";
+			//echo $sql;
+			$query =mysql_query($sql);
+			if(mysql_affected_rows()>0){
+				$data['code'] = 1;
+				$data['data'] = '';
+			}else{
+				$data['code'] = 0;
+			$data['data'] = 'update sort fail';
+			}
+		}else{  
+			$data['code'] = 0;
+			$data['data'] = 'update mysql fail';
+		}  
+	}else{  
+		$data['code'] = 0;
+		$data['data'] = '';
+	} 
+}else{
+	$sql = "select id,sort from tbl_app where sort < $sort and status = 1 order by sort desc limit 1";
+	$query = mysql_query($sql);
+	if(mysql_num_rows($query) > 0){
+		$result = mysql_fetch_assoc($query);
+		//var_dump($result);
+		$sort_down = $result['sort'];
+		$id_down = $result['id'];
+		$sql = "update tbl_app set sort=$sort_down where id=$id";
+		$query = mysql_query($sql);
+		if(mysql_affected_rows()>0){
+			$sql = "update tbl_app set sort=$sort where id=$id_down";
+			$query = mysql_query($sql);
+			if(mysql_affected_rows()>0){
+				$data['code'] = 1;
+				$data['data'] = '';
+			}else{
+				$data['code'] = 0;
+				$data['data'] = 'update sort fail';
+			}
+		}else{  
+			$data['code'] = 0;
+			$data['data'] = 'update mysql fail';
+		}  
+	}else{  
+		$data['code'] = 0;
+		$data['data'] = '';
+	} 
+}
+echo json_encode($data);
+/*
+if($direction == 'up'){
 	$sql = "select sort from tbl_app where sort > $sort order by sort limit 1";
 	$query = mysql_query($sql);
 	if(mysql_num_rows($query) > 0){
@@ -81,4 +140,6 @@ if($direction == 'up'){
 	} 
 }
 echo json_encode($data);
+*/
+
 ?>

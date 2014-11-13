@@ -30,6 +30,59 @@ if (!$connect) {
 mysql_select_db($config['mysql_db'],$connect);
 mysql_query("SET NAMES UTF8"); 
 
+if($status == 1){
+	$sql = "update tbl_app set status=$status where id=$id";
+	$query = mysql_query($sql);
+	if(mysql_affected_rows()>0){
+		$sql = "select sort from tbl_app where status = 1 order by sort desc limit 1";
+		$query = mysql_query($sql);
+		if(mysql_num_rows($query)>0){
+			$result = mysql_fetch_assoc($query);
+			$sort = $result['sort'];
+			$sort = $sort + 1;
+			$sql = "update tbl_app set sort = $sort where id = $id";
+			$query = mysql_query($sql);
+			if(mysql_affected_rows()>0){
+				$data['code'] = 1;
+				$data['data'] = '';
+			}else{
+				$data['code'] = 0;
+				$data['data'] = 'update mysql fail';
+			}
+		}else{
+			$sort = 0;
+			$sql = "update tbl_app set sort = $sort where id = $id";
+			$query = mysql_query($sql);
+			if(mysql_affected_rows()>0){
+				$data['code'] = 1;
+				$data['data'] = '';
+			}else{
+				$data['code'] = 0;
+				$data['data'] = 'update mysql fail';
+			}
+		}
+	}else{  
+		$data['code'] = 0;
+		$data['data'] = 'update mysql fail';
+	}  
+}else{
+	$sql = "update tbl_app set status=$status where id=$id";
+	$query = mysql_query($sql);
+	if(mysql_affected_rows()>0){
+		$data['code'] = 1;
+		$data['data'] = '';
+	}else{  
+		$data['code'] = 0;
+		$data['data'] = 'update mysql fail';
+	}  
+}
+header("Content-type: application/json");		
+echo json_encode($data);
+exit;
+
+
+
+/*
 $sql = "update tbl_app set status=$status where id=$id";
 $query = mysql_query($sql);
 if(mysql_affected_rows()>0){
@@ -43,4 +96,5 @@ if(mysql_affected_rows()>0){
 header("Content-type: application/json");		
 echo json_encode($data);
 exit;
+*/
 ?>

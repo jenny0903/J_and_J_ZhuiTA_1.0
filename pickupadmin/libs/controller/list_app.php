@@ -30,6 +30,14 @@ if($num_rows >=0){
 	$total = 0;
 }  
 
+$sql = "select count(*) as o from tbl_app where status = 1";
+$obj_mysql = mysql_query($sql);
+if(mysql_num_rows($obj_mysql)>0){
+	$row = mysql_fetch_assoc($obj_mysql);
+	$total_on = $row['o'];
+}else{  
+	$total_on = 0;
+}
 
 $sql1 = "select id,app_name,status from tbl_app where status = 0 or status = 1 order by status desc,sort desc,id desc limit $pos,$limit";
 $result1 = mysql_query($sql1);
@@ -57,6 +65,7 @@ if($num_rows1 >=0){
 
 $data = array(
 	'total'		=>	$total,
+	'total_on'  =>  $total_on,
 	'list'		=>	$list
 );
 $res = array(

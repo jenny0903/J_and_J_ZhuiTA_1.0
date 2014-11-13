@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2014-11-03 12:00:55
+<?php /* Smarty version 2.6.28, created on 2014-11-13 17:52:52
          compiled from list_app.tpl */ ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -624,11 +624,9 @@ $('#J_add_area').die().live('click',function(){
 	$('#J_real_file').click();
 });
 var img_index,img_index2;
-// $('#J_real_file').die().live('click',function(){
 function fileInfo(source){	
 	var ireg = /image\/.*/i;
 	var file = source.files[0];
-	// var file = $('#J_real_file').files[0];
 	var name = file.name;
 	var size = file.size;
 	var type = file.type;
@@ -651,12 +649,10 @@ function fileInfo(source){
 		} 
 	}
 	new_flag.check_btn();
-}
-// $('#J_real_file2').die().live('click',function(){
+};
 function fileInfo2(source){	
 	var ireg = /image\/.*/i;
 	var file = source.files[0];
-	//var file = $('#J_real_file2').files[0];
 	var name = file.name;
 	var size = file.size;
 	var type = file.type;
@@ -679,7 +675,7 @@ function fileInfo2(source){
 		} 
 	}
 	edit_flag.check_btn();
-}
+};
 
 var app = {
 	list_pos : 0,
@@ -706,6 +702,7 @@ var app = {
 					self.list_pos = new_pos;
 					
 					var list_total = data.data.total;
+					var list_total_on = data.data.total_on;
 					var page_max = Math.ceil(list_total/self.list_limit);
 					
 					var list_num = new_pos;
@@ -723,10 +720,12 @@ var app = {
 							
 						if(list_num == 1){
 							action = '<a href="javascript:;" class="pos_down">向下<i class="icon_up_down icon_down"></i></a>';
-						}else if(list_num == list_total){
+						}else if(list_num == list_total_on){
 							action = '<a href="javascript:;" class="pos_up">向上<i class="icon_up_down icon_up"></i></a>';
-						}else{
+						}else if(list_num < list_total_on){
 							action = '<a href="javascript:;" class="pos_up">向上<i class="icon_up_down icon_up"></i></a><a href="javascript:;" class="pos_down">向下<i class="icon_up_down icon_down"></i></a>';
+						}else{
+							action = '';
 						}
 						
 						if(list_status_code == 1){
@@ -1060,6 +1059,7 @@ $('#J_app_list .change').die().live('click',function(){
 				}else{
 					this_change_btn.text('上架');
 				}
+				app.list_app(app.list_page);
 			}else{
 				showAlert('修改应用推荐状态失败！');
 				setTimeout(hideAlert, 1000);
@@ -1100,7 +1100,7 @@ $('#J_app_list .delete').die().live('click',function(){
 });
 
 $('#J_save_app').die().live('click',function(){
-	if(edit_flag.btn){
+	if(new_flag.btn){
 		showLoading();
 		upload_img('new','');
 	}
@@ -1125,7 +1125,6 @@ $('.page_wrap a').die().live('click',function(){
 });
 $(document).ready(function(){
 	app.list_app(1);
-	// $('body').append(tpl.edit_app_wrap);
 });
 </script>
 </html>
