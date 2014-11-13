@@ -56,7 +56,7 @@
 				<a class="menu1_title" href="javascript:;" id="J_version_switch">应用推荐版本开关</a>
             </li>
 			<li>
-				<a href="app_view_count.php" target="_blank" id="J_version_switch">应用推荐浏览量</a>
+				<a href="app_view_count.php" target="_blank">应用推荐浏览量</a>
             </li>
             <li>
             	<a href="/pickupadmin/libs/controller/logout.php">登出</a>

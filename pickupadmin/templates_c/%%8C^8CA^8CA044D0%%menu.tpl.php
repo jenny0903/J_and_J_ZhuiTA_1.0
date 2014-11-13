@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2014-11-03 10:34:36
+<?php /* Smarty version 2.6.28, created on 2014-11-13 17:06:07
          compiled from menu.tpl */ ?>
 	<div class="menu_wrap">
     	<ul class="menu1" id="J_menu1">
@@ -52,10 +52,13 @@
 				<a class="menu1_title" href="javascript:;" id="J_forum">追吧</a>
             </li>
 			<li>
-				<a class="menu1_title" href="list_app.php" id="J_app_recommend">应用推荐管理</a>
+				<a href="list_app.php" id="J_app_recommend">应用推荐管理</a>
             </li>
 			<li>
 				<a class="menu1_title" href="javascript:;" id="J_version_switch">应用推荐版本开关</a>
+            </li>
+			<li>
+				<a href="app_view_count.php" target="_blank">应用推荐浏览量</a>
             </li>
             <li>
             	<a href="/pickupadmin/libs/controller/logout.php">登出</a>

@@ -70,7 +70,7 @@ foreach($detail_array as $key=>$value){
 		// var_dump($reply);
 		if(isset($reply['code']) && $reply['code'] == 21904){//error
 			array();
-			$detail_array[$key]['title'] = '（帖子已被删）';
+			$detail_array[$key]['title'] = '（回复已被删）';
 		}else{
 			$detail_array[$key]['title'] = $reply['content'];
 		}

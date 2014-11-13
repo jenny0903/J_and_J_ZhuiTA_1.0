@@ -1504,6 +1504,16 @@ label{
 }
 
 /*追吧*/
+.forum_action{
+	height:40px;
+	line-height:30px;
+}
+.forum_part{
+	margin-top:10px;
+}
+.forum_action span{
+	float:left;
+}
 .forum ul li{
 	line-height:40px;
 	max-height:100px;
@@ -1512,6 +1522,7 @@ label{
 	border-color: #FFFFFF #FAFAFA #E9EAEA;	
 	text-align:center;
 	overflow:hidden;
+	position:relative;
 }
 .forum ul .title{
 	font-weight:bold;
@@ -1521,27 +1532,35 @@ label{
 .forum .complain_page_wrap{
 	margin:20px 0;
 }
-.forum ul li *{
+.forum ul li .operation a{
+	display:inline-block;
+}
+.forum ul li .report_select,
+.forum ul li .post_title,
+.forum ul li .operation a,
+.forum ul li span{	height:20px;
 	height:20px;
 	padding:10px 0;
 	word-wrap:break-word;
 }
 .forum ul li .num{
+	margin-left:40px;
 	display:inline-block;
 	height:40px;
-	width:35px;
+	width:50px;
 	float:left;
 }
 .forum ul li .report_content{
 	display:inline-block;
 	height:40px;
-	width:35px;
+	width:50px;
 	float:left;
+	margin-left:20px;
 }
 .forum ul li .memo{
 	display:inline-block;
 	height:40px;
-	width:80px;
+	width:160px;
 	float:left;
 }
 .forum ul li .created_date{
@@ -1555,6 +1574,7 @@ label{
 	height:40px;
 	width:55px;
 	float:left;
+	padding-left:30px;
 }
 .forum ul li .is_essence{
 	display:inline-block;
@@ -1565,11 +1585,11 @@ label{
 .forum ul li .operation{
 	display:inline-block;
 	height:40px;
-	width:280px;
+	width:220px;
 	float:left;
 	line-height:40px;
 	text-align:center;
-	margin-left:3px;
+	margin-left:10px;
 	padding:0px;
 }
 .forum ul li span.delete_report {
@@ -1584,13 +1604,14 @@ label{
 	width:33px;
 	float:left;
 	margin-left:10px;
+	padding-left:25px;
 }
 .forum ul li span.delete_gag {
 	display:inline-block;
 	height:40px;
-	width:20px;
+	width:80px;
 	float:left;
-	margin-left:3px;
+	margin-left:10px;
 }
 .forum ul li span.set_essence {
 	display:inline-block;
@@ -1629,11 +1650,14 @@ label{
 .reply_info ul li{
 	height:45px;
 }
+.reply_info{
+	margin-top:20px;
+}
 .post_info ul li{
 	height:45px;
 }
 .forum ul li span.report_content{
-	width:35px;
+	width:50px;
 	text-decoration:none;
 }
 .forum ul li.title  span.operation{
@@ -1646,6 +1670,47 @@ label{
     overflow: hidden;
     text-overflow: ellipsis;
 }
+#J_post_back{
+	float:left;
+	margin-left:390px;
+}
+.forum_action .btn{
+	height:30px;
+	line-height:30px;
+	width:50px;
+	float:left;
+	margin:0 10px;
+}
+.forum_action .btn#J_delete_reply{
+	width:80px;
+}
+input.report_select{
+	position:absolute;
+	left:10px;
+	top:61px;
+	width:13px;
+	height:13px;
+}
+.post_operation{
+	height:70px;
+}
+a#set_essence{
+	float:left;
+}
+a#delete_essence{
+	float:left;
+}
+a#set_top{
+	float:left;
+	margin-left:40px;
+}
+select.user_status{
+	width:80px;
+	margin-top:20px;
+	float:left;
+	margin-left:15px;
+}
+
 /* PK市场 */
 .pk_list .list_result{
 	margin:40px 0 20px;
