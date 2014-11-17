@@ -20,16 +20,16 @@ if( isset($_GET['v_name']) && $_GET['v_name'] != '' ){
 }
 
 $key = $type."_".$v_name;
-$link = mysql_connect('10.32.1.6', 'root', 'root');
+$link = mysql_connect($config['mysql_host'], $config['mysql_username'], $config['mysql_passwd']);
 if (!$link) {
 	die('Could not connect: ' . mysql_error());
 }
-mysql_select_db('pickup_web',$link);
+mysql_select_db($config['mysql_db'],$link);
 mysql_query("SET NAMES UTF8"); 
 //test memcache
 // save test = 1
 $memcache_obj = new Memcache;
-$memcache_obj->pconnect('tcp://127.0.0.1', 11211);
+$memcache_obj->pconnect($config['memcache_server'], 11211);
 $status = $memcache_obj->get($key);
 if($status){
 	echo $status;

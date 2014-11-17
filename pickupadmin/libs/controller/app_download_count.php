@@ -1,4 +1,6 @@
 <?php
+include("../../config/config.php");
+
 if( isset($_POST['id']) && $_POST['id'] != ''){
 	$id = intval($_POST['id']);
 }else{
@@ -23,8 +25,8 @@ for($i=0;$i<$reporting_day_num;$i++){
 		//$date[] = $date;
 		
 		//ios
-		$url = 'k=pickup_app_recommand_download_ios_'.$reporting_date.'_'.$id;
-		$num_ios = file_get_contents('http://vd.ppickup.com/get.php?'.$url);
+		$url = 'pickup_app_recommand_download_ios_'.$reporting_date.'_'.$id;
+		$num_ios = file_get_contents($config['app_recommend_key'].$url);
 		if($num_ios == ''){
 			$num_ios = 0;
 		}
@@ -32,8 +34,8 @@ for($i=0;$i<$reporting_day_num;$i++){
 		array_unshift($num_ios_array,$num_ios);
 		
 		//android
-		$url = 'k=pickup_app_recommand_download_android_'.$reporting_date.'_'.$id;
-		$num_android = file_get_contents('http://vd.ppickup.com/get.php?'.$url);
+		$url = 'pickup_app_recommand_download_android_'.$reporting_date.'_'.$id;
+		$num_android = file_get_contents($config['app_recommend_key'].$url);
 		if($num_android == ''){
 			$num_android = 0;
 		}
@@ -48,8 +50,8 @@ for($i=0;$i<$reporting_day_num;$i++){
 		array_unshift($date,$reporting_date);
 		
 		//ios
-		$url = 'k=pickup_app_recommand_download_ios_'.$reporting_date.'_'.$id;
-		$num_ios = file_get_contents('http://vd.ppickup.com/get.php?'.$url);
+		$url = 'pickup_app_recommand_download_ios_'.$reporting_date.'_'.$id;
+		$num_ios = file_get_contents($config['app_recommend_key'].$url);
 		if($num_ios == ''){
 			$num_ios = 0;
 		}
@@ -57,8 +59,8 @@ for($i=0;$i<$reporting_day_num;$i++){
 		array_unshift($num_ios_array,$num_ios);
 		
 		//android
-		$url = 'k=pickup_app_recommand_download_android_'.$reporting_date.'_'.$id;
-		$num_android = file_get_contents('http://vd.ppickup.com/get.php?'.$url);
+		$url = 'pickup_app_recommand_download_android_'.$reporting_date.'_'.$id;
+		$num_android = file_get_contents($config['app_recommend_key'].$url);
 		if($num_android == ''){
 			$num_android = 0;
 		}

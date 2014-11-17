@@ -11,13 +11,13 @@ $lifeTime = 2*60*60;
 setcookie(session_name(), session_id(), time() + $lifeTime, "/"); 
 
 $config['memcache_server'] = 'tcp://127.0.0.1';//in
-
+$config['app_recommend_key'] = 'http://vd.ppickup.com/get.php?k=';
 
 define("URL_PICKUP_API","http://122.226.73.141:9191");//v2.0 out
 define("URL_PICKUP_API_DOWNLOAD","http://122.226.73.141:8080");//v2.0 out 下载
 
 // define("URL_PICKUP_API","http://api2.ppickup.com/2.0");//v2.0 live 
-
+//$config['app_recommend_key'] = 'http://vd.ppickup.com/get.php?k=live_';
 // define("URL_PICKUP_API","http://10.232.24.53:9191");//v2.0 live
 // define("URL_PICKUP_API_DOWNLOAD","http://dl2.ppickup.com");//v2.0 LIVE 下载
 
@@ -38,6 +38,13 @@ switch($mysql_switch){
 		$config['mysql_host'] = '10.32.1.6';
 		$config['mysql_username'] = 'root';
 		$config['mysql_passwd'] = 'root';
+		$config['mysql_db'] = 'pickup_web';
+		$config['dbdriver'] = 'pdo';
+		break;
+	case 2: // live
+		$config['mysql_host'] = '10.66.109.108:3306';
+		$config['mysql_username'] = 'pickupweb';
+		$config['mysql_passwd'] = '2ycV2f9q';
 		$config['mysql_db'] = 'pickup_web';
 		$config['dbdriver'] = 'pdo';
 		break;
