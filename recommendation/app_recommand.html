@@ -76,18 +76,6 @@ em{
 
 <body>
 <ul id="J_app_list">
-<!--	<li>
-		<i><img src="360.png" /></i>
-		<h1>360手机助手</h1>
-		<p>数十万款Android软件供您下载。</p>
-		<em>免费</em>
-	</li>
-	<li>
-		<i><img src="dxc.png" /></i>
-		<h1>大象册</h1>
-		<p>让我们的照片在一起。</p>
-		<em>免费</em>
-	</li>-->
 </ul>
 <img class="ajax_hide" id="J_ajax_src1" src="" />
 <img class="ajax_hide" id="J_ajax_src2" src="" />
@@ -125,13 +113,13 @@ $(document).ready(function(){
 	var format_today = getToday();
 	if(isiOS){
 		var rand_num = Math.floor(Math.random() * ( 1000 + 1));
-		var app_src = 'http://vd.ppickup.com/incr.php?k=pickup_app_recommand_view_ios_'+format_today+'&v='+rand_num;
+		var app_src = 'http://vd.ppickup.com/incr.php?k=live_pickup_app_recommand_view_ios_'+format_today+'&v='+rand_num;
 		
 		$('#J_ajax_src1').attr('src',app_src);
 	}
 	if(isAndroid){
 		var rand_num = Math.floor(Math.random() * ( 1000 + 1));
-		var app_src = 'http://vd.ppickup.com/incr.php?k=pickup_app_recommand_view_android_'+format_today+'&v='+rand_num;
+		var app_src = 'http://vd.ppickup.com/incr.php?k=live_pickup_app_recommand_view_android_'+format_today+'&v='+rand_num;
 		
 		$('#J_ajax_src1').attr('src',app_src);
 	}
@@ -169,14 +157,14 @@ $(document).ready(function(){
 			var _this_link = $(this).attr('data-link');
 			
 			var rand_num = Math.floor(Math.random() * ( 1000 + 1));
-			var app_src1 = 'http://vd.ppickup.com/incr.php?k=pickup_app_recommand_download_total_'+_this_id+'&v='+rand_num;
+			var app_src1 = 'http://vd.ppickup.com/incr.php?k=live_pickup_app_recommand_download_total_'+_this_id+'&v='+rand_num;
 			
 			if(isiOS){
-				var app_src2 = 'http://vd.ppickup.com/incr.php?k=pickup_app_recommand_download_ios_'+format_today+'_'+_this_id+'&v='+rand_num;
+				var app_src2 = 'http://vd.ppickup.com/incr.php?k=live_pickup_app_recommand_download_ios_'+format_today+'_'+_this_id+'&v='+rand_num;
 			}
 			
 			if(isAndroid){
-				var app_src2 = 'http://vd.ppickup.com/incr.php?k=pickup_app_recommand_download_android_'+format_today+'_'+_this_id+'&v='+rand_num;
+				var app_src2 = 'http://vd.ppickup.com/incr.php?k=live_pickup_app_recommand_download_android_'+format_today+'_'+_this_id+'&v='+rand_num;
 			}
 			
 			if(isiOS || isAndroid){
