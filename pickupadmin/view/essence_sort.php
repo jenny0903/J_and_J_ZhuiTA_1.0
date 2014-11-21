@@ -7,27 +7,15 @@
 </head>
 
 <body>
-	 <div class="inner_main_wrap forum">
-		<div class="forum_action">
-        	<span>批量操作</span>
-            <a class="btn" href="javascript:;" id="J_select_all">全选</a>
-            <a class="btn" href="javascript:;" id="J_list_pass">通过</a>
-            <a class="btn" href="javascript:;" id="J_delete_reply">删除回复</a>
-            <a class="btn" href="javascript:;" id="J_delete_post">删帖</a>
-        </div>
-		<div class="forum_part">
-			<ul id="J_forum">
+	 <div class="inner_main_wrap essence_sort">
+		<div class="essence_sort_part">
+			<ul id="essence_sort">
 				<li class="title">
 					<span class="num">编号</span>
 					<span class="report_content">内容</span>
-					<span class="memo">举报备注</span>
-					<span class="created_date">举报时间</span>
-				<!--<span class="is_gag">已禁言</span>
-					<span class="is_essence">已精华</span>
-				-->
 					<span class="operation">操作</span>
-				<!--<span class="change_sort">排序</span>
-				-->
+					<span class="change_sort">排序</span>
+			
 				</li>
 			<li>
 

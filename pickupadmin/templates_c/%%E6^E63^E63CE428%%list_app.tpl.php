@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2014-11-13 17:52:52
+<?php /* Smarty version 2.6.28, created on 2014-11-21 16:48:23
          compiled from list_app.tpl */ ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -71,6 +71,10 @@
 			<li>
 				<a href="app_view_count.php" target="_blank" id="J_version_switch">应用推荐浏览量</a>
             </li>
+			<!--<li>
+				<a class="menu1_title" href="main.php#essence_sort" id="J_essence_sort">追吧</a>
+            </li>
+			-->
             <li>
             	<a href="/pickupadmin/libs/controller/logout.php">登出</a>
             </li>

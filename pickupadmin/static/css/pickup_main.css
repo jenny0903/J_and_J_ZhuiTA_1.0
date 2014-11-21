@@ -1585,13 +1585,21 @@ label{
 .forum ul li .operation{
 	display:inline-block;
 	height:40px;
-	width:220px;
+	width:229px;
 	float:left;
 	line-height:40px;
 	text-align:center;
 	margin-left:10px;
 	padding:0px;
 }
+/*
+.forum ul li .change_sort{
+	display:inline-block;
+	height:40px;
+	width:60px;
+	float:left;
+}
+*/
 .forum ul li span.delete_report {
 	display:inline-block;
 	height:40px;
@@ -1654,7 +1662,7 @@ label{
 	margin-top:20px;
 }
 .post_info ul li{
-	height:45px;
+	margin:20px 0;
 }
 .forum ul li span.report_content{
 	width:50px;
@@ -1672,7 +1680,6 @@ label{
 }
 #J_post_back{
 	float:left;
-	margin-left:390px;
 }
 .forum_action .btn{
 	height:30px;
@@ -1704,11 +1711,15 @@ a#set_top{
 	float:left;
 	margin-left:40px;
 }
+a#delete_top{
+	float:left;
+	margin-left:40px;
+}
 select.user_status{
 	width:80px;
 	margin-top:20px;
 	float:left;
-	margin-left:15px;
+	margin-left:33px;
 }
 
 /* PK市场 */

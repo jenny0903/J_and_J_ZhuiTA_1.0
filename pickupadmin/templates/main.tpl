@@ -85,6 +85,9 @@
 			case 'version_switch':
 				$('#J_version_switch').click();
 				break;
+			case 'essence_sort':
+				$('#J_essence_sort').click();
+				break;
 		}
 	});
 </script>

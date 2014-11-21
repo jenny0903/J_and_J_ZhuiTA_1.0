@@ -452,12 +452,18 @@ var tpl_button_essence_on = [
 var tpl_button_essence_off = [
 	'<a href="javascript:;" class="btn" id="delete_essence">删除精华</a>',
 ].join('');	
+var tpl_button_top_on = [
+	'<a href="javascript:;" class="btn" id="set_top">置顶</a>',
+].join('');	
+var tpl_button_top_off = [
+	'<a href="javascript:;" class="btn" id="delete_top">取消置顶</a>',
+].join('');	
 var tpl_post_info = [
 		'<div class="blockUIwhite blockUIuserInfo" id="J_post_info_wrap">',
 			'<div class="inner_main_wrap forum_post">',
 				'<div class="post_operation">',
 					//'<a href="javascript:;" class="btn" id="set_essence">精华</a>',
-					'<a href="javascript:;" class="btn" id="set_top">置顶</a>',
+					//'<a href="javascript:;" class="btn" id="set_top">置顶</a>',
 					'<a href="javascript:;" class="btn" id="J_post_back">返回</a>',
 				'</div>',
 				'<div class="post_info">',
@@ -495,6 +501,10 @@ var tpl_post_info = [
 							'<span id="post_content"></span>',
 						'</li>',
 					'</ul>',
+				'</div>',
+				'<div class="set_post">',
+					//'<a href="javascript:;" class="btn" id="set_essence">精华</a>',
+					//'<a href="javascript:;" class="btn" id="set_top">置顶</a>',
 				'</div>',
 			'</div>',	
 		'</div>'

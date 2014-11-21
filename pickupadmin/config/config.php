@@ -11,7 +11,7 @@ $lifeTime = 2*60*60;
 setcookie(session_name(), session_id(), time() + $lifeTime, "/"); 
 
 $config['memcache_server'] = 'tcp://127.0.0.1';//in
-$config['app_recommend_key'] = 'http://vd.ppickup.com/get.php?k=';
+$config['app_recommend_key'] = 'http://vd.ppickup.com/get.php?k=live_';
 
 define("URL_PICKUP_API","http://122.226.73.141:9191");//v2.0 out
 define("URL_PICKUP_API_DOWNLOAD","http://122.226.73.141:8080");//v2.0 out 下载
@@ -25,7 +25,7 @@ define("URL_PICKUP_API_DOWNLOAD","http://122.226.73.141:8080");//v2.0 out 下载
 // define("URL_PICKUP_API","http://10.32.100.4:6868");//v1.0
 // define("URL_PICKUP_API","http://localhost:6868");
 
-$mysql_switch = 1;
+$mysql_switch = 2;
 switch($mysql_switch){
 	case 0: // localhost
 		$config['mysql_host'] = 'mysql:dbname=test;host=localhost';

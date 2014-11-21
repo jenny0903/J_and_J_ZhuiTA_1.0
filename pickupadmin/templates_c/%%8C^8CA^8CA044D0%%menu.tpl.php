@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2014-11-13 17:06:07
+<?php /* Smarty version 2.6.28, created on 2014-11-21 16:47:39
          compiled from menu.tpl */ ?>
 	<div class="menu_wrap">
     	<ul class="menu1" id="J_menu1">
@@ -60,6 +60,10 @@
 			<li>
 				<a href="app_view_count.php" target="_blank">应用推荐浏览量</a>
             </li>
+			<!--<li>
+				<a class="menu1_title" href="javascript:;" id="J_essence_sort">精华贴子排序</a>
+			</li>
+			-->
             <li>
             	<a href="/pickupadmin/libs/controller/logout.php">登出</a>
             </li>
@@ -101,6 +105,7 @@
 				case 13:
 				case 14:
 				case 15:
+				case 16:
 					$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 					$(this).next().stop().slideDown('fast');
 					$(this).addClass('a_cur');
@@ -137,6 +142,7 @@
 				case 13:
 				case 14:
 				case 15:
+				case 16:
 					$(this).addClass('a_cur');
 					break;
 			}
@@ -166,7 +172,7 @@
 		});
 		$('#J_search_user').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#user_search';
-			if(menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==14||menu_flag==15){
+			if(menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==14||menu_flag==15||menu_flag==16){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			menu_flag = 2;
@@ -174,7 +180,7 @@
 		});
 		$('#J_complain').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#photo_check';
-			if(menu_flag==2||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==14||menu_flag==15){
+			if(menu_flag==2||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==14||menu_flag==15||menu_flag==16){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 3){
@@ -184,7 +190,7 @@
 		});
 		$('#J_send_message').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#send_message';
-			if(menu_flag==2||menu_flag==3||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==14||menu_flag==15){
+			if(menu_flag==2||menu_flag==3||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==14||menu_flag==15||menu_flag==16){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 4){
@@ -194,7 +200,7 @@
 		});
 		$('#J_notice_menu').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#manage_notice';
-			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==14||menu_flag==15){
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==14||menu_flag==15||menu_flag==16){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 5){
@@ -204,7 +210,7 @@
 		});
 		$('#J_gift_menu').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#manage_gift';
-			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==14||menu_flag==15){
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==14||menu_flag==15||menu_flag==16){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 6){
@@ -214,7 +220,7 @@
 		});
 		$('#J_exchange_items').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#exchange_items';
-			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==14||menu_flag==15){
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==14||menu_flag==15||menu_flag==16){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 7){
@@ -224,7 +230,7 @@
 		});
 		$('#J_exchange_orders').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#exchange_orders';
-			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==14||menu_flag==15){
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==14||menu_flag==15||menu_flag==16){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 8){
@@ -234,7 +240,7 @@
 		});
 		$('#J_user_feedback').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#user_feedback';
-			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==14||menu_flag==15){
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==14||menu_flag==15||menu_flag==16){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 9){
@@ -256,7 +262,7 @@
 		*/
 		$('#J_pk_list').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#manage_pk';
-			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==14||menu_flag==15){
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==14||menu_flag==15||menu_flag==16){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 10){
@@ -266,7 +272,7 @@
 		});
 		$('#J_pk_rank').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#manage_pk';
-			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==12||menu_flag==13||menu_flag==14||menu_flag==15){
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==12||menu_flag==13||menu_flag==14||menu_flag==15||menu_flag==16){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 11){
@@ -276,7 +282,7 @@
 		});
 		$('#J_recommend_users').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#recommend_users';
-			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==13||menu_flag==14||menu_flag==15){
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==13||menu_flag==14||menu_flag==15||menu_flag==16){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 12){
@@ -286,7 +292,7 @@
 		});
 		$('#J_forum').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#forum';
-			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==14||menu_flag==15){
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==14||menu_flag==15||menu_flag==16){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 13){
@@ -297,7 +303,7 @@
 		
 		/*$('#J_app_recommend').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#app_recommend';
-			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==15){
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==15||menu_flag==16){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 14){
@@ -308,7 +314,18 @@
 		
 		$('#J_version_switch').click(function(){
 			window.location.href=window.location.href.split('#')[0]+'#version_switch';
-			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==14){
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==14||menu_flag==16){
+				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
+			}
+			if(menu_flag != 15){
+				$('#J_iframe').attr('src','view/version_switch.html');
+			}
+			menu_flag = 15;
+		});
+		
+		$('#J_essence_sort').click(function(){
+			window.location.href=window.location.href.split('#')[0]+'#essence_sort';
+			if(menu_flag==2||menu_flag==3||menu_flag==4||menu_flag==5||menu_flag==6||menu_flag==7||menu_flag==8||menu_flag==9||menu_flag==10||menu_flag==11||menu_flag==12||menu_flag==13||menu_flag==14||menu_flag==15){
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 15){

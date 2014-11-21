@@ -2,7 +2,7 @@
 header("Content-type: text/html; charset=utf-8");
 
 $config['memcache_server'] = 'tcp://127.0.0.1';//in
-$mysql_switch = 1;
+$mysql_switch = 2;
 switch($mysql_switch){
 	case 0: // localhost
 		$config['mysql_host'] = 'mysql:dbname=test;host=localhost';

@@ -463,7 +463,7 @@ var forum = {
 				var post_flag =data.flag;
 				var created_time =data.created_time;
 				var reply_last_updated =data.reply_last_updated;
-				
+				var top_is = data.sticky;
 				$('#post_id').text(post_id);
 				$('#post_user').text(post_user);
 				$('#post_title').text(post_title);
@@ -472,11 +472,18 @@ var forum = {
 				$('#post_flag').text(post_flag);
 				$('#created_time').text(created_time);
 				$('#reply_last_updated').text(reply_last_updated);
-				//if($('#set_top').prev().length == 0){
 					if (essence_is == 1){
-						$('#set_top').before(tpl_button_essence_on);
+						//$('#set_top').before(tpl_button_essence_on);
+						$('.post_info').append(tpl_button_essence_off);
 					}else{
-						$('#set_top').before(tpl_button_essence_off);
+						//$('#set_top').before(tpl_button_essence_off);
+						$('.post_info').append(tpl_button_essence_on);
+					}
+					
+					if (top_is == 1){
+						$('.post_info').append(tpl_button_top_off);
+					}else{
+						$('.post_info').append(tpl_button_top_on);
 					}
 				//}
 				var list_h = $(".forum").height();
@@ -604,6 +611,14 @@ function operationUser(_this_li,type){
 			var operation_url=ajax_main_path+'libs/controller/delete_essence.php';
 			var id =$('#post_id').text();
 			break;
+		case 'set_top':
+			var operation_url=ajax_main_path+'libs/controller/set_top.php';
+			var id =$('#post_id').text();
+			break;
+		case 'delete_top':
+			var operation_url=ajax_main_path+'libs/controller/delete_top.php';
+			var id =$('#post_id').text();
+			break;
 	}
 	
 	if(window.parent.$("#J_loading_wrap").length==0){
@@ -678,7 +693,11 @@ function operationUser(_this_li,type){
 							window.parent.$("#J_alert_wrap").show();							
 						}
 						$('#set_essence').remove();
-						$('#set_top').before(tpl_button_essence_off);
+						if($('#set_top').length>0){
+							$('#set_top').before(tpl_button_essence_off);
+						}else{
+							$('#delete_top').before(tpl_button_essence_off);
+						}
 						setTimeout(hideAlert, 1000);
 						break;
 					case 'delete_essence':
@@ -690,7 +709,43 @@ function operationUser(_this_li,type){
 							window.parent.$("#J_alert_wrap").show();							
 						}
 						$('#delete_essence').remove();
-						$('#set_top').before(tpl_button_essence_on);
+						if($('#set_top').length>0){
+							$('#set_top').before(tpl_button_essence_on);
+						}else{
+							$('#delete_top').before(tpl_button_essence_on);
+						}
+						setTimeout(hideAlert, 1000);
+						break;
+					case 'set_top':
+						if(window.parent.$("#J_alert_wrap").length==0){
+							window.parent.$('body').append(tpl.alert_box);
+							window.parent.$("#J_alert_wrap .alert_content").text('操作成功！');
+						}else{
+							window.parent.$("#J_alert_wrap .alert_content").text('操作成功！');
+							window.parent.$("#J_alert_wrap").show();							
+						}
+						$('#set_top').remove();
+						if($('#set_essence').length>0){
+							$('#set_essence').after(tpl_button_top_off);
+						}else{
+							$('#delete_essence').after(tpl_button_top_off);
+						}
+						setTimeout(hideAlert, 1000);
+						break;
+					case 'delete_top':
+						if(window.parent.$("#J_alert_wrap").length==0){
+							window.parent.$('body').append(tpl.alert_box);
+							window.parent.$("#J_alert_wrap .alert_content").text('操作成功！');
+						}else{
+							window.parent.$("#J_alert_wrap .alert_content").text('操作成功！');
+							window.parent.$("#J_alert_wrap").show();							
+						}
+						$('#delete_top').remove();
+						if($('#set_essence').length>0){
+							$('#set_essence').after(tpl_button_top_on);
+						}else{
+							$('#delete_essence').after(tpl_button_top_on);
+						}
 						setTimeout(hideAlert, 1000);
 						break;
 				}
@@ -899,6 +954,21 @@ $('#delete_essence').die().live('click',function(){
 	
 	//forum.delete_essence(_this_li);
 	operationUser('','delete_essence');
+	
+});
+$('#delete_top').die().live('click',function(){
+	// var _this = $(this);
+	// var _this_li = _this.parents('li');
+	//forum.set_essence(_this_li);
+	operationUser('','delete_top');
+	
+});
+$('#set_top').die().live('click',function(){
+	// var _this = $(this);
+	// var _this_li = _this.parents('li');
+	
+	//forum.delete_essence(_this_li);
+	operationUser('','set_top');
 	
 });
 $('.complain_page_wrap a').die().live('click',function(){

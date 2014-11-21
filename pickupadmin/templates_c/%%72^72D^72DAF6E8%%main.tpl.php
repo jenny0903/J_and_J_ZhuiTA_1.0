@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2014-11-03 10:25:56
+<?php /* Smarty version 2.6.28, created on 2014-11-21 16:22:42
          compiled from main.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.tpl", 'smarty_include_vars' => array()));
@@ -92,6 +92,9 @@ unset($_smarty_tpl_vars);
 				break;
 			case 'version_switch':
 				$('#J_version_switch').click();
+				break;
+			case 'essence_sort':
+				$('#J_essence_sort').click();
 				break;
 		}
 	});
