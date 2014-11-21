@@ -721,7 +721,11 @@ var app = {
 						list_status_code = app_list[app_list_i].status;
 							
 						if(list_num == 1){
-							action = '<a href="javascript:;" class="pos_down">向下<i class="icon_up_down icon_down"></i></a>';
+							if(list_total_on < 2){
+								action = '';
+							}else{
+								action = '<a href="javascript:;" class="pos_down">向下<i class="icon_up_down icon_down"></i></a>';
+							}
 						}else if(list_num == list_total_on){
 							action = '<a href="javascript:;" class="pos_up">向上<i class="icon_up_down icon_up"></i></a>';
 						}else if(list_num < list_total_on){
