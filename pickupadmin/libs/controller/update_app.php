@@ -43,8 +43,8 @@ if( isset($_POST['link']) && $_POST['link'] != ''){
 
 // $app_name = 'daxiangce1';
 // $id = 1;
-$intro = 'share photo';
-$link = 'http://baidu.com?id=1';
+//$intro = 'share photo';
+//$link = 'http://baidu.com?id=1';
 $connect = mysql_connect($config['mysql_host'], $config['mysql_username'], $config['mysql_passwd']);
 if (!$connect) {
 	die('Could not connect: ' . mysql_error());
