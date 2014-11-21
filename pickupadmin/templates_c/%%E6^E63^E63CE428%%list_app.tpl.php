@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2014-11-21 16:48:23
+<?php /* Smarty version 2.6.28, created on 2014-11-21 17:53:34
          compiled from list_app.tpl */ ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -723,7 +723,11 @@ var app = {
 						list_status_code = app_list[app_list_i].status;
 							
 						if(list_num == 1){
-							action = '<a href="javascript:;" class="pos_down">向下<i class="icon_up_down icon_down"></i></a>';
+							if(list_total_on < 2){
+								action = '';
+							}else{
+								action = '<a href="javascript:;" class="pos_down">向下<i class="icon_up_down icon_down"></i></a>';
+							}
 						}else if(list_num == list_total_on){
 							action = '<a href="javascript:;" class="pos_up">向上<i class="icon_up_down icon_up"></i></a>';
 						}else if(list_num < list_total_on){
