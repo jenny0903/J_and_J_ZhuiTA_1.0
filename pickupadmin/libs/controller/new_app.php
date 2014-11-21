@@ -53,7 +53,16 @@ if (!$connect) {
 mysql_select_db($config['mysql_db'],$connect);
 mysql_query("SET NAMES UTF8"); 
 
-$sql = "insert into tbl_app (app_name,file_id,intro,link,status) values ('".mysql_real_escape_string($app_name)."','$file_id','".mysql_real_escape_string($intro)."','".mysql_real_escape_string($link)."',1)";
+$sql = "select sort from tbl_app where status = 0 or status = 1 order by status desc,sort desc,id desc limit 1";
+$query = mysql_query($sql);
+if(mysql_num_rows($query)>0){
+	$result = mysql_fetch_assoc($query);
+	$sort = $result['sort'] + 1;
+}else{
+	$sort = 0;
+}
+
+$sql = "insert into tbl_app (app_name,file_id,intro,link,status,sort) values ('".mysql_real_escape_string($app_name)."','$file_id','".mysql_real_escape_string($intro)."','".mysql_real_escape_string($link)."',1,$sort)";
 $query = mysql_query($sql);
 if(mysql_affected_rows()>0){
 	$data['code'] = 1;
