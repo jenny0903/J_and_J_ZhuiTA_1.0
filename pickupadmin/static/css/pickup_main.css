@@ -1678,9 +1678,11 @@ label{
     overflow: hidden;
     text-overflow: ellipsis;
 }
+/*
 #J_post_back{
 	float:left;
 }
+*/
 .forum_action .btn{
 	height:30px;
 	line-height:30px;
@@ -2203,4 +2205,75 @@ select.user_status{
 }
 .new_version_wrap input[type="text"]{
 	width:170px;
+}
+
+/*精华*/
+.essence_sort ul li{
+	line-height:40px;
+	max-height:100px;
+	border-width:1px;
+	border-style: solid;
+	border-color: #FFFFFF #FAFAFA #E9EAEA;	
+	text-align:center;
+	overflow:hidden;
+	position:relative;
+}
+.essence_sort ul .title{
+	font-weight:bold;
+	background-color:rgba(245, 245, 245, 0.85);
+	border-color: #DFE0E1 #EEEEEE #D9D9D9;
+}
+.essence_sort ul li span.report_content,
+.essence_sort ul li span.change_sort,
+.essence_sort ul li span.essence_sort,
+.essence_sort ul li span.num{
+	float:left;
+}
+.essence_sort ul li .essence_title{
+	width:300px;
+	float:left;
+	line-height:20px;
+	padding:10px 0;
+}
+.essence_sort ul li .position{
+	float:left;
+	margin-left:25px;
+}
+.essence_sort ul li .num{
+	width:50px;
+}
+.essence_sort ul li .report_content{
+	width:80px;
+}
+.essence_sort ul li .change_sort{
+	width:200px;
+}
+.change_sort input{
+	margin-left:30px;
+	margin-top:7px;
+	width:50px;
+	float:left;
+}
+.essence_info{
+	position:absolute;
+	top:0;
+	left:0;
+	background-color:#fff;
+	width:100%;
+}
+
+.btn_essence_info{
+	width:70px;
+}
+.essence_info .essence_title{
+	height:40px;
+}
+.essence_info ul li{
+	margin:20px 0;
+}
+.essence_sort .complain_page_wrap{
+	margin:20px 0;
+}
+.change_sort input{
+	text-align:center;
 }

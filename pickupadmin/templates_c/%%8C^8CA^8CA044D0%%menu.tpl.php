@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2014-11-21 16:47:39
+<?php /* Smarty version 2.6.28, created on 2014-11-24 15:23:50
          compiled from menu.tpl */ ?>
 	<div class="menu_wrap">
     	<ul class="menu1" id="J_menu1">
@@ -60,10 +60,10 @@
 			<li>
 				<a href="app_view_count.php" target="_blank">应用推荐浏览量</a>
             </li>
-			<!--<li>
+			<li>
 				<a class="menu1_title" href="javascript:;" id="J_essence_sort">精华贴子排序</a>
 			</li>
-			-->
+			
             <li>
             	<a href="/pickupadmin/libs/controller/logout.php">登出</a>
             </li>
@@ -329,7 +329,7 @@
 				$("#J_menu1 .menu1_title").eq(menu_flag-2).removeClass('a_cur');
 			}
 			if(menu_flag != 15){
-				$('#J_iframe').attr('src','view/version_switch.html');
+				$('#J_iframe').attr('src','view/essence_sort.html');
 			}
 			menu_flag = 15;
 		});

@@ -1,4 +1,5 @@
-<?php
+﻿<?php
+include("config.php");
 if( isset($_GET['type']) && $_GET['type'] != ''){
 	$type = intval($_GET['type']);
 }else{
@@ -36,13 +37,13 @@ if($status){
 }else{
 	$sql = "select status from tbl_version where type = $type and v_name ='".$v_name."' and status >=0";
 	$obj_mysql = mysql_query($sql);
-	if(mysql_num_rows($obj_mysql)>=0){
+	if(mysql_num_rows($obj_mysql)>0){
 		$result = mysql_fetch_assoc($obj_mysql);
 		$status = $result['status']; //to do 
 		$memcache_obj->set($key, $status, 0, 0);
 		echo $status;
 	}else{  
-		echo "无此版本";
+		echo "2";
 	}  
 }
 mysql_close($link);

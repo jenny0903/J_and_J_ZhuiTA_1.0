@@ -7,7 +7,7 @@ var forum = {
 			'<input type="checkbox" autocomplete="off" name="select" class="report_select" />',
 			'<div class="post_title">{post_title}</div>',
 			'<span class="num">{num}</span>',
-			'<span class="report_content"><a href="javascript:;">{report_content}</a></span>',
+			'<span class="report_content">{report_content}</span>',
 			'<span class="memo">{memo}</span>',
 			'<span class="created_date">{created_date}</span>',
 			//'<span class="is_gag">{is_gag}</span>',
@@ -85,6 +85,9 @@ var forum = {
 						default:
 							forum_report_content = '';
 							break;
+					}
+					if(post_title != "（帖子已被删）" && post_title != "（回复已被删）"){
+						forum_report_content = '<a href="javascript:;">'+forum_report_content+'</a>';
 					}
 					switch(forum_is_gag){
 						case 404:

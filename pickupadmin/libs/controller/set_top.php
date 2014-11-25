@@ -8,6 +8,7 @@ $sticky = 1;
 $data = array(
 	'sticky'  => $sticky
 );
+//$data = json_encode($data);
 $url_set_top = $pickup->getApiUrl()."/forum/posts?id=$id";
 $result = $pickup->pickupLinkApi($url_set_top,"post",$data,1,0);
 echo $result;

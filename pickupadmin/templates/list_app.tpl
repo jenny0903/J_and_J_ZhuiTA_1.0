@@ -69,10 +69,9 @@
 			<li>
 				<a href="app_view_count.php" target="_blank" id="J_version_switch">应用推荐浏览量</a>
             </li>
-			<!--<li>
-				<a class="menu1_title" href="main.php#essence_sort" id="J_essence_sort">追吧</a>
+			<li>
+				<a class="menu1_title" href="main.php#essence_sort" id="J_essence_sort">精华贴子排序</a>
             </li>
-			-->
             <li>
             	<a href="/pickupadmin/libs/controller/logout.php">登出</a>
             </li>
