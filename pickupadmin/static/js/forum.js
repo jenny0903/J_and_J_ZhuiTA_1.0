@@ -475,7 +475,7 @@ var forum = {
 				$('#post_flag').text(post_flag);
 				$('#created_time').text(created_time);
 				$('#reply_last_updated').text(reply_last_updated);
-					if (essence_is == 1){
+					if (essence_is == 2){
 						//$('#set_top').before(tpl_button_essence_on);
 						$('.post_info').append(tpl_button_essence_off);
 					}else{
@@ -701,6 +701,7 @@ function operationUser(_this_li,type){
 						}else{
 							$('#delete_top').before(tpl_button_essence_off);
 						}
+						// _this_li.attr('data-is-essence',2);
 						setTimeout(hideAlert, 1000);
 						break;
 					case 'delete_essence':
@@ -717,6 +718,7 @@ function operationUser(_this_li,type){
 						}else{
 							$('#delete_top').before(tpl_button_essence_on);
 						}
+						 //_this_li.attr('data-is-essence',1);
 						setTimeout(hideAlert, 1000);
 						break;
 					case 'set_top':
@@ -945,10 +947,10 @@ $('.delete_reply').die().live('click',function(){
 	
 });
 $('#set_essence').die().live('click',function(){
-	// var _this = $(this);
-	// var _this_li = _this.parents('li');
+	 var _this = $(this);
+	 var _this_li = _this.parents('li');
 	//forum.set_essence(_this_li);
-	operationUser('','set_essence');
+	operationUser(_this_li,'set_essence');
 	
 });
 $('#delete_essence').die().live('click',function(){
